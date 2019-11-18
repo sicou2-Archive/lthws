@@ -14,5 +14,5 @@ txt_again = open(file_again) # "txt_again" to open the previous new file
 
 print(txt_again.read()) # use read to read this new opened file
 
-txt.close()
+txt.close() # these close the opened file
 txt_again.close()
