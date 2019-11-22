@@ -48,3 +48,98 @@ print
 ""
 ==
 
+Ex 5
+===============
+=
+''
+#
+print(f"")
+{} within print(f"")
++
+round()
+
+
+Ex 6
+===============
+= 
+f"" out of a print command
+{} within a f"" string
+print()
+False
+()
++
+
+Ex 7
+====================
+print("")
+*
+#
+= 
+.format() stuck on to the end of a string with "{}"
+end=' ' https://docs.python.org/3.4/library/functions.html#print
+
+
+Ex 8
+==================
+
+= 
+""
+{}
+.format()
+print()
+
+
+Ex 9
+==============
+#
+= 
+""
+\n
+, in a print()
+""" """
+''' '''
+
+
+
+Ex 10
+=========
+\t
+= 
+""
+\n
+\\
+""" """
+print()
+\'
+\"
+\a
+\b
+\f 
+\N{name}
+\r 
+\t 
+\uxxxx
+\Uxxxxxxxx
+\v
+\000
+\xhh
+''' '''
+
+Ex 11
+===============
+print("", end = '')
+input()
+= 
+print(f"")
+int()
+
+Ex 12
+=============
+= 
+input("With embedded string ")
+print(f"")
+
+in console
+python -m pydoc thingtobedoc'ed
+
+
