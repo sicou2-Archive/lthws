@@ -1,0 +1,50 @@
+Ex 1
+=============
+*IN A FILE*
+print
+()
+""
+''
+#
+
+*ON COMMAND LINE*
+python filename.py 
+
+Ex 2 
+=============
+#
+print
+()
+""
+
+Ex 3
+==========
++
+-
+/
+*
+%
+<
+>
+<=
+>=
+
+print
+()
+""
+, on a print line
+
+Ex 4 
+=============
+= 
+int 4
+float 5.6
+- 
+*
+/
+print
+()
+, on a print line
+""
+==
+
