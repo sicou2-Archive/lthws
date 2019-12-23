@@ -142,4 +142,5 @@ print(f"")
 in console
 python -m pydoc thingtobedoc'ed
 
-
+Ex 13
+=============
