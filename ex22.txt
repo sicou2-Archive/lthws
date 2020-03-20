@@ -137,10 +137,185 @@ Ex 12
 =============
 = 
 input("With embedded string ")
-print(f"")
+print(f"") 
 
 in console
 python -m pydoc thingtobedoc'ed
 
 Ex 13
 =============
+from
+from sys
+import
+import argv
+name, the, variables, = argv
+print("Rote string goes here:", name) #name from above goes here that was passes in the CL
+
+Ex 14 
+==============
+from
+from sys
+import
+import argv
+print(f"Words in {variable}")
+input(allowed_string_variable_or string) #Displays in the prompt
+print(f""" or '''With all of the {variables} you need or whatever the string.
+""" or ''')))
+
+Ex 15
+===============
+from
+from sys
+import
+import argv
+names, of, cl, variables = argv
+open(variable)
+print(f"Things {filename}")
+variable_text_thats_read.read()
+
+Ex 16
+===============
+Reading and Writing Files
+.close #Closes the file, file -> save
+.read #Reads the contents of the file, can assign to variable
+.readline #reads one line
+.truncate #Empties the file
+.write('stuff') #writes "stuff" to the file
+.seek(0) #moves read/write location to the beginning of the file
+from
+from sys
+import
+import argv
+more, cl, variables = argv
+CTRL + C kills the script
+print(f"Things {file}")
+input("string")
+print("string")
+open(filename, 'w') #there are many different open methods, if needed look it up
+
+Ex 17
+=============
+from
+from sys
+import
+import exists
+from os.path
+import exists
+cl, variable, declaration = argv
+print(f"{cl} and {variable}")
+open(cl)
+variable.read()
+print("stringhere")
+input()
+open(variable, 'w')
+.write(to_variable)
+to_variable.close()
+
+Ex 18
+=================
+def function_name(*args):
+    arg, another_arg, third = args
+	do things with the args here
+def another_function(ment1, ment2):
+    do more things here with ment1 and 2
+def none_args():
+    do things here without args
+function_name(Dog, Gypsy, Hans)
+another function(Blaze, Dog)
+none_args()
+
+Ex 19
+================
+def function_here(thing1, thing2):
+    print(f"Here is {thing1} and {thing2}")
+
+can give directly 
+function_here(10,15)
+
+can call from variables
+function_here(specifically_not_thing1, dogs)
+
+call from math function
+function_here(10 - 4, 5 + 5)
+
+some kind of combo of the two
+function_here(var_fun_times + 44, 22 - treetop)
+
+Ex 20
+=========================
+
+from
+from sys
+from sys import
+from sys import argv
+
+script_name, other_thing_that_needs_calling = argv
+
+def print_cool_stuff(f):
+    print(f.read())	
+	
+print
+function_variable_name.read
+function_variable_name.seek(0)
+
+function_variable_name.readline()
+
+Ex 21
+============================
+
+def create_function(a, b):
+    print(f"DOING a thing of A and B together")
+	return "the thing that a and b did together"
+	
+	return seems to work when assigning answers back from functions to variables
+	
+key = create_function(4,3)
+
+key is now set to what a and b did together
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
