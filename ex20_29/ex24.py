@@ -41,3 +41,10 @@ formula = secret_formula(start_point)
 # this is an easy way to apply a list to a format string
 print("We'd have {} beans, {} jars, and {} crates.".format(*formula)) #again I might be toally wrong about this but, it looks like *formula is a tuple(maybe?) there the values returned from secret_formula fill the indicies
 
+
+cars = 5 
+engines = 3
+oiler = 8
+trains = cars, engines, oiler # I think I understand this tuple
+
+print(trains)
