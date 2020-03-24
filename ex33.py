@@ -59,5 +59,3 @@ print("The numbers: ")
 
 for num in digits:
     print(num)
-    
-    

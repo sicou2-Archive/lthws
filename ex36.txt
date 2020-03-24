@@ -1,0 +1,29 @@
+Designing and Debugging
+
+Rules for if-statements
+1 Every if-statement must have an else
+2 If else never runs because it does not make sense, then must use .die function. This prints an error message and dies. This will find many errors
+3 Never nest if-statements more than two deep, try to keep at one deep
+4 Treat if-statements like paragraphs there eact if-elif-else group is like a set of sentences, use blank lines between paragraphs
+5 Bool tests should be simple. If they are complex, move them to a variable earlier in the function 
+
+## Go back and make ex35 follow these rules
+
+Rules for loops 
+1 Use while-loops only to loop forever, this means rarely. (PYTHON ONLY: other languages may be different.)
+2 for-loops for most other looping, especially of it has a fixed or limited number of things to loop over
+
+Tips for Debugging
+1 Do not use a debugger. No specific useful info, lots of extra stuff that does not matter
+2 Best way to debug and is to use print() to print out values of variables at different points 
+3 Code a little, run a little, fix a little
+
+Best way to work on software is in small chunks
+1 On paper write a list of tasks needed to finish the project, this is a to do list
+2 Pick the easiest thing you can do from the list
+3 Write out in English as a guide on how to finish this tasks
+4 Write some code out below the English
+5 Run script to see if it works
+6 Keep working in this cycle of writing, testing, fixing
+7 Cross task off list and pick next easiest task
+8 As you work remove tasks that are no good and add new needed ones
