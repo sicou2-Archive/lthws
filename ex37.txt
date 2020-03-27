@@ -2,7 +2,7 @@ Keywords
 
 Keyword - Description - Example
 and - Logical and - True and False == False
-*** as - Part of the with-as statement. - with X as Y: pass
+*** as - Part of the with-as statement. - with X as Y: pass              *** I wonder where "with" is on this list
 *** assert - Assert (ensure) that something is true - assert False, "Error!"
 break - Stop this loop right now. - while True: break
 *** class - Define a class. - class Person(object)
@@ -20,7 +20,7 @@ from - Import specific parts of a module. - from x import Y
 if - If condition. - if:X; elif:Y; else:J
 import - Import a module into this one to use. - import os
 *** in - Part of for-loops. Also a test of X in Y. - for X in Y: pass also 1 in [1] == True
-*** is - Like == to test equality. - 1 is 1 == True
+*** is - Like == to test equality. - 1 is 1 == True             
 *** lambda - Creata a short anonymous function - s = lambda y:y ** y; s(3)
 not - Logical not. - not True == False
 or - Logical or. - True or False == True
@@ -88,5 +88,23 @@ Operator - Description - Example
 % - String interpolate or modulus - 2 % 4 == 2
 < - Less than - 4 < 4 == False
 > - Greater than - 4 > 4 == False
-<= - Less than equal 4 <= 4 -- True
-
+<= - Less than equal - 4 <= 4 == True
+>= - Greater than equal - 4 >= 4 == True
+== - Equal - 4 == 5 == False
+!= - Not equal - 4 != 5 == True
+( ) - Parentheses - len('hi') = 2
+[ ] - List brackets - [1, 2, 5]
+{ } - Dict curly braces - {'x': 5, 'y': 10}
+@ - At (decorators) - @classmethod
+, - Comma - range(0, 10)
+: - Colon - def X():
+. - Dot - self.x = 10
+= - Assign equal - x = 10
+; - Semi-colon - print('hi'); print('there')
++= - Add and assign - x = 1; x += 2
+-= - Subtract and assign - x = 1; x -= 2
+*= - Multiply and assign - x = 1; x *= 2
+/= - Divide and assign - x = 1; x /= 2
+//= - Floor divide and assign - x = 1; x //= 2
+%= - Modulus assign - x = 1; x %= 2
+**= - Power assign - x = 1; x **= 2
