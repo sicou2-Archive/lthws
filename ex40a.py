@@ -1,15 +1,20 @@
 import mystuff
 
 
-mystuff.apple()
+# mystuff.apple()
 
-mything = {'apple': "I AM APPLES!"}
-print(mything['apple'])
+# mything = {'apple': "I AM APPLES!"}
+# print(mything['apple'])
 
-print(mystuff.tangerine)
+# print(mystuff.tangerine)
 
-mything['apple'] # Get apple from dict
-mystuff.apple() # Get apple from the module
-mystuff.tangerine # Same thing, it's just a variable
+# mything['apple'] # Get apple from dict
+# mystuff.apple() # Get apple from the module
+# mystuff.tangerine # Same thing, it's just a variable
 
-#STOPPED JUST BEFORE CLASSES ARE LIKE MODULES
+#CLASSES
+thing = MyStuff()
+thing.apple()
+print(thing.tangerine)
+
+#Not totally sure what is going on here. Something is not right. 
