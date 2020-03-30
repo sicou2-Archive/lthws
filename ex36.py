@@ -23,6 +23,10 @@ from sys import exit
                       # |
            # FIND JEWLES IN CRYPT ---> SKELETON ATTACK ---> EXIT DUNGEON
                                                             
+# NOTE(BCL): Consider looking up classes and using them for rooms, 
+# characters, maybe items
+
+######STOPPED LINE 367
 
 def main(): 
     
@@ -38,12 +42,9 @@ def main():
     except NameError:
         lockout = {'chest_room': 1, 'slime_room': 1, 'orc_room' : 1}
 
-
-    room_antichamber(cast, lockout)    
+    room_hallway(cast)
+#    room_antichamber(cast, lockout)    
         
-
-# NOTE(BCL): Consider looking up classes and using them for rooms, 
-# characters, maybe items
 def room_antichamber(cast, lockout):
 # NOTE(BCL): NEED A REST TO MAXHP
 #ADD TO STORY LOOKING FOR JEWLES
@@ -118,6 +119,7 @@ def room_antichamber(cast, lockout):
             'room.') 
         
 def room_chest(cast, lockout): 
+   
     print('You see a chest. 1 Pick lock, 2 Leave alone and return to '
     'antichamber, 3 Rest a moment')
     
@@ -173,11 +175,8 @@ def room_chest(cast, lockout):
             #HP TO FULL
         else:
             print('You should get a move on. What would you like to '
-            'do?')
-            
-    return 0 #NOTE(BCL): THIS SHOULD NOT BE NEEDED SINCE EVERYTHING 
-    #ELSE RETURNS TO SOMETHING ELSE
-    
+            'do?')           
+        
 def room_slime(cast, lockout): 
     print('Enter and a Slime is quietly digesting a large body. 1 '
     'Attack the Slime, 2 Taunt the Slime, 3 Quietly back out of room')
@@ -254,7 +253,7 @@ def room_orc(cast):
             'fight!')
             fight(cast['hero'], cast['orc'])
             return 0 #need to resolve the fight and offer hallway
-            # or alter
+            # or alter OR REST A MOMENT
         elif action == '2': 
             print('You sneak towards the hallway.')
             
@@ -285,9 +284,91 @@ def room_orc(cast):
         
     return 0 
     
-def room_hallway(): return 0 
+def room_hallway(cast): 
+    
+    try:
+        cast['bugbear']
+    except KeyError:
+        bugbear = character(5, 1, 1, 1,'bugbear')
+        cast['bugbear'] = bugbear
+        
+    print("As you walk down the hallway, suddenly out of the darkness "
+          "a giant lumbering Bugbear appears out of the darkness. 1 "
+          "Attack 2 Retreat in to the shadows")
+    action = input("> ")
+          
+    if action == '1':
+        print("You lunge forward to attack!")
+        fight(cast['hero'], cast['bugbear'])
+        print("after combat move forward in to the crypt")
+        return room_crypt(cast)
+    elif action == '2':
+        print("It seems he cannot see very well in the dark as "
+        "you disappear back in to the shadows")
+        #NEED TO RESOLVE EITHER GOING BACK IN TO THE ORC ROOM
+        #OR HIDING TO REST A MOMENT
+        return 0
+    
+    return 0 
 
-def room_crypt(): return 0 
+def room_crypt(cast): 
+    
+    try:
+        cast['skeleton']
+    except KeyError:
+        skeleton = character(5, 1, 1, 1,'skeleton')
+        cast['skeleton'] = skeleton
+        
+    print("Walk in to an empty chamber with a well kept crypt and set "
+        "of stairs leading up to a large door. 1 Inspect Crypt 2 Go up"
+        "stairs 3 Rest a moment") #Return to other rooms?
+    action = input("> ")
+    
+    while True:
+        if action == '1': 
+            print("Move to inspect crypt, see gems. 1 Take gems 2 Leave"
+            " alone"
+            if choice == '1':
+                print("You take the flawless gems and put them in to "
+                "your pack. As you close the bag you look up and see a "
+                "skeleton coming up out of the crypt. 1 Attack 2 Run "
+                "toward the stairs 3 Run toward the hallway")
+                #GEM GET FOR DIFFERENT ENDING?
+                false_choice = input("> ")
+                
+                if false_choice == '1':
+                    print("You bravely defend your life and treasure!")
+                    fight(cast['hero'], cast['skeleton'])
+                    print("Dead skelly, go up stairs")
+                    return room_exit(cast)
+                elif false_choice == '2' or false_choice == '3':
+                    print("You start to run, but you feel a spell "
+                    "freeze your feet in place. You turn to fight for "
+                    "your life and treasure!")
+                    fight(cast['hero'], cast['skeleton'])
+                    print("Dead skelly, go up stairs")
+                else:
+                    print("Your indecision costs you your life and "
+                    "treasure!")
+                
+                
+            return 0 
+        elif action == '2': 
+            print("You ignore the crypt and move up the stairs. After "
+            "a moment pushing, you manage to open the heavy stone door "
+            "and see out in to the wilderness.")
+            end_game(cast)
+
+            return 0 
+        elif action == '3': 
+            rest(cast['hero']
+            continue
+        else: 
+#######STOPPED HERE NEED TO LOOP TO TOP###########            
+            return 0 
+        
+
+    return 0 
 
 def room_exit(): return 0 
 
@@ -295,8 +376,6 @@ def character(health, defence, attack, alive, name): #maybe use dicts
 #here? # IS THIS THE BEST FUNCTION TO DO THIS? WHY NOT JUST PASS INFO 
 #TO THE CAST DICT?
     stats = [health, defence, attack, alive, name]
-    return stats 
-
     #maybe max hp and current hp for resting? 
     # hitpoints = 0
     # hitpoints = randrange(0,10)
@@ -305,6 +384,8 @@ def character(health, defence, attack, alive, name): #maybe use dicts
 
     # stats = [randrange(0,10), attack]
     # print(stats)
+    
+    return stats 
 
 def fight(hero_stats, enemy_stats): 
    # EXPAND COMBAT FOR MORE INFO AND !FUN!
@@ -340,7 +421,9 @@ def fight(hero_stats, enemy_stats):
             i +=1
     return 0 
 
-def end_game(): 
+def rest(hero):return 0 
+
+def end_game(cast): 
     print('Game over man. Game over! Play again? "y/n"')
     choice = input('> ')
     if choice == 'y':
