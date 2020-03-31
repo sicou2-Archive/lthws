@@ -1,0 +1,139 @@
+0 The Setup
+Nothing to Review, Python is Running
+Maybe look in to gettin Python to Run on Treebow
+
+1 A Good First Program
+print()
+$ python programName.py
+
+2 Comments and Pound Characters
+# to comment or disable lines of code
+Debug trick read lines of code backwards (bottom up)
+
+
+3 Numbers and Math
+
+
+4 Variables and Names
+
+
+5 More Variables and Printing
+
+
+6 Strings and Text
+
+
+7 More Printing
+
+
+8 Printing, Printing
+
+
+9 Printing, Printing, Printing
+
+
+10 What Was That?
+
+
+11 Asking Questions
+
+
+12 Prompting People
+
+
+13 Parameters, Unpacking, Variables
+
+
+14 Prompting and Passing
+
+
+15 Reading Files
+
+
+16 Reading and Writing Files
+
+
+17 More Files
+
+
+18 Names, Variables, Code, Functions
+
+
+19 Functions and Variables
+
+
+20 Functions and Files
+
+
+21 Functions Can Return Something
+
+
+22 What Do you Know So Far?
+
+
+23 Strings, Bytes, and Character Encodings
+
+
+24 More Practice
+
+
+25 Even More Practice
+
+
+26 Congratulations, Take a Test!
+
+
+27 Memorizing Logic
+
+
+28 Boolean Practice
+
+
+29 What If
+
+
+30 Else and If
+
+
+31 Making Decisions
+
+
+32 Loops and Lists
+
+
+33 While Loops
+
+
+34 Accessing Elements of Lists
+
+
+35 Branches and Functions
+
+
+36 Designing and Debugging
+
+
+37 Symbol Review
+
+
+38 Doing Things to Lists
+
+
+39 Dictionaries, Oh Lovely Dictionaries
+
+
+40 Modules, Classes, and Objects
+
+
+41 Learning to Speak Object-Oriented
+
+
+
+
+
+
+
+
+
+
+####STOP ON PAGE 180####

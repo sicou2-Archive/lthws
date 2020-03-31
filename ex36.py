@@ -37,13 +37,13 @@ def main():
     except KeyError:
         hero = character(10, 1, 1, 1,'hero')
         cast['hero'] = hero
-    try:
+    try:   #Note(BCL): LOCKOUT MAYBE NEEDS TO BE INSIDE CAST, 
+    # FEWER OBJECTS TO PASS AROUND
         lockout
     except NameError:
         lockout = {'chest_room': 1, 'slime_room': 1, 'orc_room' : 1}
 
-    room_hallway(cast)
-#    room_antichamber(cast, lockout)    
+    room_antichamber(cast, lockout)    
         
 def room_antichamber(cast, lockout):
 # NOTE(BCL): NEED A REST TO MAXHP
@@ -113,6 +113,7 @@ def room_antichamber(cast, lockout):
                 print('You take a moment to catch your breath. You feel'
                 ' as strong as you are going to get for now.')
                 cast['hero'][0] += 5 #This needs max hp once installed
+            rest(cast, lockout)
             continue
         else: 
             print('Moving on is the only hope for you now. Choose a '
@@ -233,55 +234,86 @@ def room_slime(cast, lockout):
 
     return 0 
     
-def room_orc(cast): 
-    print('As you unlock and enter the door, you see a fierce orc '
-    'worshiping at an alter. Further in to the room you see a dark '
-    'hallway. \n1 Attack the Orc, 2 Attempt to sneak to the hallway, 3 '
-    'Gently close the door and return to the Antichamber.')
+def room_orc(cast, lockout): 
+    
+    
+
     
     try:
         cast['orc']
     except KeyError:
         orc = character(5, 1, 1, 1,'orc')
         cast['orc'] = orc
+    
+    if cast['orc'][3] == 1:
+        print('As you unlock and enter the door, you see a fierce orc '
+            'worshiping at an alter. Further in to the room you see a dark '
+            'hallway. \n1 Attack the Orc, 2 Attempt to sneak to the hallway, 3 '
+            'Gently close the door and return to the Antichamber.')
         
-    i = 0
-    while True:
-        action = input('> ')
-        if action == '1': 
-            print('You move in to attack the orc as he stands to '
-            'fight!')
-            fight(cast['hero'], cast['orc'])
-            return 0 #need to resolve the fight and offer hallway
-            # or alter OR REST A MOMENT
-        elif action == '2': 
-            print('You sneak towards the hallway.')
-            
-            sneak_roll = randint(1,4)
-            
-            if sneak_roll == 4:
-                print('You hear the Orc\'s prayers trail off. As you '
-                'look back you both make eye contact. He raises his '
-                'sword to attack!')
+        i = 0
+        while True:
+        
+            action = input('> ')
+            if action == '1': 
+                print('You move in to attack the orc as he stands to '
+                'fight!')
                 fight(cast['hero'], cast['orc'])
-                #need to resolve the fight and offer the alter
-            else:
-                print('You silently enter the hallway and make your way'
-                ' into the damp and dark.')
-                return room_hallway()
-            return 0
-        elif action == '3': 
-            print('You back in to the Antichamber and slowly let the '
-            'latch down.')
-            return room_antichamber(cast) 
-        elif i == 3:
-            print('The Orc glances at the door. As you make eye contact'
-            ' he raises his sword to attack!')
-            fight(cast['hero'], cast['orc'])
-            return 0 #resolve fight and offer alter
-        else: 
-            print('Hurry! Make a decision. He might notice you!') 
+                return room_orc(cast) #need to resolve the fight and offer hallway
+                # or alter OR REST A MOMENT
+            elif action == '2': 
+                print('You sneak towards the hallway.')
+                
+                sneak_roll = randint(1,4)
+                
+                if sneak_roll == 4:
+                    print('You hear the Orc\'s prayers trail off. As you '
+                    'look back you both make eye contact. He raises his '
+                    'sword to attack!')
+                    fight(cast['hero'], cast['orc'])
+                    #need to resolve the fight and offer the alter
+                else:
+                    print('You silently enter the hallway and make your way'
+                    ' into the damp and dark.')
+                    return room_hallway()
+                return 0
+            elif action == '3': 
+                print('You back in to the Antichamber and slowly let the '
+                'latch down.')
+                return room_antichamber(cast) 
+            elif i == 3:
+                print('The Orc glances at the door. As you make eye contact'
+                ' he raises his sword to attack!')
+                fight(cast['hero'], cast['orc'])
+                return 0 #resolve fight and offer alter
+            else: 
+                print('Hurry! Make a decision. He might notice you!') 
+    print('You look around the room above the stench of the dead orc.'
+        'You see an alter, and a dark hallway. 1 Inspect the Alter 2 '
+        'Enter the hallway 3 Rest a moment 4 Return to the '
+        'antichamber.')
         
+    while True: ######STOPPED HERE BUILDING OUT AFTER ORC FIGHT
+    
+        action = input('> ')
+    
+        if action == '1': return 0 #alter
+        elif action == '2': return 0 #hallway
+        elif action == '3': 
+            print('You rest a moment')
+            return rest(cast,lockout)
+        elif action == '4': 
+            if (lockout['chest_room'] == 0 
+                and lockout['slime_room'] == 0):
+                print('There is no reason to go back there. Time '
+                'to look forward!')
+                continue
+            else:
+                print('You decide to go back to the Antichamber')
+                return room_antichamber(cast, lockout)
+        else:
+            print('No time like the present. Better get a move on '
+            'and make a choice.')
     return 0 
     
 def room_hallway(cast): 
@@ -322,37 +354,53 @@ def room_crypt(cast):
     print("Walk in to an empty chamber with a well kept crypt and set "
         "of stairs leading up to a large door. 1 Inspect Crypt 2 Go up"
         "stairs 3 Rest a moment") #Return to other rooms?
-    action = input("> ")
+   
     
     while True:
+        
+        action = input("> ")
+        
         if action == '1': 
             print("Move to inspect crypt, see gems. 1 Take gems 2 Leave"
-            " alone"
-            if choice == '1':
-                print("You take the flawless gems and put them in to "
-                "your pack. As you close the bag you look up and see a "
-                "skeleton coming up out of the crypt. 1 Attack 2 Run "
-                "toward the stairs 3 Run toward the hallway")
-                #GEM GET FOR DIFFERENT ENDING?
-                false_choice = input("> ")
+            " alone")
+            
+            i = 0
+            
+            while i != 1:
+                choice = input("> ")
                 
-                if false_choice == '1':
-                    print("You bravely defend your life and treasure!")
-                    fight(cast['hero'], cast['skeleton'])
-                    print("Dead skelly, go up stairs")
-                    return room_exit(cast)
-                elif false_choice == '2' or false_choice == '3':
-                    print("You start to run, but you feel a spell "
-                    "freeze your feet in place. You turn to fight for "
-                    "your life and treasure!")
-                    fight(cast['hero'], cast['skeleton'])
-                    print("Dead skelly, go up stairs")
-                else:
-                    print("Your indecision costs you your life and "
-                    "treasure!")
+                if choice == '1':
+                    print("You take the flawless gems and put them in to "
+                    "your pack. As you close the bag you look up and see a "
+                    "skeleton coming up out of the crypt. 1 Attack 2 Run "
+                    "toward the stairs 3 Run toward the hallway")
+                    #GEM GET FOR DIFFERENT ENDING?
+                    false_choice = input("> ")
+                    
+                    if false_choice == '1':
+                        print("You bravely defend your life and treasure!")
+                        fight(cast['hero'], cast['skeleton'])
+                        print("Dead skelly, go up stairs")
+                        return room_exit(cast)
+                    elif false_choice == '2' or false_choice == '3':
+                        print("You start to run, but you feel a spell "
+                        "freeze your feet in place. You turn to fight for "
+                        "your life and treasure!")
+                        fight(cast['hero'], cast['skeleton'])
+                        print("Dead skelly, go up stairs")
+                        return room_exit(cast)
+                    else:
+                        print("Your indecision costs you your life and "
+                        "treasure!")
+                elif choice == '2':
+                    print("You leave the treasure in its place and back"
+                    " up to the middle of the room.\n1 Inspect Crypt 2 "
+                    "Go up the stairs 3 Rest a moment")
+                    i = 1
+                    
+               
                 
-                
-            return 0 
+#            return 0 
         elif action == '2': 
             print("You ignore the crypt and move up the stairs. After "
             "a moment pushing, you manage to open the heavy stone door "
@@ -361,18 +409,17 @@ def room_crypt(cast):
 
             return 0 
         elif action == '3': 
-            rest(cast['hero']
+            rest(cast['hero'])
             continue
         else: 
-#######STOPPED HERE NEED TO LOOP TO TOP###########            
-            return 0 
+            print("It is time to move on, please make a choice.")
         
 
     return 0 
 
 def room_exit(): return 0 
 
-def character(health, defence, attack, alive, name): #maybe use dicts 
+def character(health, defence, attack, alive, name): #Add max health and rested flag 
 #here? # IS THIS THE BEST FUNCTION TO DO THIS? WHY NOT JUST PASS INFO 
 #TO THE CAST DICT?
     stats = [health, defence, attack, alive, name]
@@ -401,8 +448,8 @@ def fight(hero_stats, enemy_stats):
             print(hero_stats, enemy_stats)
             if hero_stats[0] == 0:
                 'You fall bravely in battle.'
-                return end_game()       
-            elif enemy_stats[0] == 0:
+                return end_game(cast)       
+            elif enemy_stats[0] <= 0:
                 print(f'You slay the enemy {enemy_stats[4]}')
                 enemy_stats[3] = 0
                 return (hero_stats, enemy_stats)
@@ -411,17 +458,19 @@ def fight(hero_stats, enemy_stats):
         elif action == '2':
             print('You retreat from the battle!') #NOTE(BCL): THIS NEEDS
 #            TO RETURN TO A PREVIOUS ROOM OR LEAVE IF IN ANTI-C
-            return end_game() 
+            return end_game(cast) 
         elif i == 4:
             print('You block and block the attacks coming from your '
             'for, but eventually you are overwhelmed.')
-            return end_game()
+            return end_game(cast)
         else:
             print('Do not hesitate! Do something, anything!')
             i +=1
     return 0 
 
-def rest(hero):return 0 
+def rest(hero, lockout): 
+    print("BRO RESTS HERE")
+    return 0 #what happens when you return nothing?  
 
 def end_game(cast): 
     print('Game over man. Game over! Play again? "y/n"')
