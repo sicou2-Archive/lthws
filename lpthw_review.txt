@@ -12,22 +12,43 @@ Debug trick read lines of code backwards (bottom up)
 
 
 3 Numbers and Math
-
++, -, /, * (Modulus), %, <, >, <=, >= 
+Normal Order of Operations
 
 4 Variables and Names
-
+variable_names with _ (underscore)
+variable assigned with = 
+can do things after = like math
+print("There are ", variable, " here sep by ','.") 
+4 = integer
+3.0 = floating point number
 
 5 More Variables and Printing
-
-
+String with ' or " quotes
+print(f"strings {variable} without needing loony cat")
+variable = adding + or - sub * things_together
+variables starting with numbers is no go in Python
+round() is an option when working with floating points
 6 Strings and Text
-
+Strings are text you want to display or export out of the program
+f"strings" can also be done with .format() suntax
+	ex: variable.format(thing_to change_in_{}_of_variable)
+		Not super strong with this
 
 7 More Printing
-
+print(can + concatinate + strings + of + variables + together + to 
+      + print)
+print('thing print', end=' ') can change the behavior of print from \n
+    at the end of the line to a ' ' or whatever you please, there is 
+	also (?) a sep= command I think? Maybe?
+	
 
 8 Printing, Printing
+This ex hits .format() pretty well
+formatter = '{} {} {} {}'
+print(formatter.format(1, 2, 3, 4)
 
+###### STOPPED HERE
 
 9 Printing, Printing, Printing
 
@@ -126,6 +147,12 @@ Debug trick read lines of code backwards (bottom up)
 
 
 41 Learning to Speak Object-Oriented
+NEED TO GO THROUGH AND PRACTICE oop_test.py
+
+42 Is-A, Has-A, Objects, and Classes
+NEED TO GO THROUGH AN PRACTICE ex42.py exercise
+
+43 Basic Object-Oriented Analysis and Designing
 
 
 

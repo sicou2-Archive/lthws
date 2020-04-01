@@ -26,7 +26,9 @@ from sys import exit
 # NOTE(BCL): Consider looking up classes and using them for rooms, 
 # characters, maybe items
 
-######STOPPED LINE 367
+#NOTE(BCL): NEED TO COMMENT ALL OF THE DIFFERENT PARTS OF THE CODE FOR
+#FUTURE BCL. HE IS AN ANGRY AND FORGETFUL FOE
+#######STOPPEDLINE 335
 
 def main(): 
     
@@ -35,14 +37,16 @@ def main():
     try:
         cast['hero']
     except KeyError:
-        hero = character(10, 1, 1, 1,'hero')
+        hero = character(10, 1, 1, 1,'hero', 10, 0)
         cast['hero'] = hero
     try:   #Note(BCL): LOCKOUT MAYBE NEEDS TO BE INSIDE CAST, 
     # FEWER OBJECTS TO PASS AROUND
         lockout
     except NameError:
-        lockout = {'chest_room': 1, 'slime_room': 1, 'orc_room' : 1}
-
+        lockout = {'chest_room': 1, 'slime_room': 1, 'orc_room' : 1,
+                   'alter': 1,
+                   }
+    print(cast['hero'])
     room_antichamber(cast, lockout)    
         
 def room_antichamber(cast, lockout):
@@ -51,7 +55,7 @@ def room_antichamber(cast, lockout):
     try:
         cast['goblin']
     except KeyError:
-        goblin = character(5, 1, 1, 1,'goblin')
+        goblin = character(5, 1, 1, 1,'goblin', 5, 0)
         cast['goblin'] = goblin
         
 
@@ -71,10 +75,10 @@ def room_antichamber(cast, lockout):
             elif action == '2':
                 print('You run from the room and go looking for help '
                 'to continue the fight.')
-                return end_game()
+                return end_game(cast)
             elif i > 3:
                 print('Goblin attacks while you stare at him.')
-                return end_game()
+                return end_game(cast)
             else:
                 print('He looks mean, do something! Quick!')
                 i += 1    
@@ -103,18 +107,21 @@ def room_antichamber(cast, lockout):
                 print('There is no reason to go back in there. Choose '
                 'a different room.')
                 continue
-            return room_orc(cast) #RIGHT ROOM ORC ROOM
+            return room_orc(cast, lockout) #RIGHT ROOM ORC ROOM
         elif room_choice == '4':
-            if cast['hero'][0] >= 10: #MAX HP HERE ONCE INSTALLED
-                print('You feel as rested as you can be. Time to move '
-                'on.')
-                continue
-            else:
-                print('You take a moment to catch your breath. You feel'
-                ' as strong as you are going to get for now.')
-                cast['hero'][0] += 5 #This needs max hp once installed
-            rest(cast, lockout)
-            continue
+            print(cast['hero'
+            ])
+            rest(cast['hero'])
+            # if cast['hero'][0] >= 10: #MAX HP HERE ONCE INSTALLED
+                # print('You feel as rested as you can be. Time to move '
+                # 'on.')
+                # continue
+            # else:
+                # print('You take a moment to catch your breath. You feel'
+                # ' as strong as you are going to get for now.')
+                # cast['hero'][0] += 5 #This needs max hp once installed
+            # rest(cast, lockout)
+            # continue
         else: 
             print('Moving on is the only hope for you now. Choose a '
             'room.') 
@@ -193,7 +200,7 @@ def room_slime(cast, lockout):
             #antichamber.')
             #NEED TO UPDATE THE COMBAT TEXT HERE
             print('Fight slime')
-            cast['slime'] = character(3, 1, 1, 1, 'slime')
+            cast['slime'] = character(3, 1, 1, 1, 'slime', 3, 0)
             fight(cast['hero'], cast['slime'])
             print('Dead foe, sword get.')
             cast['hero'][2] += 1
@@ -242,7 +249,7 @@ def room_orc(cast, lockout):
     try:
         cast['orc']
     except KeyError:
-        orc = character(5, 1, 1, 1,'orc')
+        orc = character(5, 1, 1, 1,'orc', 5, 0)
         cast['orc'] = orc
     
     if cast['orc'][3] == 1:
@@ -259,7 +266,7 @@ def room_orc(cast, lockout):
                 print('You move in to attack the orc as he stands to '
                 'fight!')
                 fight(cast['hero'], cast['orc'])
-                return room_orc(cast) #need to resolve the fight and offer hallway
+                return room_orc(cast, lockout) #need to resolve the fight and offer hallway
                 # or alter OR REST A MOMENT
             elif action == '2': 
                 print('You sneak towards the hallway.')
@@ -275,12 +282,12 @@ def room_orc(cast, lockout):
                 else:
                     print('You silently enter the hallway and make your way'
                     ' into the damp and dark.')
-                    return room_hallway()
+                    return room_hallway(cast, lockout)
                 return 0
             elif action == '3': 
                 print('You back in to the Antichamber and slowly let the '
                 'latch down.')
-                return room_antichamber(cast) 
+                return room_antichamber(cast, lockout) 
             elif i == 3:
                 print('The Orc glances at the door. As you make eye contact'
                 ' he raises his sword to attack!')
@@ -296,32 +303,68 @@ def room_orc(cast, lockout):
     while True: ######STOPPED HERE BUILDING OUT AFTER ORC FIGHT
     
         action = input('> ')
-    
-        if action == '1': return 0 #alter
-        elif action == '2': return 0 #hallway
+        if lockout['alter'] == 0:
+            print('You have already received the gift of Dak, better '
+            'move on.')
+            break
+        
+        if action == '1': 
+            print('You approach the alter. Amazing! It is an alter of '
+                'strength. 1 Pray a prayer of strength and offer a '
+                'ceremonial Red Mushroom 2 Leave the alter in peace.')
+            
+            while True:
+            
+                choice = input('> ')
+            
+                if choice == '1': 
+                    event = randint(1,4)
+                    if event == 1:
+                        print('You feel a wave of dread as you look '
+                        'down and realize your ghastly mistake. It is '
+                        'an Alter of Deceit! You feel your blood run '
+                        'cold as the darkness overtakes you.')
+                        end_game(cast)
+                    else:
+                        print('You suddenly feel stronger than you have'
+                        ' ever been before! Like you could take on the '
+                        'whole empire!')
+                        cast['hero'][5] += 5
+                        cast['hero'][0] = cast['hero'][5]
+                        lockout['alter'] = 0 #after praying need to lockout
+                        ########NEED TO FIGURE OUT HOW TO GET OUT OF THIS LOOP
+                elif choice == '2': 
+                    print('You slowly back away from the beautiful '
+                    'artifact.')
+                    break
+                else:
+                    'You cannot be too excited to make a choice, '
+                    'choose!'
+                    continue
+        elif action == '2': 
+            room_hallway(cast, lockout)
         elif action == '3': 
-            print('You rest a moment')
-            return rest(cast,lockout)
+            rest(cast['hero']) 
         elif action == '4': 
             if (lockout['chest_room'] == 0 
                 and lockout['slime_room'] == 0):
                 print('There is no reason to go back there. Time '
                 'to look forward!')
-                continue
+                
             else:
                 print('You decide to go back to the Antichamber')
                 return room_antichamber(cast, lockout)
         else:
             print('No time like the present. Better get a move on '
             'and make a choice.')
-    return 0 
+#    return 0 
     
 def room_hallway(cast): 
     
     try:
         cast['bugbear']
     except KeyError:
-        bugbear = character(5, 1, 1, 1,'bugbear')
+        bugbear = character(5, 1, 1, 1,'bugbear', 5, 0)
         cast['bugbear'] = bugbear
         
     print("As you walk down the hallway, suddenly out of the darkness "
@@ -348,7 +391,7 @@ def room_crypt(cast):
     try:
         cast['skeleton']
     except KeyError:
-        skeleton = character(5, 1, 1, 1,'skeleton')
+        skeleton = character(5, 1, 1, 1,'skeleton', 5, 0)
         cast['skeleton'] = skeleton
         
     print("Walk in to an empty chamber with a well kept crypt and set "
@@ -419,10 +462,10 @@ def room_crypt(cast):
 
 def room_exit(): return 0 
 
-def character(health, defence, attack, alive, name): #Add max health and rested flag 
+def character(health, defence, attack, alive, name, max_hp, rested): #Add rested flag 
 #here? # IS THIS THE BEST FUNCTION TO DO THIS? WHY NOT JUST PASS INFO 
 #TO THE CAST DICT?
-    stats = [health, defence, attack, alive, name]
+    stats = [health, defence, attack, alive, name, max_hp, rested]
     #maybe max hp and current hp for resting? 
     # hitpoints = 0
     # hitpoints = randrange(0,10)
@@ -437,6 +480,7 @@ def character(health, defence, attack, alive, name): #Add max health and rested 
 def fight(hero_stats, enemy_stats): 
    # EXPAND COMBAT FOR MORE INFO AND !FUN!
     i = 0   
+    hero_stats[6] = 0
     while True:
         print('You engage in combat! 1 Fight or 2 Run')
         action = input('> ')
@@ -468,9 +512,25 @@ def fight(hero_stats, enemy_stats):
             i +=1
     return 0 
 
-def rest(hero, lockout): 
-    print("BRO RESTS HERE")
-    return 0 #what happens when you return nothing?  
+def rest(hero): 
+    print(hero)
+    if hero[6] == 1:
+        print("You already feel as good as you are going to feel. "
+        "Better get a move on!")
+        return 0 
+        
+    else:
+        print("You take a moment to catch your breath. You feel like "
+        "you can soldier on!")
+        print(hero)
+        hero[6] = 1
+        hero[0] = hero[5]
+        print(hero)
+        return hero 
+    
+    
+ #   hero[4] = 1
+    return 0  
 
 def end_game(cast): 
     print('Game over man. Game over! Play again? "y/n"')
