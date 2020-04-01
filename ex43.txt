@@ -47,4 +47,22 @@ Skipping for now.
 
 Research different things about the nouns and verbs above. 
 Ex. About ships, or how bombs work, or storing game state in datebase.
-Possibly at this point redo two steps above
+Possibly at this point, after research redo two steps above
+
+3 Create a class hierarchy and object map for the concepts
+"What is similar to other things?"
+"What is basically just another word for another thing?"
+
+*Map
+	-next_scene
+	-opening_scene
+*Engine
+	-play 
+*Scene
+	-enter
+	*Death
+	*Central Corridor
+	*Laser Weapon Armory
+	*The Bridge
+	*Escape Pod
+	

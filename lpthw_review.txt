@@ -41,35 +41,71 @@ print(can + concatinate + strings + of + variables + together + to
 print('thing print', end=' ') can change the behavior of print from \n
     at the end of the line to a ' ' or whatever you please, there is 
 	also (?) a sep= command I think? Maybe?
-	
 
 8 Printing, Printing
 This ex hits .format() pretty well
 formatter = '{} {} {} {}'
 print(formatter.format(1, 2, 3, 4)
 
-###### STOPPED HERE
 
 9 Printing, Printing, Printing
-
+\n as escape characters
+print('string', and_variable)
+'''
+Tripple quotes
+'''
 
 10 What Was That?
-
+\ to esacpe in string
+" \" "
+' \' '
+List of most (all?) of Python escape characters. 
 
 11 Asking Questions
-
+Software: takes input, changes it, shows what changed
+print('thing',end='\n') <- New line by default
 
 12 Prompting People
-
+input('<> Phrase or symbol string you want to precede the cursor')
+variable = input('> ')
+Getting help out of Python Help in Windows has been hard.
+One example that works is "python -m pydoc input" where input is the 
+    term we are looking to learn about.
+Cannot assign to a variable within print()
 
 13 Parameters, Unpacking, Variables
-
+sys.argv allows the passing of variables from the command line
+argv = Argument Variable
+from sys import argv -> needs only argv for call to work
+    or
+import sys -> needs sys.argv for call to work
+'python program.py variable_1.txt variable_2'
+within program.py -> 'script_name, text_doc, username = argv'
+the three variables are now three variables you can work with that came
+    from outside the program. 
+You import 'modules' (other files), they are called modules, though in 
+    reality, they are just other files. In other languages, they are
+	also called libraries. They contain variables, code, and functions, 
+	that you can use without having to write it yourself. So we can be 
+	lazy. You an also think about them as black boxes. You do not really
+	need to know what is going on inside as long as they work. 
+Be careful of ValueErrors, too many or not enough arguments
+For optional arguments look for *args or **kwargs
+Command Line Arguments are strings, though they can be changed; int()
 
 14 Prompting and Passing
+The input('prompt') can be assigned variable prompt of some kind and 
+    change it as needed.
 
 
 15 Reading Files
+open(text_file_name.txt, or_variable_with_file_name
+   this opens the file and returns a 'file object', there are optional
+   modes for opening these files, read, write, etc. 
+txt.read() 
 
+######################stopped on read, not sure how to do these things 
+###from with in the python command line
 
 16 Reading and Writing Files
 
