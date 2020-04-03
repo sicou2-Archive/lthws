@@ -1,6 +1,7 @@
 Keywords
 
 Keyword - Description - Example
+
 and - Logical and - True and False == False
 *** as - Part of the with-as statement. - with X as Y: pass              *** I wonder where "with" is on this list
 *** assert - Assert (ensure) that something is true - assert False, "Error!"
@@ -32,9 +33,11 @@ return - Exit the function with a return value. - def X(): return Y
 while - While loop. - while X: pass
 *** yield - Pause here and return to caller - def X(): yield Y, X().next()
 
+
 Data Types
 
 Type - Description - Example
+
 True - True Boolean value. - True or False == True
 False - False Boolean value. - Falst and True == False
 None - Represents "nothing" or "no value."- x = None
@@ -45,9 +48,11 @@ floats - Stores decimals. - i = 10.389
 lists - Stores a list of things. - j = [1, 2, 3, 4]
 dicts - Stores a key = value mapping of things. - e = {'x': 1, 'y': 2}
 
+
 String Escape Sequences
 
 Escape - Description
+
 \\ - Backslash
 \' - Single-quote
 \" - Double-quote
@@ -59,8 +64,11 @@ Escape - Description
 \t - Tab
 \v - Vertical Tab
 
+
 Old Style String Formats
+
 Escape - Description - Example
+
 %d - Decimal integers (not floating point). - "%d" %45 == "45"
 %i - Same as %d. - "%i" % 45 == '45'
 %o - Octal number - "%o" % 1000 == '1750'
@@ -78,7 +86,9 @@ Escape - Description - Example
 %s - String format - "%s there" % 'hi' == 'hi there'
 %% - A percent sign - '%g%%' % 10.34 == '10.34%'
 
+
 Operator - Description - Example
+
 + - Addition - 2 + 4 == 6
 - - Subtraction - 2 - 4 == -2
 * - Multiplication - 2 * 4 == 8

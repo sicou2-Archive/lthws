@@ -66,3 +66,15 @@ Possibly at this point, after research redo two steps above
 	*The Bridge
 	*Escape Pod
 	
+	
+Top Down vs Bottom Up
+
+"Bottom Up" Steps
+1 Take a small piece of the problem; hack on some code and get it to 
+	barely run.
+2 Refine the code into something more formal with classes and automated 
+	tests.
+3 Extract the key concepts you are using and research them. 
+4 Write a description of what is really going on. 
+5 Go back and refine the code, possibly throwing it out and starting over. 
+6 Repeat, moving on to some other piece of the problem. 

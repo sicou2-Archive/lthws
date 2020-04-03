@@ -99,34 +99,131 @@ The input('prompt') can be assigned variable prompt of some kind and
 
 
 15 Reading Files
-open(text_file_name.txt, or_variable_with_file_name
+open(text_file_name.txt, or_variable_with_file_name)
    this opens the file and returns a 'file object', there are optional
-   modes for opening these files, read, write, etc. 
-txt.read() 
-
-######################stopped on read, not sure how to do these things 
-###from with in the python command line
-
+   modes for opening these files, read, write, etc.;
+txt.read() which reads some quantity of data and returns it as a string 
+	(in text mode) or bytes object (in binary mode); byte mode is 
+	selected with the open function. EOF returns an empty string ('')
+Not sure what I was doing wrong, but I got the open and read to work in 
+the Python Shell
+txt.close(); do not forget to close files after done with them to
+	prevent strange things from happening. 
+open(file_variable) does not return the contents of the file, instead, 
+    it returns a "file object"
+	
 16 Reading and Writing Files
-
-
+Some methods and functions:
+	open(text_file,[other parameters that can be used, look them up
+		 if needed]) this opens and returns a file object of the called 
+		file, 
+	.close() this closes the opened file
+	.read() this reads the whole contents of the file, can be assigned
+		to a variable
+	.readline() this reads a line, it also seems to keep an internal 
+		buffer of where it is in the file, it separates lines by the
+		*gasp* \n 
+	.truncate() this empties the file. *THIS EMPTIES THE FILE*
+	.write('things to be written') this writes strings to the current
+		file object position, it will return the number of characters 
+		written, I am sure that is useful somehow. 
+	.seek(0,[0,1,2])  first position is the offset from the whence
+		(second argument). Whence == 0 = beginning , == 1 = current
+		position, == 2 = EOF, can be omitted and defaults to 0.
+		.tell() this might be useful when dealing with seek. It seems to
+			return an integer giving the file objects current position
+			in the file represented by the number of bytes from the 
+			beginning of the file in binary mode, or some other number
+			when in text mode (the documentation is not super clear)
+			
 17 More Files
-
+from os.path import exists
+	os.path.exists() (or in this case just exists() since we used
+		from to import; 
+	This seems to be used to see if the file it checking for exists
+		(no kidding huh?), you might be able to use this to prevent
+		over-writing other files or the like. 
+I am a little murky about this ex and the .close(). Not super sure 
+	why and when to use it. 
 
 18 Names, Variables, Code, Functions
+Functions do 3 things
+	1 Name pieces of code in the way variables name strings and numbers 
+	2 They take arguments the way scripts take 'argv'
+	3 With 1 and 2 you can make 'mini-scripts' or 'tiny commands'
+def creates a function in Python
+def name_o_function(args): <- DO NOT FORGET THE COLON : : : : : :
+	can do args a few different ways
+	(*args)
+		arg1, arg2 = args <- This was seems like it lets you get away 
+			with not having to always have the same number of args if 
+			that changes from time to time. 
+	(arg1, arg2)
+		this requires two args, can have as many or as few as needed 
+		(zero is included)
+The arguments defined in a function, DO NOT need to match name wise what
+is actually passed to the def, however they must remain internally 
+consistant with in the function
+Function Checklist
+1 Did you start your function definition with def?
+2 Does your function name have only characters and _?
+3 Did you put an open paren right after the function name?
+4 Did you put your args after the paren separated by ,?
+5 Did you make each arg unique? 
+6 Did you put a close paren after the args?
+7 Did you indent all lined of code in the function with FOUR spaces?
+8 Did you close the function by dedenting the next line?
 
-
+Running a Function Checklist
+1 Did you call this function by typing its name?
+2 Did you put an open paren?
+3 Did you add all of the args it would call?
+4 Did you close the paren?
+	
 19 Functions and Variables
-
+Global variables are not immediately available in a function, nor are 
+	local variables available outside of a function unless returned from
+	it. 
+You can put numbers, Boolian, variables, strings, and you can use equations that, 
+	calculate down to a single function as argument calls when calling
+	a function. 
+Remember that input() return the *string* of whatever the imput is. In 
+	order to use it as a number you must int('string') 
+Typically try to limit the number of arguments that a function calls to 
+	less than 5
 
 20 Functions and Files
-
+There is not a whole lot that is new in this ex. Look through it and it
+is pretty straight forward. 
+It does use .readline() and .seek() incase a worked example is needed. 
+Introduces += to increment
+readline() is code that scans each byte of the file intil if finds a 
+	'\n' character, then stops reading the file to return what it found 
+	so far. The file object is responsible for maintaining the current 
+	position in the file after each readline() call, so that it will 
+	keep reading each line. 
+	readline() also returns the '\n' it finds on the end of each line. 
+	readline() has a (,end='') optional parameter
 
 21 Functions Can Return Something
+return can set variables to be a value from a function
+variables can be assigned to functions
+	i.e. def thing_to_do(arg1, arg2):
+		     return 0	
+	variable = thing_to_do(blue, red)
+You can return anything that you can put to the right of an = 
+You *can* chain functions within other functions as in the example 
+def add(a, b):
+	return 0 
+what = add(subtract(1,2), divide(3,8))
+Even though it might look like programs are run "backwards", e.g. x = 3
+	where 3 is assigned to 'x'. It is better to think of it as inside 
+	out, or even better as 'order of operations'
+Note: int('342') but not int('343.35'), you need to float('343.35')
 
 
 22 What Do you Know So Far?
-
+######STOPPED AT BEGINNING OF THIS SECTION############
 
 23 Strings, Bytes, and Character Encodings
 
