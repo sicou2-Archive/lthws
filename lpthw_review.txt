@@ -221,19 +221,91 @@ Even though it might look like programs are run "backwards", e.g. x = 3
 	out, or even better as 'order of operations'
 Note: int('342') but not int('343.35'), you need to float('343.35')
 
-
 22 What Do you Know So Far?
-######STOPPED AT BEGINNING OF THIS SECTION############
+Copy all Python code and symbols from previous ex. 
 
 23 Strings, Bytes, and Character Encodings
-
+When reading new code you have never seen before, write down everything
+	you have never seen before and save it to look up later. Then go 
+	back and re-read the code with new info. 
+.strip() kills the white space to the left and right of a string. 
+variable.encode(encoding, errors=errors) in this example encoding and 
+errors come from the argv and is 'utf-8' and 'strict' 
+variable.decode(encoding, errors= errors) is the same thing. 
+open("file.txt", encoding="utf-8")
+I had a lot of problems getting the command line getting this to print
+	any of the UTF-8 encoding. I basically understood everything that 
+	was	happening, though I was making no progress on getting things to 
+	display	correctly and to be able to really break down some of the 
+	Study Drills; Especially some of the byte conversions that seemed
+	to come from the standard via Wikipedia
+The code here took me a moment to parse out following some of the 
+	arguments thorough to their conclusion. 
+It is kind of crummy that the advice he gives here is fix it yourself,
+	when the solution is so varied, from typesets to what terminal you
+	are using. 
+There are many kinds of encoding standards. 
+Switches, Conventions, and Encodings
+American Standard Code for Information Interchange ASCII became the 
+	standard for a long time until we realized there are non-English
+	speakers hidden around the world that like computers also. 
+ASCII maps a number to a letter '90' = 'Z' (capital) = 1011010 which is 
+	mapped via a lookup table of sorts. 
+In Python Shell
+>>> 0b1011010 <- 0b seems to tell Python that this is binary 
+90
+>>> ord('Z') <- Given a string of length one, return an integer 
+					representing the Unicode code point of the character
+					when the argument is a unicode object, or the value 
+					of the byte when the argument is an 8-bit string.
+90
+>>> chr(90) <- returns the string representing a character whose Unicode
+				    is an integer
+'Z'
+>>>
+ASCII coded characters using one byte at a time. One byte can only hold 
+	256 numbers. 
+This is where Unicode comes in. 32 bits in encode a Unicode character. 
+	4 bytes; This is great since it is not limited in the slightest, 
+	however there is a lot of wasted space, even with using 2 bytes. 
+	Thus, the solution was to use the most common characters using 8 
+	bits, and escape in to the larger numbers when needed to encode 
+	other characters. Python convention is UTF-8; Unicode Transformation
+	Format 8 Bits. 
+If you have raw bytes, you need to .decode() to get the string, and if 
+	you have a string you need to .encode(). The mnemonic for this is 
+	DBES "deebess", Decode Bytes, Encode Strings. 
+Text goes thorugh how the code works, it is pretty simple once you 
+	actually follow it through. 
+In the command line when running this code, he trys to use 'big5' 
+	encoding. Python does not like this
+    $ python ex23.py big5 strict
+	When Python hits the internal encoding that does not work for it, it
+	gets really mad due to the 'strict' error call. However you can use 
+	'replace' for the error, and Python will replace it with a '?'. 
+	You lose the data, however, the program runs to completion. 
 
 24 More Practice
-
+This is another test exercise, nothing new is presented
 
 25 Even More Practice
-
-
+Here we solidified calling user defined functions. Created a file 
+	library and imported it in to the Python Console and played with the
+	lib in there. 
+def thing()
+	'''Triple quotes in a def will cause Python to see it as 
+	documentation for that function. Accessible through 
+	'python help thing()' in this case. The triple quotes seem to be 
+	called 'documentation comments'. 
+.split(' ') <- splits a string up in to a list, in this cast the split
+	delineator it the ' ', but anything can be used here. 
+sorted(variable) <- temp sorts the words alphabetically
+.pop(0); .pop(-1); <- pops off the first (then last) item in a list and 
+	if there is a variable assignment, assigns that popped word to that 
+	variable. The popped word is also removed from the list. I am not 
+	super sure the the '-1' is required since I think .pop pops the last
+	item off by default
+#######STOPPED AFTER POP
 26 Congratulations, Take a Test!
 
 
