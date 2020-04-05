@@ -305,23 +305,132 @@ sorted(variable) <- temp sorts the words alphabetically
 	variable. The popped word is also removed from the list. I am not 
 	super sure the the '-1' is required since I think .pop pops the last
 	item off by default
-#######STOPPED AFTER POP
-26 Congratulations, Take a Test!
+He gives an example of calling a user defined function on a sentence
+	given in the Python Console, that takes that sentence and calls 
+	another user defined function using that sentence as the argument
+	which returns the sentence, now .split(' '), and then takes that 
+	returned value and runs the user function to run a third user 
+	function to sort that list of words. 
+		This is pretty important because it shows the ability of 
+			functions to be passed around if they are well organized, 
+			and how they can build on each other. I think I really, 
+			need to pay attention to this when it comes to classes. 
+Since we ran the Python console within the folder that the file needed	
+	to be imported lived we can just import ex25 without needing to 
+	call the full file address. 
+Triple quotes (documentation comments) can be super valuable for def in 
+	different libraries, be cool and document well. 
+Instead of import ex25 give from ex25 import * (wildcard) to prevent 
+	having to type the ex25 in ex25.function_in_ex25() all of the time.
+	I do know that this is not technically considered best practice 
+	since it is not technically explicit. 
 
+26 Congratulations, Take a Test!
+Nothing to add here, it is just a test. 
 
 27 Memorizing Logic
+Everything boils down to True or False
+Terms
+	and
+	or
+	not
+	!= (not equal)
+	== (equal)
+	>= (greater-than-or-equal)
+	<= (less-than-or-equal)
+	True
+	False
+Truth Tables
+NOT	True?
+not False	True
+not True	False
 
+OR True?
+True or True	True
+True or False	True
+False or True	True
+False or False	False
+
+AND True?
+True or True	True
+True or False	False
+False or True	False
+False or False	False
+
+NOT OR True?
+not (True or True)	False
+not (True or False)	False
+not (False or True)	Flase
+not (False or False)	True
+
+NOT AND True?
+not (True or True)	False
+not (True or False)	True
+not (False or True)	True
+not (False or False)	True
+
+!= True?
+1 != 0 True
+1 != 1 False
+0 != 1 True
+0 != 0 False
+
+== True?
+1 == 0 False
+1 == 1 True
+0 == 1 False
+0 == 0 True
 
 28 Boolean Practice
-
+Equalities always evaluate to True or False
+Process to solve Boolean logic
+1 Find an equality test ( == or !=) and replace it with its truth.
+2 Find each and/or inside parentheses and solve those first.
+3 Find each not and invert it.
+4 Find and remaining and/or and solve it.
+5 When you are done you should have True/False
+Python sees True == 1 and False == 0
+Side note: != and <> both mean not. Though <> is deprecated and no 
+	longer used.
 
 29 What If
-
+Control Flow if-statements
+if a < b:
+	do_the_thing()
+With the if-statement if the equality after the if evaluates to True, it
+will run the indented block below, otherwise it will skip the block. 
++= 1 is the "increment by" operator. There are many like this that are 
+	all awesome -= 1 and *= 2 etc.
 
 30 Else and If
-
-
+The colon : at the end of control-flow statements (if, elif, else, etc)
+	is your way of telling Python that a block indention is coming and
+	to treat it that way. Do not forget the :. 
+If you do not indent properly you end up with errors and Logical Errors
+elif is a way to follow an initial if statement with additional 
+	conditionals, you can have as many as you want. 
+else: is a catch all that will run if everything above it is False
+	This can be useful, but also dangerous, since it will run when you 
+	have a Logical Error in the above statements and can be hard to 
+	catch.
+For all of these control statements, only one of them will ever run 
+	until a new block of if statements are run. 
+	
 31 Making Decisions
+In this ex we play with asking the user for input decisions via choosing
+	a number. Then we use that string as a guide for the control flow
+	statements that come after. Also nesting of control flow.
+	ifs within ifs. 
+Be careful not to nest too deeply. If you have to go more than 2 or 3
+	deep you probably can do it another way that is better, for example
+	calling a different function. 
+
+#####STOPPED AT COMMON STUDENT QUESTIONS
+
+
+
+
+
 
 
 32 Loops and Lists

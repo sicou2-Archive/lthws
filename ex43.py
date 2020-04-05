@@ -13,8 +13,14 @@ class Room(object):
     
     def exit(self) 
         pass
-    
+#list of [choices, the, player, can, make] since several of them are 
+#common in each room, i.e. rest
 
+    
+class Room_Entrance(Room):
+
+    def enter(self)
+        pass
 
 class Room_Antichamber(Room):
 
@@ -56,3 +62,46 @@ class Room_End_Game(Room):
     def enter(self)
         pass
         
+        
+#______________________________________________
+
+class Actions(object):
+
+    def fight():
+        pass
+        
+    def rest():
+        pass
+        
+    def move():
+        pass
+        
+#______________________________________________
+
+class Character(object): #maybe combine with items; things(?)
+
+    def __init__(self, stats):
+        pass
+    
+    def create_character
+        pass
+        
+class Items(object): 
+
+    def create_item
+        pass
+        
+# ____________________________________________
+
+
+class Map(object):
+
+    def __init__(self, start_scene):
+        pass
+        
+    def next_scene(self, scene_name):
+        pass
+        
+    def opening_scene(self):
+        pass
+    
