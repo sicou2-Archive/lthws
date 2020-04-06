@@ -424,26 +424,59 @@ In this ex we play with asking the user for input decisions via choosing
 Be careful not to nest too deeply. If you have to go more than 2 or 3
 	deep you probably can do it another way that is better, for example
 	calling a different function. 
-
-#####STOPPED AT COMMON STUDENT QUESTIONS
-
-
-
-
-
-
+To evaluate if a number is between two numbers there are a few ways:
+	0 < x < 10
+	1 <= x < 10
+	x in range(1,10)
 
 32 Loops and Lists
-
+A for-loop needs a way to store the results of a loop somewhere, and 
+	usually this is with a list. 
+list = [1, 2, 3, 4,] or ['dog', 'cat', 1, True'] 
+	lists require square brackets
+for a_temp_variable in an_iterable_list:
+	do_things()
+range([int], int, [int]) 
+	([starting index], index to stop before, [int to interate by])
+Range is an immutable sequence type
+variable.append(i) takes i and pushed it on to the end of the variable 
+	list
 
 33 While Loops
-
+A while-loop will keep looping until the Boolean Expression it is 
+	evaluating becomes false.
+This can be dangerous or fun. Depends how you look at things. 
+While loops basically repeat the if-statement for the following block of 
+	code
+Some while-loop rules
+1 Make sure that you use while-loops sparingly. Usually a for-loop is 
+	better
+2 Review your while statments and make sure that the Boolean test will 
+	become False at some point
+3 When in doubt, print out your test variable at the top and bottom of 
+	the while-loop to see what it is doing.
+NOTE: A for-loop can only loop over collections of things. A while-loop
+	loops as long as the conditional is True
 
 34 Accessing Elements of Lists
-
+To access an element of a list call list[0] the list square bracketed
+	by the index of the element you want. 
+Emphasis: lists start indexing at 0
+Ordinal number = order of objects; like finishers in a race
+Cardinal = location of object; like cards in a deck
 
 35 Branches and Functions
-
+sys.exit([int]) is used in this ex 
+Since you can pass diferent things to .exit() which exit with a non-zero
+	return raises an exception, you can ultimately use the exceptions 
+	to try: except: differnt situations you run in to. It seems that it
+	uses signed ints here. Though I am not 100% positive with that
+He also uses a couple of flag variables in this example. 
+I do know that I do need to do a better job of the def fun(args):
+	and that the things being passed to them not needing to match and 
+	have them translate in my head to what they actually are. i.e. True 
+	or a 'string'. 
+	
 
 36 Designing and Debugging
 
@@ -467,6 +500,56 @@ NEED TO GO THROUGH AND PRACTICE oop_test.py
 NEED TO GO THROUGH AN PRACTICE ex42.py exercise
 
 43 Basic Object-Oriented Analysis and Designing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
