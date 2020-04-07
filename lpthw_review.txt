@@ -476,15 +476,213 @@ I do know that I do need to do a better job of the def fun(args):
 	and that the things being passed to them not needing to match and 
 	have them translate in my head to what they actually are. i.e. True 
 	or a 'string'. 
-	
 
 36 Designing and Debugging
+Rules for if-statements
+1 Every if-statement must have an else.
+2 If this else should never run because it does not make sense, then you
+    must use a die function in the else that prints out an error message
+	and dies, just like we did in the last exercise. This will find many
+	errors.
+3 Never nest if-statements more than two deep and always try to do them 
+	one deep.
+4 Treat if-statements like paragraphs, where each if-elif-else grouping 
+	is like a set of sentences. Put blank lines before and after.
+5 Your Boolean tests should be simple. If they are complex, move their
+	calculations to variables earlier in your function and use a good 
+	name for the variable. 
+	
+Rules for loops 
+1 Use while-loops only to loop forever, this means rarely. 
+	(PYTHON ONLY: other languages may be different.)
+2 for-loops for most other looping, especially of it has a fixed or 
+	limited number of things to loop over
 
+Tips for Debugging
+1 Do not use a debugger. No specific useful info, lots of extra stuff 
+	that does not matter
+2 Best way to debug and is to use print() to print out values of 
+	variables at different points 
+3 Code a little, run a little, fix a little
+
+Best way to work on software is in small chunks
+1 On paper write a list of tasks needed to finish the project, this is a
+	to do list
+2 Pick the easiest thing you can do from the list
+3 Write out in English as a guide on how to finish this tasks
+4 Write some code out below the English
+5 Run script to see if it works
+6 Keep working in this cycle of writing, testing, fixing
+7 Cross task off list and pick next easiest task
+8 As you work remove tasks that are no good and add new needed ones
 
 37 Symbol Review
+Keywords
 
+Keyword - Description - Example
+
+and - Logical and - True and False == False
+*** as - Part of the with-as statement. - with X as Y: pass            
+	*** I wonder where "with" is on this list
+*** assert - Assert (ensure) that something is true - assert False, 
+	"Error!"
+break - Stop this loop right now. - while True: break
+*** class - Define a class. - class Person(object)
+continue - Do not procass more of the loop, do it again. - while True: 
+	continue
+def - Define a function. - def X(): pass
+del - Delete fron dictionary. - del X[Y]
+elif - Else if condition. - if: X; elif: Y; else: J
+else - Else condition. - if: X; elif: Y; else: J
+*** except - If an exception happens, do this. - except ValueError as e:
+	print(e)   ###This is kind of cool, can use in conjunction with try
+*** exec - Run a string as Python. - exec 'print("howdy")'
+*** finally - Exceptions or not, finally do this no matter what. - 
+	finally: pass
+for - Loop over a collection of things. - for X in Y: pass
+from - Import specific parts of a module. - from x import Y
+*** global - Declare that you want a global variable global X
+if - If condition. - if:X; elif:Y; else:J
+import - Import a module into this one to use. - import os
+*** in - Part of for-loops. Also a test of X in Y. - for X in Y: pass 
+	also 1 in [1] == True
+*** is - Like == to test equality. - 1 is 1 == True             
+*** lambda - Creata a short anonymous function - s = lambda y:y ** y; 
+	s(3)
+not - Logical not. - not True == False
+or - Logical or. - True or False == True
+*** pass - This block is empty. - def empty(): pass
+print - Print this string. - print('this string')
+*** raise - Raise an exception when things go wrong. - raise 
+	ValueError("No")
+return - Exit the function with a return value. - def X(): return Y
+*** try - Try this block, and if exception, go to except. - try: pass
+	###This is also kind of cool, good for looking to see if something 
+		already exists. 
+while - While loop. - while X: pass
+*** yield - Pause here and return to caller - def X(): yield Y, 
+	X().next()
+
+Data Types
+
+Type - Description - Example
+
+True - True Boolean value. - True or False == True
+False - False Boolean value. - Falst and True == False
+None - Represents "nothing" or "no value."- x = None
+bytes - Stores bytes, maybe of textm PNG, file, etc. - x = b"hello"
+strings - Stores textual information - x = "hello"
+numbers - Stores integers. - i = 100
+floats - Stores decimals. - i = 10.389
+lists - Stores a list of things. - j = [1, 2, 3, 4]
+dicts - Stores a key = value mapping of things. - e = {'x': 1, 'y': 2}
+
+String Escape Sequences
+
+Escape - Description
+
+\\ - Backslash
+\' - Single-quote
+\" - Double-quote
+\a - Bell
+\b - Backspace
+\f - Formfeed
+\n - Newline
+\r - Carriage
+\t - Tab
+\v - Vertical Tab
+
+Old Style String Formats
+
+Escape - Description - Example
+
+%d - Decimal integers (not floating point). - "%d" %45 == "45"
+%i - Same as %d. - "%i" % 45 == '45'
+%o - Octal number - "%o" % 1000 == '1750'
+%u - Unsigned decimal - "%u" % -1000 == '-1000'
+%x - Hexadecimal lowercase - "%x" % 1000 == '3e8'
+%X - Hexadecimal uppercase - '%X' % 1000 == '3E8'
+%e - Exponential notation, lowercase 'e' - "%e" %1000 == '1.000000e+03'
+%E - Exponential notation, uppercase 'E' - '%E' %1000 == '1.000000e+03'
+%f - Floating point real number - '%f' % 10.34 == '10.340000'
+%F - Same as %f - "%F" % 10.34 == '10.340000'
+%g - Either %f or %e, whichever is shorter - '%g' % 10.34 == '10.34'
+%G - Same as %g but uppercase - "%G" % 10.34 == '10.34'
+%c - Character format - '$c' $ 34 == '"'
+%r - Repf format (debugging format) - '%r' % int == "<type 'int'>"
+%s - String format - "%s there" % 'hi' == 'hi there'
+%% - A percent sign - '%g%%' % 10.34 == '10.34%'
+
+Operator - Description - Example
+
++ - Addition - 2 + 4 == 6
+- - Subtraction - 2 - 4 == -2
+* - Multiplication - 2 * 4 == 8
+** - Power of - 2 ** 4 == 16
+/ - Division - 2 / 4 == 0.5
+// - Floor division - 2 // 4 == 0 
+% - String interpolate or modulus - 2 % 4 == 2
+< - Less than - 4 < 4 == False
+> - Greater than - 4 > 4 == False
+<= - Less than equal - 4 <= 4 == True
+>= - Greater than equal - 4 >= 4 == True
+== - Equal - 4 == 5 == False
+!= - Not equal - 4 != 5 == True
+( ) - Parentheses - len('hi') = 2
+[ ] - List brackets - [1, 2, 5]
+{ } - Dict curly braces - {'x': 5, 'y': 10}
+@ - At (decorators) - @classmethod
+, - Comma - range(0, 10)
+: - Colon - def X():
+. - Dot - self.x = 10
+= - Assign equal - x = 10
+; - Semi-colon - print('hi'); print('there')
++= - Add and assign - x = 1; x += 2
+-= - Subtract and assign - x = 1; x -= 2
+*= - Multiply and assign - x = 1; x *= 2
+/= - Divide and assign - x = 1; x /= 2
+//= - Floor divide and assign - x = 1; x //= 2
+%= - Modulus assign - x = 1; x %= 2
+**= - Power assign - x = 1; x **= 2
 
 38 Doing Things to Lists
+The opening "explanation" is how the variable you are using when calling
+	a function is technically the first argument of that function, I 
+	can only think that this is refering to "self" in the __init__
+	
+>>> class Thing(object):
+		def test(self, message): <--- gotta have the self here else 
+									  gonna have a bad time
+			message = "Howdy dammit!"
+			print(message)
+a = thing()
+a.test("Howdy!")
+
+variable.split(' ') to split a 'string' in to a [list] 
+using .pop() to pop off of one list and assign that element to a 
+	variable
+then appending that variable to the .split(' ') variable
+stuff[1] calling the element at index 1
+stuff[-1] calling the element at the last index
+' '.join(variable_list)
+'#'.join(variable_list[3:5])
+	str.join(iterable)
+		Return a string which is the concatenation of the strings in 
+			iterable. A TypeError will be raised if there are any 
+			non-string values in iterable, including bytes objects. The 
+			separator between elements is the string providing this 
+			method.
+				In these cases we are concatenating the list of string
+					in variable_list and element 3 and 4 in the slice
+					of variable_list with ' ' and '#' separating the 
+					words respectively
+You can do all kinds of fun things with lists. ex, a deck of cards for a
+	game. 
+This example would be called a data structure. A data structure ia a 
+	formal way to structure (or organize) data (or facts). These can 
+	quickly become very complex. 
+######################STOPPED IN THE MIDDLE OF WHAT LISTS CAN DO PG 137
+
 
 
 39 Dictionaries, Oh Lovely Dictionaries
@@ -500,8 +698,6 @@ NEED TO GO THROUGH AND PRACTICE oop_test.py
 NEED TO GO THROUGH AN PRACTICE ex42.py exercise
 
 43 Basic Object-Oriented Analysis and Designing
-
-
 
 
 
