@@ -681,14 +681,90 @@ You can do all kinds of fun things with lists. ex, a deck of cards for a
 This example would be called a data structure. A data structure ia a 
 	formal way to structure (or organize) data (or facts). These can 
 	quickly become very complex. 
-######################STOPPED IN THE MIDDLE OF WHAT LISTS CAN DO PG 137
-
-
+Lists are one of the most common Data Structures that are used
+List is an ordered list of things you want to store and access either 
+	randomly or linearly by index. 
+When to Use lists
+1 Need to maintain order. Note: this is listed order, not sorted order.
+	Lists do not inherently sort
+2 Access contents randomly by a number. Note: this is using cardinal 
+	numbers starting at 0
+3 Need to go through the contents of a list linearly (first to last)
+	Note: this is a really good application of for-loops
+variable.pop(another_variable) means call on pop "variable" with the 
+	argument "another_variable"
 
 39 Dictionaries, Oh Lovely Dictionaries
+Dictionary (dict) is another data structure. 
+It is another way to store data like a list, though instead of only	
+	numbers to get the data you can use almost anything. 'keys'
+Apparently this lets you use dicts like a database for storing and 
+	organizing data. 
+>>> a_dict = {'dog': 'gypsy', 'monkey': 'bubba',}
+>>> a_dict['dog']
+gypsy
+>>> a_dict[1] = 'much'
+>>> a_dict
+{'dog': 'gypsy', 'monkey': 'bubba', 1: 'much'}
+Can use both numbers (ints) and strings as keys
+To delete entries from a dict:
+>>> del a_dict['monkey']
+>>> a_dict
+{'dog': 'gypsy', 1: 'much'}
+Mapping (associating) is *the* key concept in a dictionary. 
+.get('key') is how to safely check to see and return the 'value' if that
+	key if present in the dict. Otherwise it will return None
+>>> a_dict.get('pupper')
+				<--- Blank line will indicate a None
+>>> a_dict.get('dog')
+'gypsy'
 
+if assigning variable = a_dict.get('pupper') and it returns None
+	You can use an if statement to do something with that facts
+	if variable == False:
+		do_a_thing
+.get('key'[,default]) can use default in place of an if statement like 
+	above. When defaulting to None, it will never raise a KeyError
+dicts are another common Data Structure
 
 40 Modules, Classes, and Objects
+>>> class MyStuff(object):
+...     def __init__(self):
+...         self.tangerine = "Test post please ignore"
+...     def apple(self):
+...         print("The thing is cool.")
+...
+>>> bubblegum = MyStuff
+>>> bubblegum
+<class '__main__.MyStuff'>
+>>> bubblegum.tangerine
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: type object 'MyStuff' has no attribute 'tangerine'
+>>> tree = bubblegum.tangerine
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: type object 'MyStuff' has no attribute 'tangerine'
+>>>
+No tangerine... really? Something wrong with what I am doing here. 
+######STOPPED ON p148
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 41 Learning to Speak Object-Oriented
