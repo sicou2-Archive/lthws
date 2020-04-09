@@ -10,41 +10,25 @@
 #_____________ROOM________________________
 
 class Room(object):
-    
+   
     def enter(self): # this means room_antichamber.enter()
-        pass
+        go_in_to = Room.dict_rooms[self.room]
+        print("ENTER THE ROOM")
+        pass        
     
+    # def enter(enter_text, player_options): # I HAVE THIS IN HERE TWICE
+        
+        # print(enter_text)
+        
+        # choice = int(input('>>> '))
+        
+        # while True: # Maybe make this a for-loop?
+            # break # Replace with player_options
+            
     def exit(self):
         pass
 #list of [choices, the, player, can, make] since several of them are 
-#common in each room, i.e. rest
-    
-    rooms = {
-        'entrance': 'Room_Entrance',
-        'antichamber': 'Room_Antichamber',
-        'chest': 'Room_Chest',
-        'slime': 'Room_Slime',
-        'alter': 'Room_Alter',
-        'hallway': 'Room_Hallway',
-        'crypt': 'Room_Crypt',
-        'outside': 'Room_Outside',
-        'end_game': 'Room_End_Game',
-        }
-    
-    def __init__(self, lockout):
-        
-        self.lockout = lockout
-        pass
-        
-    
-    def enter(enter_text, player_options):
-        
-        print(enter_text)
-        
-        choice = int(input('>>> '))
-        
-        while True: # Maybe make this a for-loop?
-            break # Replace with player_options
+#common in each room, i.e. rest 
     
     
     
@@ -52,7 +36,7 @@ class Room_Entrance(Room):
     
     
     def enter(self):
-        pass
+        print("Enter the entrance of the cave")
 
 class Room_Antichamber(Room):
 
@@ -128,13 +112,30 @@ class Items(object):
 
 class Map(object):
 
+dict_rooms = {
+        'entrance': Room_Entrance(),
+        'antichamber': Room_Antichamber(),
+        'chest': Room_Chest(),
+        'slime': Room_Slime(),
+        'alter': Room_Alter(),
+        'hallway': Room_Hallway(),
+        'crypt': Room_Crypt(),
+        'outside': Room_Outside(),
+        'end_game': Room_End_Game(),
+        }
+    
+
     def __init__(self, start_room):
-        pass
+       self.start_room = start_room
         
     def next_scene(self, room_name):
         pass
         
-    def opening_scene(self):
+    def opening_scene(self, start_room):
+        print("here be opening_scene")
+        self.Room.enter(start_room)
+        
+        
         pass
  
  #_______________ENGINE___________________
@@ -142,12 +143,22 @@ class Map(object):
 class Engine(object):
     
     def __init__(self, game_map):
-        pass
+        self.game_map = game_map
     
     def play(self):
         print('The game starts and everything is fine')
+        print('Go to the first room (entrance)')
+        thing = Room()
+        thing.enter()  
     
-dungeon_map = Map('entrance')
-new_game = Engine(dungeon_map)
-new_game.play()
+
+
+thing = Room('entrance')
+thing.enter()
+
+
+
+# dungeon_map = Map('entrance')
+# new_game = Engine(dungeon_map)
+# new_game.play()
  

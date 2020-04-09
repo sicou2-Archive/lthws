@@ -728,28 +728,43 @@ if assigning variable = a_dict.get('pupper') and it returns None
 dicts are another common Data Structure
 
 40 Modules, Classes, and Objects
->>> class MyStuff(object):
-...     def __init__(self):
-...         self.tangerine = "Test post please ignore"
-...     def apple(self):
-...         print("The thing is cool.")
-...
->>> bubblegum = MyStuff
->>> bubblegum
-<class '__main__.MyStuff'>
->>> bubblegum.tangerine
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-AttributeError: type object 'MyStuff' has no attribute 'tangerine'
->>> tree = bubblegum.tangerine
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-AttributeError: type object 'MyStuff' has no attribute 'tangerine'
->>>
-No tangerine... really? Something wrong with what I am doing here. 
-######STOPPED ON p148
-
-
+Python is an Object-Oriented Programming Language
+This means there is a construct in Python called Class. 
+Classes let you structure software that can add consistancy to programs	
+	so that they can be cleaner. In Theory
+Zed does not like OOP. 
+The idea of 'get X from Y' is important
+Modules, they are a 
+	1 A Python file with some functions or variables in it. 
+	2 That can be imported
+	3 And access the functions or variables of with the . operator
+import module_to_use_things_from
+*** REMEMBER TO USE module_to_use_things_from.function_you_need() 
+	Otherwise you will need to use the 
+		from module_to_use_things_from import function_you_need
+			so you do not have to use 'module_to_use_things_from.' all 
+			of the time. 
+With modules you can import functions *AND* variables
+You can almost think of Modules and dicts as similar things (though 
+	different)
+Very common patter in Python
+	1 Take key=value style container
+	2 Get something out if it by the key's name
+With a dict the syntax is [key]
+With a module the syntax is the .key
+	Classes are like modules
+Classes can be thought of as similar to Modules
+It *might* be helpful to think of a module as a specilized dict that 
+	stores code that can be accessed with the . operator
+"Here's why classes are used instead of modules: You can take this 
+	MyStuff class and use it to craft many of them, millions at a time 
+	if you want, and each one won't interfere with each other. When you 
+	import a module there is only one for the entire program unless you 
+	do some monster hacks."
+^^^ I think that this statement is probably more important than I am 
+	giving it credit for at this moment. 
+Classes might be though of as "mini-modules"
+#######STOPPED PG149
 
 
 
