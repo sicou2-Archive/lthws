@@ -764,25 +764,112 @@ It *might* be helpful to think of a module as a specilized dict that
 ^^^ I think that this statement is probably more important than I am 
 	giving it credit for at this moment. 
 Classes might be though of as "mini-modules"
-#######STOPPED PG149
+Classes are similar in a way to modules though they are actually very
+	different
+	Classes are like blueprints or definitions for creating new 
+		mini-modules
+	Instantiation is how you make a new mini-modules *AND* import it at
+		the same time. 
+		Basically, instantiate just means to create an object from the 
+			class
+		The resulting new mini-module is an object and then you assign 
+			it to a variable to work with. 
+Here we showed three ways to get things from things
+#The dict
+>>> mystuff['apples']
+'value from apples'
 
+#The module
+>>> mystuff.apples() # Remember this was with an import so mystuff is 
+					 # the module or file and apples() is the function
+					 # within mystuff
+'Prints string from apples()
+>>> print((mystuff.tangerine))
+'Prints variable tangerine'
 
+#The class
+>>> thing = MyStuff()
+>>> thing.apples()
+'Prints from object thing the function apples() defines'
+>>> thing.tangerine()
+'Prints from thing the variable tangerine'
 
+In my own words, it classes are kind of like pulling mystuff in but 
+you are not just pulling mystuff in. You are making a copy of mystuff
+that you can make changes to without changing mystuff. Meaning that you 
+can start a second or third or whatever version of mystuff and change 
+those as needed. thing1 thing2 thing3 each with their own properties. 
+I am still having trouble seeing how this applies to his game in 43 but
+I am sure it will come. 
 
+class Cls_Name(object) #CapCase names
 
+	def __init__(self, arg1, arg2) #__init__ seems to construct the 
+		# object the class is building. The self part is what you call 
+		# in the class when you want to use the object itself (thing in 
+		# thing.apple()). The args seem to follow the standard arg rules
+		# from functions except they need to be defined in the class 
+		# blueprint so they can be assigned internally from the args 
+		# that were passed from the initial call. 
+		self.arg1 = arg1
+		self.arg2 = arg2
+		
+	def function(self):
+		doing = thing + arg1
+		print(doing)
+		
+In this example to creat a new object for Cls_Name:
+>>> thing = Class(arg1, arg2)
 
+I think at this point I have a good handle on how to build a class, but 
+	not any clue at all on how to properly use them. This returns back 
+	to the problems I am having with ex43. 
 
-
-
-
-
-
-
-
-
-
+In the example in ex40 note that the 'for line in self.lyrics:' and how
+	it reads through the loop. line is each string and not specific 
+	words or the whole file. In this example the passed variables are
+	lists of objects where each index contains a line of lyrics. 
+This is more of both a hey look out what is happening here and a 
+	as to how for loops work and a way to use them. 
+The self in __init__ is pythons way of you telling Python that you mean
+	the instance attribute (for example self.tangerine) and not some other 
+	version of tangerine. 
+Just to hammer it home you will use self.tangerine in the class 
+	constructor but thing.tangerine in the body of the code. 
 
 41 Learning to Speak Object-Oriented
+Learning to Speak Object-Oriented
+
+Word Drills 
+class Tell Python to make a new type of thing. 
+object Two meanings: the most basic type of thing, and any instance of 
+	some thing. 
+Instance What you get when you tell Python to create a class
+def How you define a function inside a class
+self Inside the functions in a class, self is a 
+	variable for the instance/object being accessed
+inheritance The concept that one class can inherit traits from another 
+	class, much like you and your parents
+Composition The concept that a class can be composed of other classes 
+	as parts, much like how a car has wheels
+attribute A property classes have that are from composition and are 
+	usually variables
+is-a A phrase to say that something inherits from another, is in a 
+	"salmon" is-a "fish"
+has-a A phrase to say that something is composed of other things or has 
+	a trait, as in "a salmon has-a mouth"
+	
+Phrase Drills
+
+class X(Y) "Make a class named X that is-a Y"
+class X(object): def __init__(self,J) 
+	"class X has a __init__ that takes self and J parameters"
+class X(object): def M(self,J) 
+	"class X has-a function named M that takes self and J parameters"
+foo = X() "Set foo to an instance of class X"
+foo.M(J) 
+	"From foo, get the M funstion, and call it with parameters self, J"
+foo.K = Q "From foo, get the K attribute, and set it to Q"
 NEED TO GO THROUGH AND PRACTICE oop_test.py
 
 42 Is-A, Has-A, Objects, and Classes
