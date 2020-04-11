@@ -824,7 +824,6 @@ In this example to creat a new object for Cls_Name:
 I think at this point I have a good handle on how to build a class, but 
 	not any clue at all on how to properly use them. This returns back 
 	to the problems I am having with ex43. 
-
 In the example in ex40 note that the 'for line in self.lyrics:' and how
 	it reads through the loop. line is each string and not specific 
 	words or the whole file. In this example the passed variables are
@@ -832,8 +831,8 @@ In the example in ex40 note that the 'for line in self.lyrics:' and how
 This is more of both a hey look out what is happening here and a 
 	as to how for loops work and a way to use them. 
 The self in __init__ is pythons way of you telling Python that you mean
-	the instance attribute (for example self.tangerine) and not some other 
-	version of tangerine. 
+	the instance attribute (for example self.tangerine) and not some 
+	other version of tangerine. 
 Just to hammer it home you will use self.tangerine in the class 
 	constructor but thing.tangerine in the body of the code. 
 
@@ -841,35 +840,54 @@ Just to hammer it home you will use self.tangerine in the class
 Learning to Speak Object-Oriented
 
 Word Drills 
-class Tell Python to make a new type of thing. 
-object Two meanings: the most basic type of thing, and any instance of 
+class - Tell Python to make a new type of thing. 
+object - Two meanings: the most basic type of thing, and any instance of 
 	some thing. 
-Instance What you get when you tell Python to create a class
-def How you define a function inside a class
-self Inside the functions in a class, self is a 
+Instance - What you get when you tell Python to create a class
+def - How you define a function inside a class
+self - Inside the functions in a class, self is a 
 	variable for the instance/object being accessed
-inheritance The concept that one class can inherit traits from another 
+inheritance - The concept that one class can inherit traits from another 
 	class, much like you and your parents
-Composition The concept that a class can be composed of other classes 
+Composition - The concept that a class can be composed of other classes 
 	as parts, much like how a car has wheels
-attribute A property classes have that are from composition and are 
+attribute - A property classes have that are from composition and are 
 	usually variables
-is-a A phrase to say that something inherits from another, is in a 
+is-a - A phrase to say that something inherits from another, as in a 
 	"salmon" is-a "fish"
-has-a A phrase to say that something is composed of other things or has 
-	a trait, as in "a salmon has-a mouth"
+has-a - A phrase to say that something is composed of other things or 
+	has a trait, as in "a salmon has-a mouth"
 	
 Phrase Drills
-
-class X(Y) "Make a class named X that is-a Y"
-class X(object): def __init__(self,J) 
+class X(Y) - "Make a class named X that is-a Y"
+class X(object): def __init__(self,J) -
 	"class X has a __init__ that takes self and J parameters"
-class X(object): def M(self,J) 
+class X(object): def M(self,J) -
 	"class X has-a function named M that takes self and J parameters"
-foo = X() "Set foo to an instance of class X"
-foo.M(J) 
-	"From foo, get the M funstion, and call it with parameters self, J"
-foo.K = Q "From foo, get the K attribute, and set it to Q"
+foo = X() - "Set foo to an instance of class X"
+foo.M(J) - 
+	"From foo, get the M function, and call it with parameters self, J"
+foo.K = Q - "From foo, get the K attribute, and set it to Q"
+
+In addition to the flash cards for each of these sections do Combined
+	Drills:
+	1 Take a phrase card and drill it
+	2 Flip it over and read the sentence, and for each work in the 
+		sentence that is in your words drills, get that card.
+	3 Drill those words for that sentence
+	4 Keep going until you are bored, then take a break and do it agian.
+	
+Ex41 code:
+from urllib.request import urlopen
+	urllib - is a package that collects several modules for working with 
+		URLs
+	.request - is for opening and reading URLs
+	.urlopen - open the URL 'url', which can be either a string or a 
+		'Request' object. 
+		NOTE: because .urlopen was called as a from/import, do not need	
+			to urllib.request.urlopen; only need to call urlopen to get
+			in to the goodies inside this function. 
+
 NEED TO GO THROUGH AND PRACTICE oop_test.py
 
 42 Is-A, Has-A, Objects, and Classes

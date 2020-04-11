@@ -4,6 +4,11 @@ from textwrap import dedent #Remove any common leading whitespace from
                             #every line in text. Allows for allign left
                             #when dealing with ''' '''
 
+# ---------------------------------------------------   
+        
+
+# -------------------------------------------------------------
+
 class Scene(object):
 
     def enter(self):
@@ -17,18 +22,26 @@ class Scene(object):
         exit(1) # I wonder what he has exit(1) set up to do. 
     
 class Death(Scene):
-
     
     def enter(self):
-
         pass
 
 class CentralCorridor(Scene):
 
-
     def enter(self):
-
-        pass
+        print("SOME THINGS FOR CENTRAL CORRIDOR")
+        
+        action = input("> ")
+        
+        if action == "thing":
+            print("BAD THING")
+            
+            return 'death'
+            
+        else:
+            print("DOES NOT COMPUTE")
+            return 'central_corridor'
+    
         
 class LaserWeaponArmory(Scene):
 
@@ -51,8 +64,6 @@ class EscapePod(Scene):
 
         pass
    
-# ---------------------------------------------------   
-        
 class Engine(object):
 
     def __init__(self, scene_map):
@@ -60,7 +71,6 @@ class Engine(object):
         
     def play(self):
         current_scene = self.scene_map.opening_scene()
-        print(current_scene)
         last_scene = self.scene_map.next_scene('finished')
         
         while current_scene != last_scene:
@@ -89,8 +99,7 @@ class Map(object):
         'escape_pod': EscapePod(),
         'death': Death(),
         #'finished': Finished(), # This needs to be created above
-        }
-
+    }
         
     def __init__(self, start_scene):
         self.start_scene = start_scene

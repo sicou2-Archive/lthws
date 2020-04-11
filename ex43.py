@@ -112,7 +112,7 @@ class Items(object):
 
 class Map(object):
 
-dict_rooms = {
+    dict_rooms = {
         'entrance': Room_Entrance(),
         'antichamber': Room_Antichamber(),
         'chest': Room_Chest(),
@@ -158,7 +158,7 @@ thing.enter()
 
 
 
-# dungeon_map = Map('entrance')
-# new_game = Engine(dungeon_map)
+# dungeon_map = Map('entrance') # dungeon_map.start_room = 'entrance'
+# new_game = Engine(dungeon_map) new_game.game_map = dungeon_map.start_room = 'entrance'
 # new_game.play()
  
