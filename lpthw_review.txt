@@ -878,6 +878,7 @@ In addition to the flash cards for each of these sections do Combined
 	4 Keep going until you are bored, then take a break and do it agian.
 	
 Ex41 code:
+There is actually some pretty neat stuff happeneing in this code. 
 from urllib.request import urlopen
 	urllib - is a package that collects several modules for working with 
 		URLs
@@ -888,6 +889,7 @@ from urllib.request import urlopen
 			to urllib.request.urlopen; only need to call urlopen to get
 			in to the goodies inside this function. 
 
+
 NEED TO GO THROUGH AND PRACTICE oop_test.py
 
 42 Is-A, Has-A, Objects, and Classes
@@ -895,8 +897,17 @@ NEED TO GO THROUGH AN PRACTICE ex42.py exercise
 
 43 Basic Object-Oriented Analysis and Designing
 
-
-
+a_map = Map('central_corridor')
+a_game = Engine(a_map)
+a_game.play()
+	current_scene = a_game.scene_map<a_map>.opening_scene() = 
+	a_map.next_scene('central_corridor')
+		a_map.next_scene('central_corridor') > val = 
+		Map.scenes <variable>.get('central_corridor') returns val of 
+		'central_corridor'
+	
+	#################STOPPED HERE TO DRAW THE STACK OUT##############
+	
 
 
 

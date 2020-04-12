@@ -78,8 +78,9 @@ class Engine(object):
             current_scene = self.scene_map.next_scene(next_scene_name)
             
         # Be sure to print out the last scene
-        current_scene.enter() # This line is causing a problem at the 
-                              # point in which I stopped. 
+        current_scene.enter() #this line will only run when the above
+                              # while loop stops, thus only when 
+                              # room = 'finished'
     #########STOPPED HERE###################
 
 # --------------------------------------------------
@@ -116,5 +117,6 @@ class Map(object):
 a_map = Map('central_corridor')
 a_game = Engine(a_map)
 a_game.play()
+
 
 

@@ -12,9 +12,9 @@
 class Room(object):
    
     def enter(self): # this means room_antichamber.enter()
-        go_in_to = Room.dict_rooms[self.room]
-        print("ENTER THE ROOM")
-        pass        
+        print("ENTER THE ROOM THAT IS NOT A ROOM, THINGS ARE"
+            "BROKEN")
+        exit(1)        
     
     # def enter(enter_text, player_options): # I HAVE THIS IN HERE TWICE
         
@@ -25,7 +25,7 @@ class Room(object):
         # while True: # Maybe make this a for-loop?
             # break # Replace with player_options
             
-    def exit(self):
+    def exit(self): # I dont think I need this
         pass
 #list of [choices, the, player, can, make] since several of them are 
 #common in each room, i.e. rest 
@@ -34,9 +34,8 @@ class Room(object):
     
 class Room_Entrance(Room):
     
-    
     def enter(self):
-        print("Enter the entrance of the cave")
+        print('It works')
 
 class Room_Antichamber(Room):
 
@@ -128,15 +127,15 @@ class Map(object):
     def __init__(self, start_room):
        self.start_room = start_room
         
-    def next_scene(self, room_name):
+    def next_room(self, room_name):
+        dict_room_value = self.dict_rooms.get(room_name)
+        return dict_room_value
+
         pass
         
-    def opening_scene(self, start_room):
-        print("here be opening_scene")
-        self.Room.enter(start_room)
+    def opening_room(self):
+        return self.next_room(self.start_room)
         
-        
-        pass
  
  #_______________ENGINE___________________
  
@@ -146,19 +145,16 @@ class Engine(object):
         self.game_map = game_map
     
     def play(self):
-        print('The game starts and everything is fine')
-        print('Go to the first room (entrance)')
-        thing = Room()
-        thing.enter()  
+        current_room = self.game_map.opening_room()
+        
+        while current_room != Room_End_Game:
+            next_room = current_room.enter()
+    ###STOPPED HERE, THIS DOES NOT WORK 
+            current_room = self.game_map.next_room(next_room)
+            
     
 
-
-thing = Room('entrance')
-thing.enter()
-
-
-
-# dungeon_map = Map('entrance') # dungeon_map.start_room = 'entrance'
-# new_game = Engine(dungeon_map) new_game.game_map = dungeon_map.start_room = 'entrance'
-# new_game.play()
+dungeon_map = Map('entrance') # dungeon_map.start_room = 'entrance'
+new_game = Engine(dungeon_map) # new_game.game_map = dungeon_map.start_room = 'entrance'
+new_game.play()
  
