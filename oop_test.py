@@ -30,7 +30,7 @@ else:
     
 # Load up the words from the website
 for word in urlopen(WORD_URL).readlines(): 
-    # here we are loopoing through the 'urlopen' with the site given
+    # here we are looping through the 'urlopen' with the site given
     # to WORD_URL by each line via .readlines()
     WORDS.append(str(word.strip(), encoding="utf-8"))
     # with this we are taking each 'word line' stripping the white space
@@ -68,14 +68,21 @@ def convert(snippet, phrase):
     # this is setting up a random number of parameters that will be 
     # in the lists later, from 1 to 3
         
-    for sentence in snippet, phrase: # this looks like it is iterating 
-        # over each k-v pair. 
-        ########STOPPED HERE TRYING TO FIGURE OUT THIS DOUBLE LOOP AND 
-        ####### EXACTLY WHERE EVERYTHING IS COMING FROM 
-        result = sentence[:]
+    for sentence in snippet, phrase: # So here, it seems that sentence 
+                                    # is looping over snippet, then 
+                                # phrase based on the testing I have 
+                            # done since snippet is a key containing a 
+                        # single 'string' and phrase is also a value 
+                    # containing a single 'string' both from the same 
+                # dict
+        result = sentence[:] #result is slice copy of sentence
         
         # Fake class names
-        for word in class_names:
+        for word in class_names: # this takes the list of words created
+                                # above in class_names (there the number
+                            # of items in the list is = to the number of
+                        # '@@@' in the snippet or phrase and replaces 
+                    # the '@@@' with the correct number of proper words
             result = result.replace("%%%", word, 1)
         
         # Fake other names   
@@ -86,20 +93,30 @@ def convert(snippet, phrase):
         for word in param_names:
             result = result.replace("@@@", word, 1)
             
-        results.append(result)
+        results.append(result) #this appends to the empty list above
         
-    return results
+    return results # this also seems to return results *to* snippet, 
+                # then to phrase from the above loop. It should be a 
+            # a list of two items 
     
     
 # Keep going until they hit CTRL-D #ZED HAS D HERE I NEED Z
 try:
     while True:
-        snippets = list(PHRASES.keys())
+        snippets = list(PHRASES.keys()) 
+            #snippets becomes a list of the keys from PHRASES
         random.shuffle(snippets)
+            # this just shuffles snippets
         
-        for snippet in snippets: # snippet here is the key 
-            phrase = PHRASES[snippet] # phrase is the value
-            question, answer = convert(snippet, phrase)
+        for snippet in snippets: # snippets is the list of keys from 
+                            # PHRASES 
+            phrase = PHRASES[snippet] # Here we are taking PHRASES and 
+                # calling the shuffled list of keys to return the dict 
+                #value 'phrase'
+            question, answer = convert(snippet, phrase) # this sets the 
+                                                    # returned 'results'
+                                                # list of two object to 
+                                            # question , answer
             if PHRASE_FIRST:
                 question, answer = answer, question
                 

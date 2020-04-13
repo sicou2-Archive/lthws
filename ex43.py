@@ -25,8 +25,8 @@ class Room(object):
         # while True: # Maybe make this a for-loop?
             # break # Replace with player_options
             
-    def exit(self): # I dont think I need this
-        pass
+#    def exit(self): # I dont think I need this
+#        pass
 #list of [choices, the, player, can, make] since several of them are 
 #common in each room, i.e. rest 
     
@@ -36,6 +36,7 @@ class Room_Entrance(Room):
     
     def enter(self):
         print('It works')
+        #return 'entrance'
 
 class Room_Antichamber(Room):
 
@@ -75,7 +76,8 @@ class Room_Outside(Room):
 class Room_End_Game(Room):
 
     def enter(self):
-        pass
+        print('Dead')
+        #return 'end_game'
         
         
 #_________________ACTIONS_____________________________
@@ -106,6 +108,28 @@ class Items(object):
     def create_item():
         pass
         
+
+ 
+ #_______________ENGINE___________________
+ 
+class Engine(object):
+    
+    def __init__(self, game_map):
+        self.game_map = game_map
+    
+    def play(self):
+        current_room = self.game_map.opening_room()
+        last_room = self.game_map.next_room('end_game')
+        
+        while current_room != last_room:
+            print(type(current_room))
+            next_room_name = current_room.enter()
+            print(next_room_name)
+            current_room = self.game_map.next_room(next_room_name)
+            
+        current_room.enter()
+            
+            
 # _______________MAP_____________________________
 
 
@@ -128,29 +152,15 @@ class Map(object):
        self.start_room = start_room
         
     def next_room(self, room_name):
-        dict_room_value = self.dict_rooms.get(room_name)
-        return dict_room_value
-
-        pass
+        dict_room_value = Map.dict_rooms.get(room_name)
+        return dict_room_value        
         
     def opening_room(self):
         return self.next_room(self.start_room)
-        
- 
- #_______________ENGINE___________________
- 
-class Engine(object):
-    
-    def __init__(self, game_map):
-        self.game_map = game_map
-    
-    def play(self):
-        current_room = self.game_map.opening_room()
-        
-        while current_room != Room_End_Game:
-            next_room = current_room.enter()
-    ###STOPPED HERE, THIS DOES NOT WORK 
-            current_room = self.game_map.next_room(next_room)
+                    
+            
+            
+            
             
     
 
