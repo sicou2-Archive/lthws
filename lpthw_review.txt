@@ -966,48 +966,47 @@ try:
 # this sets the returned 'results' list of two object to question , 
 # answer
 
-#######STOPPED HERE AFTER THE CODE REVIEW
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+The code introduces one method for optional args from the command line
+	with an if statement
+Important part of understanding coding is placing less meaning on the
+	words for variables and what they actually do. 
 
 NEED TO GO THROUGH AND PRACTICE oop_test.py
 
 42 Is-A, Has-A, Objects, and Classes
-NEED TO GO THROUGH AN PRACTICE ex42.py exercise
+Need to understand the difference between a Class and an object. 
+Technically, they are the same thing at different points in time. 
+A salmon (class) is-a kind of fish (class).
+Fish (class) has-a salmon (class)
+Mary, Joe, and Frank (objectes) are (is-a) salmon. 
+The class fish is not a real thing. It is just a classification of a 
+	thing. Mary is that class that is an actual thing. 
+Mary the object is an instance of the class Salmon (and Fish)
+The "trick" about how to tell the difference is 'is-a' and 'has-a'. 
+'is-a' is used when talking about objects and classes being related to 
+	each other by a class relationship.
+'has-a' is used when talking about objects and classes that are related
+	only because they reference each other. 
+def __init__(self, arg_1, arg_2):
+	super(Employee, self).__init__(name)
+	# I think what this does is that it pulls the name from the Person 
+		class and gives it to the Employee object. I wonder if you 
+			update the Person object then the Employee name is updated. 
+				I think that Corey Schafer talks about this, though,
+					not going to waste time on this now. 
+class Cls(object):
+	the object is not required in Python 3, where Python 2 required 
+		something different for the two different types of classes. 
+Also valid:
+class Cls:
+However, apparently it is better to be explicit rather than implicit. 
+There is such a thing as 'is-many' and they are 'multiple inheritance'. 
+	Apprently these are bad and should be avoided. 
+The self.pet = None in the __init__ of Person specifically sets "that 
+	person" to having None pets by default. 
+super(Employee, self).__init__(name) is how you can run the __ini__ 
+	method of the parent class reliably. People tend to say that it is
+	both good and evil. 
 
 43 Basic Object-Oriented Analysis and Designing
 
@@ -1019,10 +1018,6 @@ a_game.play()
 		a_map.next_scene('central_corridor') > val = 
 		Map.scenes <variable>.get('central_corridor') returns val of 
 		'central_corridor'
-	
-	#################STOPPED HERE TO DRAW THE STACK OUT##############
-	
-
 
 
 
