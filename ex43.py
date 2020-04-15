@@ -16,14 +16,11 @@
 
 class Room(object):
     
-    def __init__(self, cast={}, lockout=[]):
-        self.cast = cast
-        self.lockout = lockout
-        
-    
+  
     def enter(self): # 
         print("ENTER THE ROOM THAT IS NOT A ROOM, THINGS ARE"
             "BROKEN")
+        
         exit(1)        
     
   
@@ -34,84 +31,24 @@ class Room(object):
     
     
 class Room_Entrance(Room):
-    
-    def __init__(self):
-        super(Room, self).__init__(cast)
-    
-    try:
-        self.cast['hero']
-    except KeyError:
-        hero = Engine.character(10, 1, 1, 1,'hero', 10, 0)
-        self.cast['hero'] = hero
-    
+
+#    def __init__(self):
+#        super().__init__()
     
     
     def enter(self):
+        print(Engine.cast)
         print('It works')
-        return 'antichamber' # THIS RETURN SHOULD CHANGE TO THE REAL
+        next_room = 'antichamber'
+        return next_room, Engine.cast # THIS RETURN SHOULD CHANGE TO THE REAL
             # NEXT ROOM
 
 class Room_Antichamber(Room):
 
     def enter(self):
-        try:
-            self.cast['goblin']
-        except KeyError:
-            goblin = Engine.character(5, 1, 1, 1,'goblin', 5, 0)
-            self.cast['goblin'] = goblin
-
-        if self.cast['goblin'][3] == 1: #Check to see if Goblin is still alive
-                                   #When coming from another room
-            print('A goblin is here and attacks. 1 Engage in combat 2 Run')
-            
-            i = 0
-            while True:    # This is the Goblin fight()
-                
-                action = input('> ')
-               
-                if action == '1': 
-                    Engine.fight(self.cast['hero'], self.cast['goblin'])
-                    print('Above the body of your foe, you look around.')
-                    break
-                elif action == '2':
-                    print('You run from the room and go looking for help '
-                    'to continue the fight.')
-                    return 'end_game'
-                elif i > 3:
-                    print('Goblin attacks while you stare at him.')
-                    return 'end_game'
-                else:
-                    print('He looks mean, do something! Quick!')
-                    i += 1           
-                        
-        while True:
-            
-            print ('You see three doors. Choose a door (1 Left, 2 Center, 3 '
-            'Right) or rest a moment (4). ') #List of decisions after fight
-            
-            choice = input('> ')
-            
-            if choice == '1': 
-                if lockout['chest_room'] == 0:
-                    print('There is no reason to go back in there. Choose '
-                    'a different room.')
-                    continue
-                return 'end_game' # room_chest(self.cast, lockout) 
-            elif choice == '2': 
-                if lockout['slime_room'] == 0:
-                    print('There is no reason to go back in there. Choose '
-                    'a different room.')
-                    continue
-                return 'end_game' # room_slime(self.cast, lockout) 
-            elif choice == '3': 
-                return 'end_game' # room_orc(self.cast, lockout) #MAYBE NEED TO ADD A KEY
-                                               #TO ENTER THIS ROOM
-            elif choice == '4':
-                return 'end_game' # rest(self.cast['hero'])
-            else: 
-                print('Moving on is the only hope for you now. Choose a '
-                'room.') 
-        
+ 
+        print('Antichamber')
+        return 'end_game'
 class Room_Chest(Room):
 
     def enter(self):
@@ -178,7 +115,6 @@ class Items(object):
         pass
         
 
- 
  #_______________ENGINE___________________
  
 class Engine(object):
@@ -217,7 +153,7 @@ class Engine(object):
         last_room = self.game_map.next_room('end_game')
                 
         while current_room != last_room: 
-            next_room_name = current_room.enter()
+            next_room_name, self.cast = current_room.enter()
             current_room = self.game_map.next_room(next_room_name)
             
         current_room.enter()
