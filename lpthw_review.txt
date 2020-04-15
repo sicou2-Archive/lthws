@@ -10,9 +10,8 @@ $ python programName.py
 # to comment or disable lines of code
 Debug trick read lines of code backwards (bottom up)
 
-
 3 Numbers and Math
-+, -, /, * (Modulus), %, <, >, <=, >= 
++, -, /, * , % (Modulus), <, >, <=, >= 
 Normal Order of Operations
 
 4 Variables and Names
@@ -32,7 +31,7 @@ round() is an option when working with floating points
 6 Strings and Text
 Strings are text you want to display or export out of the program
 f"strings" can also be done with .format() suntax
-	ex: variable.format(thing_to change_in_{}_of_variable)
+	ex: 'string {} needed {}'.format(thing_to change_in_{}_of_variable)
 		Not super strong with this
 
 7 More Printing
@@ -40,26 +39,29 @@ print(can + concatinate + strings + of + variables + together + to
       + print)
 print('thing print', end=' ') can change the behavior of print from \n
     at the end of the line to a ' ' or whatever you please, there is 
-	also (?) a sep= command I think? Maybe?
+	also a sep=' ' command which also must be a string that separates 
+	the different objects bring printed
 
 8 Printing, Printing
 This ex hits .format() pretty well
 formatter = '{} {} {} {}'
 print(formatter.format(1, 2, 3, 4)
+TODO: Still need to see how to do the string escaped that I know are a 
+	thing with %d{} or whatever. 
 
 
 9 Printing, Printing, Printing
 \n as escape characters
 print('string', and_variable)
 '''
-Tripple quotes
+Triple quotes
 '''
 
 10 What Was That?
-\ to esacpe in string
+\ to escape in string
 " \" "
 ' \' '
-List of most (all?) of Python escape characters. 
+List of most (all?) of Python escape characters. see ex37
 
 11 Asking Questions
 Software: takes input, changes it, shows what changed
@@ -72,6 +74,11 @@ Getting help out of Python Help in Windows has been hard.
 One example that works is "python -m pydoc input" where input is the 
     term we are looking to learn about.
 Cannot assign to a variable within print()
+
+
+
+#####STOPPED REVIEW HERE #########
+
 
 13 Parameters, Unpacking, Variables
 sys.argv allows the passing of variables from the command line
@@ -1009,67 +1016,118 @@ super(Employee, self).__init__(name) is how you can run the __ini__
 	both good and evil. 
 
 43 Basic Object-Oriented Analysis and Designing
-
-a_map = Map('central_corridor')
-a_game = Engine(a_map)
-a_game.play()
-	current_scene = a_game.scene_map<a_map>.opening_scene() = 
-	a_map.next_scene('central_corridor')
-		a_map.next_scene('central_corridor') > val = 
-		Map.scenes <variable>.get('central_corridor') returns val of 
-		'central_corridor'
-
-
-
-
-
-
+See OneNote for the game loop flow chart. It helps. 
+	The notes for the ex43_classes.py code are very limited.
+One Problem Solving Process - "Top Down"
+1 Write or draw about the problem
+2 Extract key concepts from 1 and research them
+3 Create a class hierarchy and object map for the concepts
+4 Code the classes and and a test to run them
+5 Repeat and refine
+Top-down starts with a loose and abstract idea of the program and 
+	continually refines until you have what you want. 
+Helps with identifying key concepts that bottom-up might get lost in the
+	weeds with. 
+Lots of code testing. Always be testing code. 
 
 
+1 Write or draw about the problem
+"Gorthons from Planet Percal #25"
 
+Description of each scene in the game. 
+Death - This is when the player died and should be something funny
+Central Corridor - This is the starting point and has a Gorthon already 
+	standing there that the player must defeat with a joke before 
+	continuing. 
+Laser Weapon Armory - This is where the hero gets a neutron bomb to blow
+    up the ship before getting to the escape pod. It has a keypad the 
+	hero has to guess the number for. 
+The Bridge - This is another battle scene with a Gorthon where the hero 
+	places the bomb
+Escape Pod - This is where the hero escapes but only after guessing the
+	right escape sequence
+	
+2 Extract Key Concepts and Research Them
 
+List of Nouns
+Alien
+Player
+Shop
+Maze
+Room
+Scene
+Gorthon
+Escape Pod
+Planet
+Map
+Engine
+Death
+Central Corridor
+Laser Weapon Armory
+The Bridge
 
+Make List of Verbs
+Skipping for now.
 
+Research different things about the nouns and verbs above. 
+Ex. About ships, or how bombs work, or storing game state in datebase.
+Possibly at this point, after research redo two steps above
 
+3 Create a class hierarchy and object map for the concepts
+"What is similar to other things?"
+"What is basically just another word for another thing?"
 
+*Map
+	-next_scene
+	-opening_scene
+*Engine
+	-play 
+*Scene
+	-enter
+	*Death
+	*Central Corridor
+	*Laser Weapon Armory
+	*The Bridge
+	*Escape Pod
+	
+4 Code the classes and a test to run them
+With the tree of classes, maybe plop it in to the source file and 
+	code it out from there. Building up the framework. Test that 
+	everything works. 
+	
+5 Repeat and refine
+This is less a step and more a while loop. 
+Jumping around in the code is ok, just make sure you keep the notes good
+	so that you can remember where you were and what you were doing when 
+	you jumped out of that process. 
+This process can be done, not just at the 'top' level, but at every 
+	level of the code layers to make things work. e.g. making the 
+	Engine.play() function work. 	
+	
+Top Down vs Bottom Up
+Bottom up "tends to be" better once you have a better foundation with 
+	programming. Is good when you know all of the pieces to the puzzle. 
+	This can help be more focused on single problems and making things
+	work. It can also paint you in to a corner or waste time on things
+	that end up not being important. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-####STOP ON PAGE 180####
+"Bottom Up" Steps
+1 Take a small piece of the problem; hack on some code and get it to 
+	barely run.
+2 Refine the code into something more formal with classes and automated 
+	tests.
+3 Extract the key concepts you are using and research them. 
+4 Write a description of what is really going on. 
+5 Go back and refine the code, possibly throwing it out and starting 
+	over. 
+6 Repeat, moving on to some other piece of the problem. 
+***BIG THING*** to remember here is that in the game loop, you really
+	only need two things, the current room, that passes the next room to 
+	"the next room". Then the next room sets everything up and gives 
+	that back to the current room. This seems to prevent the stack 
+	growth that I had in ex36. 
+from textwrap import detent #Remove any common leading whitespace from 
+                            #every line in text. Allows for allign left
+                            #when dealing with ''' '''
+There really is not a whole lot more new stuff for this chapter. 
+Just the challange to get the game loop up and running. 
