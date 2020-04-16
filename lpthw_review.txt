@@ -75,11 +75,6 @@ One example that works is "python -m pydoc input" where input is the
     term we are looking to learn about.
 Cannot assign to a variable within print()
 
-
-
-#####STOPPED REVIEW HERE #########
-
-
 13 Parameters, Unpacking, Variables
 sys.argv allows the passing of variables from the command line
 argv = Argument Variable
@@ -101,9 +96,8 @@ For optional arguments look for *args or **kwargs
 Command Line Arguments are strings, though they can be changed; int()
 
 14 Prompting and Passing
-The input('prompt') can be assigned variable prompt of some kind and 
+The input(prompt) can be assigned variable prompt of some kind and 
     change it as needed.
-
 
 15 Reading Files
 open(text_file_name.txt, or_variable_with_file_name)
@@ -112,12 +106,14 @@ open(text_file_name.txt, or_variable_with_file_name)
 txt.read() which reads some quantity of data and returns it as a string 
 	(in text mode) or bytes object (in binary mode); byte mode is 
 	selected with the open function. EOF returns an empty string ('')
-Not sure what I was doing wrong, but I got the open and read to work in 
-the Python Shell
+Was trying to play within the Shell and it was not working, not sure 
+	what I was doing wrong, but I got the open and read to work in the 
+	Python Shell
 txt.close(); do not forget to close files after done with them to
 	prevent strange things from happening. 
 open(file_variable) does not return the contents of the file, instead, 
-    it returns a "file object"
+    it returns a "file object" 
+		Kind of like a Class object
 	
 16 Reading and Writing Files
 Some methods and functions:
@@ -165,6 +161,7 @@ def name_o_function(args): <- DO NOT FORGET THE COLON : : : : : :
 		arg1, arg2 = args <- This was seems like it lets you get away 
 			with not having to always have the same number of args if 
 			that changes from time to time. 
+				This also works with **kwargs
 	(arg1, arg2)
 		this requires two args, can have as many or as few as needed 
 		(zero is included)
@@ -191,10 +188,10 @@ Running a Function Checklist
 Global variables are not immediately available in a function, nor are 
 	local variables available outside of a function unless returned from
 	it. 
-You can put numbers, Boolian, variables, strings, and you can use equations that, 
-	calculate down to a single function as argument calls when calling
-	a function. 
-Remember that input() return the *string* of whatever the imput is. In 
+You can put numbers, Boolian, variables, strings, and you can use 
+	equations that, calculate down to a single function as argument 
+	calls when calling a function. 
+Remember that input() returns a *string* of whatever the input is. In 
 	order to use it as a number you must int('string') 
 Typically try to limit the number of arguments that a function calls to 
 	less than 5
@@ -204,7 +201,7 @@ There is not a whole lot that is new in this ex. Look through it and it
 is pretty straight forward. 
 It does use .readline() and .seek() incase a worked example is needed. 
 Introduces += to increment
-readline() is code that scans each byte of the file intil if finds a 
+readline() is code that scans each byte of the file until if finds a 
 	'\n' character, then stops reading the file to return what it found 
 	so far. The file object is responsible for maintaining the current 
 	position in the file after each readline() call, so that it will 
@@ -222,11 +219,12 @@ You can return anything that you can put to the right of an =
 You *can* chain functions within other functions as in the example 
 def add(a, b):
 	return 0 
-what = add(subtract(1,2), divide(3,8))
+do_this = add(subtract(1,2), divide(3,8))
 Even though it might look like programs are run "backwards", e.g. x = 3
 	where 3 is assigned to 'x'. It is better to think of it as inside 
 	out, or even better as 'order of operations'
-Note: int('342') but not int('343.35'), you need to float('343.35')
+Note: int('342') but not int('343.35'), you need to float('343.35') 
+	first, then int(343.35)
 
 22 What Do you Know So Far?
 Copy all Python code and symbols from previous ex. 
@@ -236,8 +234,11 @@ When reading new code you have never seen before, write down everything
 	you have never seen before and save it to look up later. Then go 
 	back and re-read the code with new info. 
 .strip() kills the white space to the left and right of a string. 
+.lstrip() and
+.rstrip() do the same thing except exclusively to the left or right. 
 variable.encode(encoding, errors=errors) in this example encoding and 
-errors come from the argv and is 'utf-8' and 'strict' 
+errors come from the argv and is 'utf-8' and 'strict' (apparently 
+	another option for errors is replace)
 variable.decode(encoding, errors= errors) is the same thing. 
 open("file.txt", encoding="utf-8")
 I had a lot of problems getting the command line getting this to print
@@ -253,9 +254,24 @@ It is kind of crummy that the advice he gives here is fix it yourself,
 	are using. 
 There are many kinds of encoding standards. 
 Switches, Conventions, and Encodings
-American Standard Code for Information Interchange ASCII became the 
+American Standard Code for Information Interchange (ASCII) became the 
 	standard for a long time until we realized there are non-English
 	speakers hidden around the world that like computers also. 
+	
+	
+	
+	
+	
+##### STOPPED REVIEW HERE #############
+	
+	
+	
+	
+	
+	
+	
+	
+	
 ASCII maps a number to a letter '90' = 'Z' (capital) = 1011010 which is 
 	mapped via a lookup table of sorts. 
 In Python Shell
