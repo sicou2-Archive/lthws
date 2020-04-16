@@ -37,10 +37,9 @@ class Room_Entrance(Room):
     
     
     def enter(self):
-        print(Engine.cast)
+        Engine.cast['hero'] = [1,2,3]
         print('It works')
-        next_room = 'antichamber'
-        return next_room, Engine.cast # THIS RETURN SHOULD CHANGE TO THE REAL
+        return 'antichamber' # THIS RETURN SHOULD CHANGE TO THE REAL
             # NEXT ROOM
 
 class Room_Antichamber(Room):
@@ -146,14 +145,15 @@ class Engine(object):
     
     def __init__(self, game_map):
         self.game_map = game_map
-        self.cast = {} # cast is a list and characters should be a dict
+        Engine.cast = {} # cast is a list and characters should be a dict
     
     def play(self):
         current_room = self.game_map.opening_room()
         last_room = self.game_map.next_room('end_game')
                 
         while current_room != last_room: 
-            next_room_name, self.cast = current_room.enter()
+            next_room_name = current_room.enter()
+            print(Engine.cast)
             current_room = self.game_map.next_room(next_room_name)
             
         current_room.enter()
