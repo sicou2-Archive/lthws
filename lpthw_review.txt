@@ -256,22 +256,7 @@ There are many kinds of encoding standards.
 Switches, Conventions, and Encodings
 American Standard Code for Information Interchange (ASCII) became the 
 	standard for a long time until we realized there are non-English
-	speakers hidden around the world that like computers also. 
-	
-	
-	
-	
-	
-##### STOPPED REVIEW HERE #############
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	speakers hidden around the world that like computers also. 	
 ASCII maps a number to a letter '90' = 'Z' (capital) = 1011010 which is 
 	mapped via a lookup table of sorts. 
 In Python Shell
@@ -289,12 +274,12 @@ In Python Shell
 ASCII coded characters using one byte at a time. One byte can only hold 
 	256 numbers. 
 This is where Unicode comes in. 32 bits in encode a Unicode character. 
-	4 bytes; This is great since it is not limited in the slightest, 
-	however there is a lot of wasted space, even with using 2 bytes. 
-	Thus, the solution was to use the most common characters using 8 
-	bits, and escape in to the larger numbers when needed to encode 
-	other characters. Python convention is UTF-8; Unicode Transformation
-	Format 8 Bits. 
+	8 bytes (4,294,967,295); This is great since it is not limited in 
+	the slightest, however there is a lot of wasted space, even with 
+	using 2 bytes. Thus, the solution was to use the most common 
+	characters using 8 bits, and escape in to the larger numbers when 
+	needed to encode other characters. Python convention is UTF-8; 
+	Unicode Transformation Format 8 Bits. 
 If you have raw bytes, you need to .decode() to get the string, and if 
 	you have a string you need to .encode(). The mnemonic for this is 
 	DBES "deebess", Decode Bytes, Encode Strings. 
@@ -313,13 +298,15 @@ This is another test exercise, nothing new is presented
 
 25 Even More Practice
 Here we solidified calling user defined functions. Created a file 
-	library and imported it in to the Python Console and played with the
+	library and imported it in to the Python Shell and played with the
 	lib in there. 
 def thing()
 	'''Triple quotes in a def will cause Python to see it as 
 	documentation for that function. Accessible through 
 	'python help thing()' in this case. The triple quotes seem to be 
 	called 'documentation comments'. 
+		This looks like it can be done for import Modules, Classes, and
+			functions. IT SHOULD BE DONE FOR ALL OF THEM
 .split(' ') <- splits a string up in to a list, in this cast the split
 	delineator it the ' ', but anything can be used here. 
 sorted(variable) <- temp sorts the words alphabetically
@@ -347,6 +334,7 @@ Instead of import ex25 give from ex25 import * (wildcard) to prevent
 	having to type the ex25 in ex25.function_in_ex25() all of the time.
 	I do know that this is not technically considered best practice 
 	since it is not technically explicit. 
+	NOTE: It is *NOT* best practice and should be avoided. 
 
 26 Congratulations, Take a Test!
 Nothing to add here, it is just a test. 
@@ -431,11 +419,12 @@ The colon : at the end of control-flow statements (if, elif, else, etc)
 	to treat it that way. Do not forget the :. 
 If you do not indent properly you end up with errors and Logical Errors
 elif is a way to follow an initial if statement with additional 
-	conditionals, you can have as many as you want. 
+	conditionals, you can have as many as you need/want. 
 else: is a catch all that will run if everything above it is False
 	This can be useful, but also dangerous, since it will run when you 
 	have a Logical Error in the above statements and can be hard to 
 	catch.
+		There can also be security issues. 
 For all of these control statements, only one of them will ever run 
 	until a new block of if statements are run. 
 	
@@ -448,6 +437,7 @@ Be careful not to nest too deeply. If you have to go more than 2 or 3
 	deep you probably can do it another way that is better, for example
 	calling a different function. 
 To evaluate if a number is between two numbers there are a few ways:
+	Here be a number between 1 through 9
 	0 < x < 10
 	1 <= x < 10
 	x in range(1,10)
@@ -457,8 +447,8 @@ A for-loop needs a way to store the results of a loop somewhere, and
 	usually this is with a list. 
 list = [1, 2, 3, 4,] or ['dog', 'cat', 1, True'] 
 	lists require square brackets
-for a_temp_variable in an_iterable_list:
-	do_things()
+for a_temp_variable in an_iterable_thing:
+	do_something()
 range([int], int, [int]) 
 	([starting index], index to stop before, [int to interate by])
 Range is an immutable sequence type
@@ -494,6 +484,15 @@ Since you can pass diferent things to .exit() which exit with a non-zero
 	return raises an exception, you can ultimately use the exceptions 
 	to try: except: differnt situations you run in to. It seems that it
 	uses signed ints here. Though I am not 100% positive with that
+	
+	
+	
+##### STOPPED HERE NEED TO LOOP UP HOW TO USE EXIT CODES IN PYTHON
+	
+	
+	
+	
+	
 He also uses a couple of flag variables in this example. 
 I do know that I do need to do a better job of the def fun(args):
 	and that the things being passed to them not needing to match and 
