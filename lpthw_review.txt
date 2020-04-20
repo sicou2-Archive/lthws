@@ -503,9 +503,6 @@ Rules for if-statements
 	and dies, just like we did in the last exercise. This will find many
 	errors.
 	NOT (BCL): WE UM... NEVER USED DIE IN THE PREVIOUS EXERCISE
-	
-	######## STOPPED HERE ###########
-	
 3 Never nest if-statements more than two deep and always try to do them 
 	one deep.
 4 Treat if-statements like paragraphs, where each if-elif-else grouping 
@@ -675,7 +672,7 @@ The opening "explanation" is how the variable you are using when calling
 >>> class Thing(object):
 		def test(self, message): <--- gotta have the self here else 
 									  gonna have a bad time
-			message = "Howdy dammit!"
+			message = "Howdy dammit!" #This line not actually needed
 			print(message)
 a = thing()
 a.test("Howdy!")
@@ -742,12 +739,14 @@ Mapping (associating) is *the* key concept in a dictionary.
 'gypsy'
 
 if assigning variable = a_dict.get('pupper') and it returns None
-	You can use an if statement to do something with that facts
+	You can use an if statement to do something with that fact
 	if variable == False:
 		do_a_thing
 .get('key'[,default]) can use default in place of an if statement like 
 	above. When defaulting to None, it will never raise a KeyError
-dicts are another common Data Structure
+		 The [,default] is an else statement, get 'key' if not key do
+			a thing. 
+dicts are another super common Data Structure.
 
 40 Modules, Classes, and Objects
 Python is an Object-Oriented Programming Language
@@ -757,8 +756,11 @@ Classes let you structure software that can add consistancy to programs
 Zed does not like OOP. 
 The idea of 'get X from Y' is important
 Modules, they are a 
-	1 A Python file with some functions or variables in it. 
+	1 A Python file with some classes, functions or variables in it. 
 	2 That can be imported
+	
+#### STOPPED HERE ####	
+	
 	3 And access the functions or variables of with the . operator
 import module_to_use_things_from
 *** REMEMBER TO USE module_to_use_things_from.function_you_need() 
