@@ -72,10 +72,8 @@ class Room(object):
 # THIS IS A USELESS CLASS, WHEN YOU RETURN A ROOM THAT IS NOT A ROOM
 # YOU DO NOT COME TO THE BASE ROOM  
 # MAYBE IF RETURN NONE. TEST THIS LATER
-    def enter(self): # 
-        print("ENTER THE ROOM THAT IS NOT A ROOM, THINGS ARE"
-            "BROKEN")
-        
+    def enter(self): 
+        print("""ENTER THE ROOM THAT IS NOT A ROOM, THINGS ARE BROKEN""")
         exit(1)        
     
   
@@ -101,8 +99,6 @@ class Room_Entrance(Room):
             Engine.cast['hero'] = hero
             
         try:   
-        #Note(BCL): LOCKOUT MAYBE NEEDS TO BE INSIDE CAST, 
-        # FEWER OBJECTS TO PASS AROUND
             Engine.cast['lockout']
         except KeyError:
             Engine.cast['lockout'] = {
@@ -114,7 +110,7 @@ class Room_Entrance(Room):
         
     def enter(self):
 
-        print('It works')
+        print(dedent("""THIS NEEDS THE OPENING STORY"""))
         return 'antichamber' 
 
 class Room_Antichamber(Room):
@@ -132,8 +128,9 @@ class Room_Antichamber(Room):
             # Check to see if Goblin is still alive when coming from 
             # another room
             
-            print('A goblin is here and attacks.'
-                '\n1 Engage in combat 2 Run')
+            print(dedent("""THIS NEEDS BETTER STORY A goblin is here and 
+                attacks.\n1 Engage in combat 2 Run
+                """))
 
             i = 0
             while True:    
@@ -142,26 +139,43 @@ class Room_Antichamber(Room):
                 action = input('> ')
                
                 if action == '1': 
-                    Engine.fight(Engine.cast['hero'], Engine.cast['goblin'])
-                    print('Above the body of your foe, you look '
-                    'around.')
+                    Engine.fight(
+                        Engine.cast['hero'], 
+                        Engine.cast['goblin']
+                        )
+                    print(
+                        """
+                        Above the body of your foe, you look around.
+                        """
+                        )
                     break
                 elif action == '2':
-                    print('You run from the room and go looking for '
-                    'help to continue the fight.')
+                    print(
+                    """
+                    You run from the room and go looking for help to 
+                    continue the fight.
+                    """
+                    )
                     return 'end_game'
                         # DOUBLE CHECK THIS IS CORRECT RETURN
                 elif i > 3:
-                    print('Goblin attacks while you stare at him.')
+                    print(
+                        """
+                        The Goblin attacks while you stare at him.
+                        """
+                        )
                     return 'end_game'
                 else:
-                    print('He looks mean, do something! Quick!')
+                    print("""He looks mean, do something! Quick!""")
                     i += 1            
         
         while True:
             
-            print ('You see three doors. \nChoose a door or rest: '
-                '\n1 Left, 2 Center, 3 Right, 4 Rest a moment') 
+            print (
+                """You see three doors. \nChoose a door or rest: \n1 
+                Left, 2 Center, 3 Right, 4 Rest a moment
+                """
+                ) 
                     # List of decisions after fight
             
             choice = input('> ')
@@ -169,9 +183,12 @@ class Room_Antichamber(Room):
             if choice == '1': 
                 if Engine.cast['lockout']['chest_room'] == 0:
                     # THIS NEEDS TO BE VERIFIED THAT IT WORKS
-                    print('There is no reason to go back in there. '
-                        '\nChoose a different room: \n'
-                        '2 Center, 3 Right, 4 Rest a moment')
+                    print(
+                        """There is no reason to go back in there. 
+                        \nChoose a different room: \n2 Center, 3 Right, 
+                        4 Rest a moment
+                        """
+                        )
                             # THESE CHOICES NEED TO BE VERIFIED THEY 
                             # MAKE SENSE
                     continue
@@ -179,9 +196,12 @@ class Room_Antichamber(Room):
                     # DOUBLE CHECK THIS RETURN IS CORRECT
             elif choice == '2': 
                 if Engine.cast['lockout']['slime_room'] == 0:
-                    print('There is no reason to go back in there. '
-                        '\nChoose a different room: \n'
-                        '1 Left, 3 Right, 4 Rest a moment')
+                    print(
+                        """There is no reason to go back in there. 
+                        \nChoose a different room: \n1 Left, 3 Right, 4 
+                        Rest a moment
+                        """
+                        )
                             # THESE CHOICES NEED TO BE VERIFIED THEY 
                             # MAKE SENSE
                     continue
@@ -195,8 +215,11 @@ class Room_Antichamber(Room):
             elif choice == '4':
                 Engine.rest(Engine.cast['hero'])
             else: 
-                print('Moving on is the only hope for you now. Choose a'
-                ' room:\n1 Left, 2 Center, 3 Right, 4 Rest a moment')      
+                print(
+                    """Moving on is the only hope for you now. Choose a
+                    room:\n1 Left, 2 Center, 3 Right, 4 Rest a moment
+                    """
+                    )      
  
 #        print('Antichamber')
 #        return 'end_game'
