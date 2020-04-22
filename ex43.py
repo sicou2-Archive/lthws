@@ -59,6 +59,11 @@ from sys import exit
 #common in each room, i.e. rest 
 
 
+
+###STOPPED AT LINE 37, TRYING TO GET ANITROOM IN INHERIT CAST FROM ROOM
+# CLASS
+
+
 #_____________ROOM________________________
 
 
@@ -73,29 +78,6 @@ class Room_Entrance(Room):
 
 
 #ADD TO STORY LOOKING FOR JEWELS
-    def enter(self):
-
-        try:
-            Engine.cast['hero']
-        except KeyError:
-            hero = Engine.character(10, 1, 1, 1,'hero', 10, 0)
-            Engine.cast['hero'] = hero
-            
-        try:   
-            Engine.cast['lockout']
-        except KeyError:
-            Engine.cast['lockout'] = {
-                'chest_room': 1,
-                'slime_room': 1,
-                'alter_room' : 1,
-                'alter': 1,
-                } # 1 IS OPEN, 0 IS LOCKED OUT 
-                
-                
-        print("THIS NEEDS THE OPENING STORY")
-        return 'antichamber' 
-
-
 class Room_Antichamber(Room):
 
 
@@ -112,41 +94,16 @@ class Room_Antichamber(Room):
             # Check to see if Goblin is still alive when coming from 
             # another room
             
-            
-
-            print("THIS NEEDS BETTER STORY A goblin is here and "
-                "attacks.\n1 Engage in combat 2 Run")
-
             i = 0
             while True:    
                 # This is the Goblin fight()
                 
                 action = input('> ')
                
-                if action == '1':
-                    next_room = Engine.fight(
-                        Engine.cast['hero'], 
-                        Engine.cast['goblin'],
-                        'antichamber'
-                        )
-
-                    return next_room
-                elif action == '2':
-                    print("You run from the room and go looking for "
-                        "help to continue the fight.")
-                    return 'end_game'
-                        # DOUBLE CHECK THIS IS CORRECT RETURN
-                elif i > 3:
-                    print("The Goblin attacks while you stare at him.")
-                    return 'end_game'
-                else:
-                    print("He looks mean, do something! Quick!")
                     i += 1            
         
         while True:
             
-            print("You see three doors. \nChoose a door or rest: \n1" 
-                "Left, 2 Center, 3 Right, 4 Rest a moment") 
                     # List of decisions after fight
             
             choice = input('> ')
@@ -154,9 +111,6 @@ class Room_Antichamber(Room):
             if choice == '1': 
                 if Engine.cast['lockout']['chest_room'] == 0:
                     # THIS NEEDS TO BE VERIFIED THAT IT WORKS
-                    print("There is no reason to go back in there. "
-                        "\nChoose a different room: \n2 Center, 3 "
-                        "Right, 4 Rest a moment")
                             # THESE CHOICES NEED TO BE VERIFIED THEY 
                             # MAKE SENSE
                     continue
@@ -164,10 +118,6 @@ class Room_Antichamber(Room):
                     # DOUBLE CHECK THIS RETURN IS CORRECT
             elif choice == '2': 
                 if Engine.cast['lockout']['slime_room'] == 0:
-                    print("There is no reason to go back in there." 
-                        "\nChoose a different room: \n1 Left, 3 Right, "
-                        "4 Rest a moment"
-                        )
                             # THESE CHOICES NEED TO BE VERIFIED THEY 
                             # MAKE SENSE
                     continue
@@ -181,13 +131,6 @@ class Room_Antichamber(Room):
             elif choice == '4':
                 Engine.rest(Engine.cast['hero'])
             else: 
-                print("Moving on is the only hope for you now. Choose a"
-                    "room:\n1 Left, 2 Center, 3 Right, 4 Rest a moment")      
-
-
-class Room_Chest(Room):
-
-    def enter(self):
         
         while True: 
         
@@ -258,6 +201,7 @@ class Room_Chest(Room):
 class Room_Slime(Room):
 
     def enter(self):
+
         
         print('Enter and a Slime is quietly digesting a large body. 1 '
             'Attack the Slime, 2 Taunt the Slime, 3 Quietly back out of'
@@ -708,15 +652,7 @@ class Room_End_Game(Room):
 
     def enter(self):
     
-### THIS FEELS LIKE IT SHOULD HAVE A TRY EXCEPT TO CLEAN IT UP A BIT
 
-# HOW CAN I 'RESET THE STACK' AND START A NEW GAME?
-
-        print('Game over man. Game over! Play again? "y/n"')
-        choice = input('> ')
-        if choice == 'y':
-            Engine.cast = {}
-            return 'entrance'
         elif choice == 'n':
            exit(1)
         else:
@@ -724,8 +660,7 @@ class Room_End_Game(Room):
                 print('Would you like to play again? "y/n"')
                 choice = input('> ')
                 if choice == 'y':
-                    Engine.cast = {}
-                    return 'entrance'
+
                 elif choice == 'n':
                     exit(1)
                 else:
@@ -771,25 +706,22 @@ class Items(object):
  
 class Engine(object):
 
-    cast = {} 
-        # This is a class variable for the cast of the game and the room 
-        # lockout status
+
     
     def __init__(self, game_map):
         self.game_map = game_map
+    #    Engine.cast = {} # cast is a list and characters should be a 
+                        # dict
     
     def play(self):
         current_room = self.game_map.opening_room()
-#        last_room = self.game_map.next_room('end_game')
-# THIS IS COMMENTED OUT DUE TO END GAME EXITING OR RETURNING TO START
-                
-        while current_room:# != last_room: 
+
             next_room_name = current_room.enter()
             current_room = self.game_map.next_room(next_room_name)
             
         current_room.enter()
      
-    def fight(hero_stats, enemy_stats, win_next_room): 
+
        # EXPAND COMBAT FOR MORE INFO AND !FUN!
         i = 0   
         hero_stats[6] = 0
@@ -808,27 +740,14 @@ class Engine(object):
                     return 'end_game'       
                 elif enemy_stats[0] <= 0:
                     print(f'You slay the enemy {enemy_stats[4]}')
-                    print("Above the body of your foe, you look "
-                    "around.") 
-                    # NOT SUPER SURE THIS FITS HERE NEED TO TEST
-                    enemy_stats[3] = 0
-                    return win_next_room
-                    #I do not think I need to return stats any more. 
-                    #return (hero_stats, enemy_stats)
+
                 else:
                     print('The combat continues!')
             elif action == '2':
                 print('You retreat from the battle!') 
                     # NOTE(BCL): THIS NEEDS TO RETURN TO A PREVIOUS ROOM 
                     # OR LEAVE IF IN ANTI-C
-                    # THERE IS A BUG HERE THAT YOU DO NOT RETURN END GAME
-                return 'end_game'
-            elif i == 4:
-                print('You block and block the attacks coming from your'
-                ' foe, eventually, you are overwhelmed.')
-                    # THINK THE SAME BUG IS HERE WHERE YOU DO NOT RETURN TO 
-                    # END GAME
-                return 'end_game'
+
             else:
                 print('Do not hesitate! Do something, anything!')
                 i +=1
@@ -865,13 +784,11 @@ class Engine(object):
             print("You already feel as good as you are going to feel. "
             "Better get a move on!")
         else:
-            print("You take a moment to catch your breath. You feel "
-            "like you can soldier on!")
+
             Engine.cast['hero'][6] = 1
                 # SET RESTED FLAG TO RESTED
             Engine.cast['hero'][0] = hero[5]
                 # SET HERO HEALTH TO MAX HEALTH
-
 
 # _______________MAP_____________________________
 
