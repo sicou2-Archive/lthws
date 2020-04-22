@@ -503,9 +503,6 @@ Rules for if-statements
 	and dies, just like we did in the last exercise. This will find many
 	errors.
 	NOT (BCL): WE UM... NEVER USED DIE IN THE PREVIOUS EXERCISE
-	
-	######## STOPPED HERE ###########
-	
 3 Never nest if-statements more than two deep and always try to do them 
 	one deep.
 4 Treat if-statements like paragraphs, where each if-elif-else grouping 
@@ -675,7 +672,7 @@ The opening "explanation" is how the variable you are using when calling
 >>> class Thing(object):
 		def test(self, message): <--- gotta have the self here else 
 									  gonna have a bad time
-			message = "Howdy dammit!"
+			message = "Howdy dammit!" #This line not actually needed
 			print(message)
 a = thing()
 a.test("Howdy!")
@@ -742,12 +739,14 @@ Mapping (associating) is *the* key concept in a dictionary.
 'gypsy'
 
 if assigning variable = a_dict.get('pupper') and it returns None
-	You can use an if statement to do something with that facts
+	You can use an if statement to do something with that fact
 	if variable == False:
 		do_a_thing
 .get('key'[,default]) can use default in place of an if statement like 
 	above. When defaulting to None, it will never raise a KeyError
-dicts are another common Data Structure
+		 The [,default] is an else statement, get 'key' if not key do
+			a thing. 
+dicts are another super common Data Structure.
 
 40 Modules, Classes, and Objects
 Python is an Object-Oriented Programming Language
@@ -757,7 +756,7 @@ Classes let you structure software that can add consistancy to programs
 Zed does not like OOP. 
 The idea of 'get X from Y' is important
 Modules, they are a 
-	1 A Python file with some functions or variables in it. 
+	1 A Python file with some classes, functions or variables in it. 
 	2 That can be imported
 	3 And access the functions or variables of with the . operator
 import module_to_use_things_from
@@ -769,7 +768,7 @@ import module_to_use_things_from
 With modules you can import functions *AND* variables
 You can almost think of Modules and dicts as similar things (though 
 	different)
-Very common patter in Python
+Very common pattern in Python
 	1 Take key=value style container
 	2 Get something out if it by the key's name
 With a dict the syntax is [key]
@@ -824,17 +823,20 @@ those as needed. thing1 thing2 thing3 each with their own properties.
 I am still having trouble seeing how this applies to his game in 43 but
 I am sure it will come. 
 
-class Cls_Name(object): #CapCase names
+class ClsName(object): #CapCase names
 				# (object) is optional and not in the Python 
 				# documentation
 				
 	def __init__(self, arg1, arg2) #__init__ seems to construct the 
-		# object the class is building. The self part is what you call 
-		# in the class when you want to use the object itself (thing in 
-		# thing.apple()). The args seem to follow the standard arg rules
-		# from functions except they need to be defined in the class 
-		# blueprint so they can be assigned internally from the args 
-		# that were passed from the initial call. 
+		#object the class is building. 
+		#    NOTE: __init__ is getting the passed parameters ready to be
+		#	     used *inside* the class.
+		#The self part is what you call in the class when you want to 
+		#use the object itself (thing in thing.apple()). The args seem 
+		#to follow the standard arg rules from functions except they 
+		#need to be defined in the class blueprint so they can be 
+		#assigned internally from the args that were passed from the 
+		#initial call. 
 		self.arg1 = arg1
 		self.arg2 = arg2
 		
@@ -842,8 +844,8 @@ class Cls_Name(object): #CapCase names
 		doing = thing + arg1
 		print(doing)
 		
-In this example to creat a new object for Cls_Name:
->>> thing = Class(arg1, arg2)
+In this example to creat a new object for ClsName:
+>>> thing = ClsName(arg1, arg2)
 
 I think at this point I have a good handle on how to build a class, but 
 	not any clue at all on how to properly use them. This returns back 
@@ -856,7 +858,7 @@ This is more of both a hey look out what is happening here and a
 	as to how for loops work and a way to use them. 
 The self in __init__ is pythons way of you telling Python that you mean
 	the instance attribute (for example self.tangerine) and not some 
-	other version of tangerine. 
+	other instance of the variable tangerine. 
 Just to hammer it home you will use self.tangerine in the class 
 	constructor but thing.tangerine in the body of the code. 
 
@@ -867,7 +869,7 @@ Word Drills
 class - Tell Python to make a new type of thing. 
 object - Two meanings: the most basic type of thing, and any instance of 
 	some thing. 
-Instance - What you get when you tell Python to create a class
+Instance - What you get when you tell Python to create from a class
 def - How you define a function inside a class
 self - Inside the functions in a class, self is a 
 	variable for the instance/object being accessed
@@ -903,7 +905,7 @@ In addition to the flash cards for each of these sections do Combined
 	
 Ex41 code:
 There is actually some pretty neat stuff happeneing in this code. 
-from urllib.request import urlopen
+>>> from urllib.request import urlopen
 	urllib - is a package that collects several modules for working with 
 		URLs
 	.request - is for opening and reading URLs
@@ -913,14 +915,14 @@ from urllib.request import urlopen
 			to urllib.request.urlopen; only need to call urlopen to get
 			in to the goodies inside this function. 
 There is a *lot* happening in this code that is new.
-for word in urlopen(WORD_URL).readlines(): 
-# here we are looping through the 'urlopen' with the site given to 
-#WORD_URL by each line via .readlines()
-    WORDS.append(str(word.strip(), encoding="utf-8"))
+>>> for word in urlopen(WORD_URL).readlines(): 
+#here we are looping through WORD_URL via 'urlopen' with the site 
+#given to WORD_URL by each line via .readlines()
+>>>    WORDS.append(str(word.strip(), encoding="utf-8"))
 # with this we are taking each 'word line' stripping the white space
 # ensuring that the encoding is utf-8 and then turning it in to a 
-# string, from there that str 'word' is being appended to the empty but 
-# not for long list of WORDS (a global variable)
+# string, from there that str 'word' is being appended to the (for now) 
+# empty list of WORDS (a global variable)
 	
 def convert(snippet, phrase): 
     # convert takes two arguments 
@@ -976,6 +978,8 @@ try:
     while True:
         snippets = list(PHRASES.keys()) 
             #snippets becomes a list of the keys from PHRASES
+			#NOTE: .keys() is redundant here since a dict defaults to 
+				#iterating over the keys
         random.shuffle(snippets)
             # this just shuffles snippets
         
@@ -985,7 +989,7 @@ try:
                 # calling the shuffled list of keys to return the dict 
                 #value 'phrase'
             question, answer = convert(snippet, phrase) 
-# this sets the returned 'results' list of two object to question , 
+# this sets the returned 'results' list of two object to question, 
 # answer
 
 The code introduces one method for optional args from the command line
@@ -1012,13 +1016,16 @@ The "trick" about how to tell the difference is 'is-a' and 'has-a'.
 def __init__(self, arg_1, arg_2):
 	super(Employee, self).__init__(name)
 	# I think what this does is that it pulls the name from the Person 
-		class and gives it to the Employee object. I wonder if you 
-			update the Person object then the Employee name is updated. 
-				I think that Corey Schafer talks about this, though,
-					not going to waste time on this now. 
+		class and gives it to the Employee object. 
+	# I wonder if you update the Person object then the Employee name is
+		#updated. I think that Corey Schafer talks about this indicating
+		#that yes it does update since you are simply interacting with 
+		#that specific object with *all* of the properties.
 class Cls(object):
 	the object is not required in Python 3, where Python 2 required 
 		something different for the two different types of classes. 
+	However, if you wish to maintain backwards compatability for some 
+		reason, then you should keep (object)
 Also valid:
 class Cls:
 However, apparently it is better to be explicit rather than implicit. 
@@ -1026,9 +1033,11 @@ There is such a thing as 'is-many' and they are 'multiple inheritance'.
 	Apprently these are bad and should be avoided. 
 The self.pet = None in the __init__ of Person specifically sets "that 
 	person" to having None pets by default. 
-super(Employee, self).__init__(name) is how you can run the __ini__ 
+super(Employee, self).__init__(name) is how you can run the __init__ 
 	method of the parent class reliably. People tend to say that it is
 	both good and evil. 
+
+##### STOPPED HERE #####
 
 43 Basic Object-Oriented Analysis and Designing
 See OneNote for the game loop flow chart. It helps. 
