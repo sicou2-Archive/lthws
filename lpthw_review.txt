@@ -923,11 +923,6 @@ There is a *lot* happening in this code that is new.
 # ensuring that the encoding is utf-8 and then turning it in to a 
 # string, from there that str 'word' is being appended to the (for now) 
 # empty list of WORDS (a global variable)
-
-
-
-######## STOPPED REVIEW HERE #######
-
 	
 def convert(snippet, phrase): 
     # convert takes two arguments 
@@ -983,6 +978,8 @@ try:
     while True:
         snippets = list(PHRASES.keys()) 
             #snippets becomes a list of the keys from PHRASES
+			#NOTE: .keys() is redundant here since a dict defaults to 
+				#iterating over the keys
         random.shuffle(snippets)
             # this just shuffles snippets
         
@@ -992,7 +989,7 @@ try:
                 # calling the shuffled list of keys to return the dict 
                 #value 'phrase'
             question, answer = convert(snippet, phrase) 
-# this sets the returned 'results' list of two object to question , 
+# this sets the returned 'results' list of two object to question, 
 # answer
 
 The code introduces one method for optional args from the command line
@@ -1019,13 +1016,16 @@ The "trick" about how to tell the difference is 'is-a' and 'has-a'.
 def __init__(self, arg_1, arg_2):
 	super(Employee, self).__init__(name)
 	# I think what this does is that it pulls the name from the Person 
-		class and gives it to the Employee object. I wonder if you 
-			update the Person object then the Employee name is updated. 
-				I think that Corey Schafer talks about this, though,
-					not going to waste time on this now. 
+		class and gives it to the Employee object. 
+	# I wonder if you update the Person object then the Employee name is
+		#updated. I think that Corey Schafer talks about this indicating
+		#that yes it does update since you are simply interacting with 
+		#that specific object with *all* of the properties.
 class Cls(object):
 	the object is not required in Python 3, where Python 2 required 
 		something different for the two different types of classes. 
+	However, if you wish to maintain backwards compatability for some 
+		reason, then you should keep (object)
 Also valid:
 class Cls:
 However, apparently it is better to be explicit rather than implicit. 
@@ -1033,9 +1033,11 @@ There is such a thing as 'is-many' and they are 'multiple inheritance'.
 	Apprently these are bad and should be avoided. 
 The self.pet = None in the __init__ of Person specifically sets "that 
 	person" to having None pets by default. 
-super(Employee, self).__init__(name) is how you can run the __ini__ 
+super(Employee, self).__init__(name) is how you can run the __init__ 
 	method of the parent class reliably. People tend to say that it is
 	both good and evil. 
+
+##### STOPPED HERE #####
 
 43 Basic Object-Oriented Analysis and Designing
 See OneNote for the game loop flow chart. It helps. 
