@@ -1146,12 +1146,17 @@ Bottom up "tends to be" better once you have a better foundation with
 	over. 
 6 Repeat, moving on to some other piece of the problem. 
 ***BIG THING*** to remember here is that in the game loop, you really
-	only need two things, the current room, that passes the next room to 
-	"the next room". Then the next room sets everything up and gives 
+	only need two things, the current room, that *assigns* the next room
+	to "the next room". Then the next room sets everything up and gives 
 	that back to the current room. This seems to prevent the stack 
 	growth that I had in ex36. 
 from textwrap import detent #Remove any common leading whitespace from 
                             #every line in text. Allows for allign left
                             #when dealing with ''' '''
+	NOTE: I NEVER GOT THIS TO WORK AND GAVE UP ON IT FOR NOW. 
 There really is not a whole lot more new stuff for this chapter. 
+
+NOTE: MAYBE GO BACK AT A LATER DATE AND CODE OUT HIS VERSION OF THE GAME
+	TO SEE WHAT HE COMES UP WITH
+	
 Just the challange to get the game loop up and running. 
