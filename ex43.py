@@ -1,12 +1,6 @@
 from random import randint
 from sys import exit
 
-# NEED TO ADD EXIT TO GAME END POINTS
-
-# MAYBE RUNNING DURING A FIGHT SHOULD HAVE A CHANCE TO DISENGAGE OR 
-#BLOCK OR TAKE DAMAGE ONCE EXPAND COMBAT
-
-
 #https://stackoverflow.com/questions/53017026/how-can-i-access-list-values-in-a-dictionary
 
 
@@ -27,41 +21,37 @@ from sys import exit
                       # |
            # FIND JEWLES IN CRYPT ---> SKELETON ATTACK ---> EXIT DUNGEON
                                                             
-# NOTE(BCL): Consider looking up classes and using them for rooms, 
-# characters, maybe items
-# NOTE(BCL): AM GOING TO USE CLASSES FOR ROOMS AND THE LIKE FOR THE 
-# EX43.PY PROJECT 
 
 # NOTE(BCL): NEED TO COMMENT ALL OF THE DIFFERENT PARTS OF THE CODE FOR
 # FUTURE BCL. HE IS AN ANGRY AND FORGETFUL FOOL
-
-# NOTE(BCL): CHECK TO SEE IF YOU CAN LOCKOUT PLAYER FROM ANTIROOM AFTER 
-# KILLING ORC AND ALL GEAR FROM ANTICHAMBER IS FOUND
 
 # TODO(BCL): CREATE SOME KIND OF GAME BALANCE FOR THE COMBAT BITS
 
 # TODO(BCL): CREATE SOME KIND OF RANDOMIZATION TO COMBAT WITH SOME 
 # FLAVOR TEXT AND INFO AS TO THE STATUS OF THE PLAYER
 
-# NEED TO DOCSTRING ALL CLASSES AND FUNCTIONS
+# TOCO(BCL): NEED TO DOCSTRING ALL CLASSES AND FUNCTIONS
 
-# NEED TO FIX ALL STRINGS TO """ """
+# NEED TO ADD EXIT TO GAME END POINTS
+
+#NEED A KEY TO THE ALTER ROOM
+
+# MAYBE RUNNING DURING A FIGHT SHOULD HAVE A CHANCE TO DISENGAGE OR 
+#BLOCK OR TAKE DAMAGE ONCE EXPAND COMBAT
 
 # Rooms: 
     # enter, exit, go to other rooms you have already gone to/ lockout
         #entrance, antichamber, chest, slime, orc (alter), hallway, crypt, 
         #exit (outside), death/end_game
+
 # Actions: fight, rest, move
+
 # Characters: hero, goblin, orc, bugbear, skeleton, 
+
 # Objects: helmet, sword, gems
 
 #list of [choices, the, player, can, make] since several of them are 
 #common in each room, i.e. rest 
-
-
-
-###STOPPED AT LINE 37, TRYING TO GET ANITROOM IN INHERIT CAST FROM ROOM
-# CLASS
 
 
 #_____________ROOM________________________
@@ -78,6 +68,30 @@ class Room_Entrance(Room):
 
 
 #ADD TO STORY LOOKING FOR JEWELS
+    def enter(self):
+
+        try:
+            Engine.cast['hero']
+        except KeyError:
+            hero = Engine.character(10, 1, 1, 1,'hero', 10, 0)
+            Engine.cast['hero'] = hero
+            
+        try:   
+            Engine.cast['lockout']
+        except KeyError:
+            Engine.cast['lockout'] = {
+                'chest_room': 1,
+                'slime_room': 1,
+                'alter_room' : 1,
+                'alter': 1,
+                }
+                # 1 IS OPEN, 0 IS LOCKED OUT 
+                
+                
+        print("THIS NEEDS THE OPENING STORY")
+        return 'antichamber' 
+
+
 class Room_Antichamber(Room):
 
 
@@ -94,23 +108,49 @@ class Room_Antichamber(Room):
             # Check to see if Goblin is still alive when coming from 
             # another room
             
+            
+
+            print("THIS NEEDS BETTER STORY A goblin is here and "
+                "attacks.\n1 Engage in combat 2 Run")
+
             i = 0
             while True:    
-                # This is the Goblin fight()
                 
                 action = input('> ')
                
+                if action == '1':
+                    next_room = Engine.fight(
+                        Engine.cast['hero'], 
+                        Engine.cast['goblin'],
+                        'antichamber'
+                        )
+
+                    return next_room
+                elif action == '2':
+                    print("You run from the room and go looking for "
+                        "help to continue the fight.")
+                    return 'end_game'
+                        # DOUBLE CHECK THIS IS CORRECT RETURN
+                elif i > 3:
+                    print("The Goblin attacks while you stare at him.")
+                    return 'end_game'
+                else:
+                    print("He looks mean, do something! Quick!")
                     i += 1            
         
         while True:
             
-                    # List of decisions after fight
+            print("You see three doors. \nChoose a door or rest: \n1 " 
+                "Left, 2 Center, 3 Right, 4 Rest a moment") 
             
             choice = input('> ')
             
             if choice == '1': 
                 if Engine.cast['lockout']['chest_room'] == 0:
                     # THIS NEEDS TO BE VERIFIED THAT IT WORKS
+                    print("There is no reason to go back in there. "
+                        "\nChoose a different room: \n2 Center, 3 "
+                        "Right, 4 Rest a moment")
                             # THESE CHOICES NEED TO BE VERIFIED THEY 
                             # MAKE SENSE
                     continue
@@ -118,19 +158,25 @@ class Room_Antichamber(Room):
                     # DOUBLE CHECK THIS RETURN IS CORRECT
             elif choice == '2': 
                 if Engine.cast['lockout']['slime_room'] == 0:
+                    print("There is no reason to go back in there." 
+                        "\nChoose a different room: \n1 Left, 3 Right, "
+                        "4 Rest a moment")
                             # THESE CHOICES NEED TO BE VERIFIED THEY 
                             # MAKE SENSE
                     continue
                 return 'slime'
             elif choice == '3': 
                 return 'alter'
-                    # MAYBE NEED TO ADD A KEY TO ENTER THIS ROOM
-                    # GIFT KEY FOR FIGHTING AND NOT FIGHTING SLIME
-                    # GIFT SWORD FOR FIGHTING SLIME? STILL NOT SURE HOW
-                    # I FEEL ABOUT FORCING THAT FIGHT.
             elif choice == '4':
                 Engine.rest(Engine.cast['hero'])
             else: 
+                print("Moving on is the only hope for you now. Choose a"
+                    "room:\n1 Left, 2 Center, 3 Right, 4 Rest a moment")      
+
+
+class Room_Chest(Room):
+
+    def enter(self):
         
         while True: 
         
@@ -147,9 +193,10 @@ class Room_Antichamber(Room):
                 
                 if lock_test == 1:
                     print('It explodes in your face hurting you!') 
-                    cast['hero'][0] -= randint(1,5) # RANDOM 1-5 DAMAGE 
-                    # TO HERO
-                    cast['hero'][6] = 0 # REMOVES RESTED FLAG
+                    cast['hero'][0] -= randint(1,5) 
+                    # RANDOM 1-5 DAMAGE TO HERO
+                    cast['hero'][6] = 0 
+                    #REMOVES RESTED FLAG
                     
                     if cast['hero'][0] == 0:
                         return 'end_game'
@@ -166,7 +213,7 @@ class Room_Antichamber(Room):
                 else:
                     print('You find a gleaming steel helmet, useful!') 
                     print('You put it on and return to the Antichamber')
-                    Engine.cast['hero'][1] += 1 # +1 to defence
+                    Engine.cast['hero'][1] += 1 # +1 TO defence
                     Engine.cast['lockout']['chest_room'] = 0
                     return 'antichamber'
             elif action == '2':
@@ -175,24 +222,7 @@ class Room_Antichamber(Room):
                 return 'antichamber'
             elif action == '3': 
                 Engine.rest(Engine.cast['hero'])
-                
-                # print('You take a few moments to gather your strength 
-                # and mind. You feel better.')
-                # cast['hero'][0] += 5  
-                # NOTE(BCL): THIS NEED TO BE REST(HERO)
-                # NOTE(BCL): THIS PROBABLY SHOULD NOT 
-                # RETURN TO ANTIC AND SHOULD LOOP TO TOP TO GIVE PICKING
-                # LOCK ANOTHER CHANCE BEFORE LEAVING
-                # NOTE(BCL): DO NOT LOOP THIS UNTIL MAX HP IS INSTALLED 
-                # NOTE(BCL): MAYBE NOT REST IN HERE AT ALL SINCE REST IN 
-                # ANTICHAMBER
-                return 'antichamber'
-                #NOTE(BCL): WITH FIGHT MODULE RANDOM THIS SHOULD RESTORE 
-                #HP TO FULL
-                # THIS SHOULD RETURN TO THE SAME ROOM SO YOU DO NOT 
-                # ACCIDENTALLY MISS THE CHEST
-                # MAKE SURE WHEN RESTING IN OTHER ROOMS THE ENEMY IS 
-                # GONE BEFORE OFFERING REST
+                return 'chest'
             else:
                 print('You should get a move on. What would you like to'
                 ' do?')        
@@ -201,7 +231,6 @@ class Room_Antichamber(Room):
 class Room_Slime(Room):
 
     def enter(self):
-
         
         print('Enter and a Slime is quietly digesting a large body. 1 '
             'Attack the Slime, 2 Taunt the Slime, 3 Quietly back out of'
@@ -217,7 +246,7 @@ class Room_Slime(Room):
                 'Slime.')
                 Engine.cast['slime'] = Engine.character(
                     1, 1, 1, 1, 'slime', 3, 0)
-                        # REBALANCE SLIME AFTER TESTING
+                        #REBALANCE SLIME AFTER TESTING
                 next_room = Engine.fight(
                     Engine.cast['hero'], 
                     Engine.cast['slime'],
@@ -227,7 +256,7 @@ class Room_Slime(Room):
                 'you look at and under the fresh body it had just '
                 'started to eat. You find a sharp sword. You put your '
                 'dagger in to your pack and return to the Antichamber.') 
-                # AND MAYBE ALSO FIND A KEY FOR ORC DOOR
+                #AND MAYBE ALSO FIND A KEY FOR ORC DOOR
                 Engine.cast['hero'][2] += 1 # ATTACK +1
                 Engine.cast['lockout']['slime_room'] = 0 
                     #NO NEED TO COME BACK
@@ -239,12 +268,12 @@ class Room_Slime(Room):
                 print('You quickly grab the sword while stowing your '
                 'dagger and return to the Antichamber before the slime '
                 'can catch you.') 
-                    # NOTE(BCL): MAYBE NOT GIVE SWORD, RATHER JUST KEY, 
-                    # HOWEVER... I LIKE THE WHOLE NOT KILLING JUST TO 
-                    # KILL, SO MAYBE NOT.
+                    #NOTE(BCL): MAYBE NOT GIVE SWORD, RATHER JUST KEY, 
+                    #HOWEVER... I LIKE THE WHOLE NOT KILLING JUST TO 
+                    #KILL, SO MAYBE NOT.
                 Engine.cast['hero'][2] += 1 # ATTACK +1
                 Engine.cast['lockout']['slime_room'] = 0 
-                    # NO NEED TO COME BACK
+                    #NO NEED TO COME BACK
                 return 'antichamber'
             elif action == '3':
                 print('Seemingly content with its current meal, the '
@@ -261,31 +290,88 @@ class Room_Slime(Room):
             else:
                 print('That slime looks like it might almost be done '
                 'digesting that body, you should make a decision before'
-                ' it does. What would you like to do?')
-                    # THIS NEEDS TO BE REWRITTEN TO INCLUDE CHOICES
+                ' it does. What would you like to do?\n1 Attack the '
+                'Slime, 2 Taunt the Slime, 3 Quietly back out of the '
+                'room.')
                 i += 1
 
 
 class Room_Alter(Room):
 
+
     def enter(self):
         
-        ####NEED TO ADD RETURN FROM ROOM_HALLWAY FORCED FIGHT
         try:
             Engine.cast['orc']
         except KeyError:
             orc = Engine.character(1, 1, 1, 1,'orc', 5, 0)
-                # REBALANCE ORC AFTER TESTING
+                #REBALANCE ORC AFTER TESTING
             Engine.cast['orc'] = orc
-        
+
+        if Engine.cast['orc'][3] == 1 and Engine.cast.get(
+            'bugbear',False): 
+            #CHECK TO SEE IF ORC IS ALIVE WHEN COMING FROM ANOTHER ROOM
+            #AND IF BUGBEAR EXISTS
+            print('You see the fierce orc still worshiping at the '
+            'alter. Further in to the room you see the door back to the'
+            ' Antichamber. \n1 Attack the Orc, 2 Attempt to sneak to '
+            'the Antichamber.')
+
+            i = 0
+            while True:            
+                action = input('> ')
+                
+                if action == '1': 
+                    print('You move in to attack the orc as he stands '
+                    'to fight!')
+                    next_room = Engine.fight(
+                    Engine.cast['hero'], 
+                    Engine.cast['orc'],
+                    'alter',
+                    ) 
+                    return next_room
+                elif action == '2': 
+                    print('You sneak towards the Antichamber.')
+                    
+                    sneak_roll = randint(1,4) 
+                    
+                    if sneak_roll == 4: 
+                        print('You hear the Orc\'s prayers trail off. '
+                        'As you look back, you both make eye contact. '
+                        'He roars and raises his sword to attack!')
+                        next_room = Engine.fight(
+                            Engine.cast['hero'], 
+                            Engine.cast['orc'],
+                            'alter',
+                            )
+                        return next_room
+                    else:
+                        print('You silently pad across the room and '
+                        'slip through the still cracked door in to the '
+                        'Antichamber.')
+                        return 'antichamber'
+                    return 'antichamber' 
+                elif i == 3:
+                    print('The Orc glances in your direction. As you '
+                    'make eye contact, the Orc roars and raises his '
+                    'sword to attack!')
+                    next_room = Engine.fight(
+                        Engine.cast['hero'],
+                        Engine.cast['orc'],
+                        'alter',
+                        )
+                    return next_room
+                else: 
+                    print('Hurry! Do something! He might notice you!') 
+                    i += 1
+
         if Engine.cast['orc'][3] == 1: 
             # CHECK TO SEE IF ORC IS ALIVE WHEN COMING FROM ANOTHER ROOM
-            print('As you unlock and enter the door, you see a fierce '
-                'orc worshiping at an alter. Further in to the room you'
-                ' see a dark hallway. \n1 Attack the Orc, 2 Attempt to '
-                'sneak to the hallway, 3 Gently close the door and '
-                'return to the Antichamber.')
-            
+            print('You unlock and open the door and see a fierce orc '
+            'worshiping at an alter. Further in to the room you see a '
+            'dark hallway. \n1 Attack the Orc, 2 Attempt to sneak to '
+            'the hallway, 3 Gently close the door and return to the '
+            'Antichamber.')
             i = 0
             while True:            
                 action = input('> ')
@@ -425,12 +511,12 @@ class Room_Hallway(Room):
             Engine.cast['bugbear'] = bugbear
         
         if Engine.cast['bugbear'][3] == 1:
-            #If Bugbear is alive
+            #IF BUGBEAR IS STILL ALIVE
             i = 0
             while True:
-                print("As you walk down the hallway, suddenly out of the "
-                    "darkness a giant lumbering Bugbear appears out of the "
-                    "darkness. 1 Attack 2 Retreat in to the shadows.")
+                print('As you walk down the hallway, suddenly out of '
+                'the darkness a giant lumbering Bugbear appears out of '
+                'the darkness. 1 Attack 2 Retreat in to the shadows.')
                 action = input("> ")
                       
                 if action == '1':
@@ -444,16 +530,17 @@ class Room_Hallway(Room):
                     return next_room
                 elif action == '2':        
                   
-                    sneak_roll = randint(1,4)
-                    
+                    sneak_roll = 2 # randint(1,4)
+                    # TESTING RETURN TO RANDINT WHEN DONE
                     if sneak_roll == 1:
                         print('It seems he cannot see very well in the '
                         'dark as you disappear back in to the shadows. '
-                        'However, as you hold your breath hoping it turns '
-                        'around and walks away, he begins to sniff the '
-                        'air. He creeps ever closer. You can\'t move!\n He '
-                        'Bumps in to you and jumps back with a shout. '
-                        'Drawing your weapon, you realize it is a fight!')
+                        'However, as you hold your breath hoping it '
+                        'turns around and walks away, he begins to '
+                        'sniff the air. He creeps ever closer. You '
+                        'can\'t move!\n He bumps in to you and jumps '
+                        'back with a shout. Drawing your weapon, you '
+                        'realize it is a fight!')
                         next_room = Engine.fight(
                             Engine.cast['hero'], 
                             Engine.cast['bugbear'],
@@ -462,17 +549,19 @@ class Room_Hallway(Room):
                         return next_room
                     else:
                         print('It seems he cannot see very well in the '
-                            'dark as you disappear back in to the shadows.')
-                        # THIS IS NOT CORRECT SHOULD RETURN SOMETHING HERE 
-                            # IN THE HALLWAY I THINK
+                            'dark as you disappear back in to the '
+                            'shadows.')
+                        #THIS IS NOT CORRECT SHOULD RETURN SOMETHING 
+                        #HERE 
+                        # IN THE HALLWAY I THINK
                     
                         if Engine.cast['orc'][3] == 1:
-                            print('Frozen in the darkness you realize you '
-                            'cannot go back without going back to fight '
-                            'the Orc. You could also rest here a moment '
-                            'and hope the Bugbear does not see you before '
-                            'you are ready. 1 Return to fight the Orc 2 '
-                            'Rest') 
+                            print('Frozen in the darkness you realize '
+                            'you cannot go back without going back to '
+                            'fight the Orc. You could also rest here a '
+                            'moment and hope the Bugbear does not see '
+                            'you before you are ready. 1 Return to '
+                            'fight the Orc 2 Rest') 
                             
                             choice = input('> ')
                             i = 0
@@ -483,41 +572,43 @@ class Room_Hallway(Room):
                                     sneak_roll = randint(1,4)
                                     
                                     if sneak_roll == 1:
-                                        print('While trying to gather your '
-                                        'strength, you hear a low chuckle '
-                                        'as the gruesome smiling Bugbear '
-                                        'emerges from the darkness.')
+                                        print('While trying to gather '
+                                        'your strength, you hear a low '
+                                        'chuckle as the gruesome '
+                                        'smiling Bugbear emerges from '
+                                        'the darkness.')
                                         next_room = Engine.fight(
                                             Engine.cast['hero'], 
                                             Engine.cast['bugbear'],
                                             'crypt',
                                             )
-                                        print('With nothing in your way, '
-                                            'you cautiously advance though '
-                                            'the hallway.')
-                                        #MAYBE ADD A CHANCE TO GO BACK TO THE
-                                        #BUGBEAR?
-                                        #SHOULD MAYBE DO THIS IN ROOM_CRYPT
+                                        print('With nothing in your '
+                                        'way, you cautiously advance '
+                                        'though the hallway.')
+                                        #MAYBE ADD A CHANCE TO GO BACK 
+                                        #TO THE BUGBEAR?
+                                        #SHOULD MAYBE DO THIS IN 
+                                        #ROOM_CRYPT
                                     else: 
                                         Engine.rest(Engine.cast['hero'])
                                         return 'hallway'
                                 elif i == 3:
-                                    print('You feel a sudden jolt in your '
-                                    'neck before you realize out of the '
-                                    'corner of your eye, you see '
-                                    'everything you hope to not see as you '
-                                    'lose conciousness.')
+                                    print('You feel a sudden jolt in '
+                                    'your neck before you realize out '
+                                    'of the corner of your eye, you see'
+                                    ' everything you hope to not see as'
+                                    ' you lose conciousness.')
                                     return 'end_game'
                                 else:
-                                    print('Indecision will get you killed '
-                                    'here, choose!')
+                                    print('Indecision will get you '
+                                    'killed here, choose!')
                                     i += 1
                         else:
                             return 'alter'
                 else:
                     print('Frozen in indecision, the Bugbear sees your '
-                    'wide, terrified eyes and he ruthlessly detatches your '
-                    'head from the rest of your body.')
+                    'wide, terrified eyes and he ruthlessly detatches '
+                    'your head from the rest of your body.')
                     return 'end_game'
         elif Engine.cast['bugbear'][3] == 0:
             print("You walk down the dark hallway, squeezing past the "
@@ -536,15 +627,15 @@ class Room_Crypt(Room):
         except KeyError:
             skeleton = Engine.character(5, 1, 1, 1,'skeleton', 5, 0)
             Engine.cast['skeleton'] = skeleton
-            
 
-        
+
+
         while True:
         
             print('Walk in to an empty chamber with a well kept crypt '
             'and set of stairs leading up to a large door. 1 Inspect '
             'Crypt 2 Go up stairs 3 Rest a moment 4 Return through the '
-            'hallway to the Alter room')       
+            'hallway to the Alter room')
             
             action = input("> ")
             
@@ -552,27 +643,26 @@ class Room_Crypt(Room):
                 Engine.cast['gem']
             except KeyError:
                 gem = 0
-                Engine.cast['gem'] = gem            
+                Engine.cast['gem'] = gem
 
-            
             if action == '1': 
                 print("Move to inspect crypt, see gems. 1 Take gems "
                 "2 Leave them alone")
                 
-                i = 0 # I AM NOT SURE ABOUT THIS LOOP
+                i = 0 
+                #I AM NOT SURE ABOUT THIS LOOP
                 #MAYBE HAVE A STALLING PUNISHMENT TO FORCE SKELLY FIGHT?
                 
                 while i != 1:
                     choice = input("> ")
                     
                     if choice == '1':
-                        Engine.gem = 1
+                        Engine.cast['gem'] = 1
                         print("You take the flawless gems and put them "
                         "in to your pack. As you close the bag you "
                         "look up and see a skeleton rising out of the "
                         "crypt. 1 Attack 2 Run toward the stairs 3 Run "
                         "toward the hallway")
-                        #GEM GET FOR DIFFERENT ENDING?
                         false_choice = input("> ")
                         
                         if false_choice == '1':
@@ -612,7 +702,6 @@ class Room_Crypt(Room):
                 "After a moment pushing, you manage to open the heavy "
                 "stone door and see out in to the wilderness.")
                 return 'outside'
-                 
             elif action == '3': 
                 Engine.rest(Engine.cast['hero'])
                 continue
@@ -650,9 +739,15 @@ class Room_Outside(Room):
 
 class Room_End_Game(Room):
 
+
     def enter(self):
     
-
+### THIS FEELS LIKE IT SHOULD HAVE A TRY EXCEPT TO CLEAN IT UP A BIT
+        print('Game over man. Game over! Play again? "y/n"')
+        choice = input('> ')
+        if choice == 'y':
+            Engine.cast = {}
+            return 'entrance'
         elif choice == 'n':
            exit(1)
         else:
@@ -660,7 +755,8 @@ class Room_End_Game(Room):
                 print('Would you like to play again? "y/n"')
                 choice = input('> ')
                 if choice == 'y':
-
+                    Engine.cast = {}
+                    return 'entrance'
                 elif choice == 'n':
                     exit(1)
                 else:
@@ -707,21 +803,26 @@ class Items(object):
 class Engine(object):
 
 
+    cast = {} 
+        # THIS IS A CLASS VARIABLE FOR CAST AND LOCKOUT STATUS
     
     def __init__(self, game_map):
         self.game_map = game_map
-    #    Engine.cast = {} # cast is a list and characters should be a 
-                        # dict
     
     def play(self):
         current_room = self.game_map.opening_room()
-
+#        last_room = self.game_map.next_room('end_game')
+# THIS IS COMMENTED OUT DUE TO END GAME EXITING OR RETURNING TO START
+# NO NOT REMOVE THIS LINE UNTIL DECISION TO ALWAYS LET PLAYER CHOOSE TO 
+# EXIT THE GAME
+                
+        while current_room:# != last_room: 
             next_room_name = current_room.enter()
             current_room = self.game_map.next_room(next_room_name)
             
         current_room.enter()
      
-
+    def fight(hero_stats, enemy_stats, win_next_room): 
        # EXPAND COMBAT FOR MORE INFO AND !FUN!
         i = 0   
         hero_stats[6] = 0
@@ -740,14 +841,22 @@ class Engine(object):
                     return 'end_game'       
                 elif enemy_stats[0] <= 0:
                     print(f'You slay the enemy {enemy_stats[4]}')
-
+                    print("Above the body of your foe, you look "
+                    "around.") 
+                    # NOT SUPER SURE THIS FITS HERE NEED TO TEST
+                    enemy_stats[3] = 0
+                    return win_next_room
                 else:
                     print('The combat continues!')
             elif action == '2':
                 print('You retreat from the battle!') 
                     # NOTE(BCL): THIS NEEDS TO RETURN TO A PREVIOUS ROOM 
                     # OR LEAVE IF IN ANTI-C
-
+                return 'end_game'
+            elif i == 4:
+                print('You block and block the attacks coming from your'
+                ' foe, eventually, you are overwhelmed.')
+                return 'end_game'
             else:
                 print('Do not hesitate! Do something, anything!')
                 i +=1
@@ -780,20 +889,23 @@ class Engine(object):
     def rest(hero): 
        
         if Engine.cast['hero'][6] == 1: 
-            # 1 FLAG IS ALREADY RESTED NO NEED FOR MORE
+            # 1 FLAG IS ALREADY RESTED NO MORE NEEDED
             print("You already feel as good as you are going to feel. "
             "Better get a move on!")
         else:
-
+            print("You take a moment to catch your breath. You feel "
+            "like you can soldier on!")
             Engine.cast['hero'][6] = 1
                 # SET RESTED FLAG TO RESTED
             Engine.cast['hero'][0] = hero[5]
                 # SET HERO HEALTH TO MAX HEALTH
 
+
 # _______________MAP_____________________________
 
 
 class Map(object):
+
 
     dict_rooms = {
         'entrance': Room_Entrance(),
@@ -808,7 +920,6 @@ class Map(object):
         None: Room(),
         }
     
-
     def __init__(self, start_room):
        self.start_room = start_room
         
@@ -820,7 +931,7 @@ class Map(object):
         return self.next_room(self.start_room)
 
 
-dungeon_map = Map('entrance') # dungeon_map.start_room = 'entrance'
-new_game = Engine(dungeon_map) # new_game.game_map = dungeon_map.start_room = 'entrance'
+dungeon_map = Map('entrance')
+new_game = Engine(dungeon_map)
 new_game.play()
  
