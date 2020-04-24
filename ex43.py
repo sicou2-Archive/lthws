@@ -3,8 +3,9 @@ from sys import exit
 
 #https://stackoverflow.com/questions/53017026/how-can-i-access-list-values-in-a-dictionary
 
-#NOTE(BCL): CURRENT TASK:
-#NEED A KEY TO THE ALTER ROOM
+#NOTE(BCL): #NEED TO ADD \n ALL OVER THE PLACE TO MAKE THINGS MUCH MORE
+#READABLE
+
 
 
 #NEED TO DO STORY CLEAN UP 
@@ -35,6 +36,8 @@ from sys import exit
 
 #NOTE(BCL): CHECK TO SEE IF Engine.cast or new_game.cast IS A BETTER 
 #CALL FOR GETTING THE GAME TO RUN
+
+#NOTE(BCL): CREATE A DYNAMIC PLAYER OPTION SELECTION SYSTEM
 
 #MAYBE RUNNING DURING A FIGHT SHOULD HAVE A CHANCE TO DISENGAGE OR 
 #BLOCK OR TAKE DAMAGE ONCE EXPAND COMBAT
@@ -104,6 +107,7 @@ class Room_Entrance(Room):
                 
                 
         print("THIS NEEDS THE OPENING STORY\n")
+        ## GIVE PLAYER "CHOICE" TO GO IN OR COMEBACK ANOTHER DAY
         return 'antichamber' 
 
 
@@ -158,11 +162,11 @@ class Room_Antichamber(Room):
                     print("He looks mean, do something! Quick!\n")
                     i += 1            
         
+        print("You see three doors. \nChoose a door or rest: \n1 " 
+            "Left, 2 Center, 3 Right, 4 Rest a moment\n") 
+        
         while True:
-            
-            print("You see three doors. \nChoose a door or rest: \n1 " 
-                "Left, 2 Center, 3 Right, 4 Rest a moment\n") 
-            
+
             choice = input('> ')
             
             if choice == '1': 
@@ -205,8 +209,8 @@ class Room_Chest(Room):
         """
         while True: 
         
-            print('You see a chest. 1 Pick lock, 2 Leave alone and '
-                'return to Antichamber, 3 Rest a moment\n')
+            print('You see a locked chest. 1 Pick lock, 2 Leave alone '
+            'and return to Antichamber, 3 Rest a moment\n')
                 # THIS NEEDS A STYLE REWRITE TO MATCH ANTICHAMBER
         
             action = input('> ')
@@ -233,7 +237,7 @@ class Room_Chest(Room):
                 elif 2 <= lock_test and lock_test <= 5:
                     print('Despite your best efforts, you cannot quite '
                     'get the lock to open. It seems like it is '
-                    'broken\n')
+                    'broken.\n')
                     print('You return to the Antichamber empty '
                     'handed.\n')
                     Engine.cast['lockout']['chest_room'] = 0
@@ -294,8 +298,8 @@ class Room_Slime(Room):
                 return next_room
             elif action == '2':
                 print('You taunt the slime and it starts to follow you '
-                'around the room. Much faster than it you quickly flip '
-                'over the fresh body and find a sharp sword.\n')
+                'around the room. Much faster than it, you quickly flip'
+                ' over the fresh body and find a sharp sword.\n')
                 print('You quickly grab the sword while stowing your '
                 'dagger and return to the Antichamber before the slime '
                 'can catch you.\n') 
@@ -669,11 +673,13 @@ class Room_Crypt(Room):
 
         while True:
         
-            print('Walk in to an empty chamber with a well kept crypt '
-            'and set of stairs leading up to a large door. 1 Inspect '
-            'Crypt 2 Go up stairs 3 Rest a moment 4 Return through the '
-            'hallway to the Alter room\n')
-            #THIS NEEDS A REWRITE
+            print('You walk in to a mostly empty chamber. You see a '
+            'well preserved crypt. Across the room you also see a set '
+            ' of stairs leading up to a large stone door.\n1 Inspect '
+            'the Crypt 2 Go up stairs and through the door 3 Rest a '
+            'moment 4 Return through the hallway to the Alter room\n')
+            ### THE RETURN FROM LEAVING THE GEMS ALONE DOES NOT MAKE 
+            ### SENSE HERE
             
             action = input("> ")
             
@@ -684,9 +690,11 @@ class Room_Crypt(Room):
                 Engine.cast['gem'] = gem
 
             if action == '1': 
-                print("Move to inspect crypt, see gems. 1 Take gems "
-                "2 Leave them alone\n")
-                #THIS NEEDS A REWRITE
+                print('You move closer and inspect the crypt. It is '
+                'masterfully crafted in granite and onyx. Laid in the '
+                'stone are dozens of dazzlingly cut gems.\n 1 Take gems'
+                ' 2 Leave them alone and back away from the crypt\n')
+
                 i = 0 
                 #I AM NOT SURE ABOUT THIS LOOP
                 #MAYBE HAVE A STALLING PUNISHMENT TO FORCE SKELLY FIGHT?
@@ -752,7 +760,7 @@ class Room_Crypt(Room):
                     print('You go back through the hallway.\n')
                     return 'alter'
             else: 
-                print("It is time to move on, please make a choice.\n")
+                print("It is time to move on, make a choice.\n")
 
 
 class Room_Outside(Room):
@@ -764,16 +772,16 @@ class Room_Outside(Room):
             print('As you step out in to the light and to safety with '
             'your hard fought treasure, you begin to seriously '
             'consider if adventuring is worth the effort. Maybe you '
-            'should quit while you are rich and open an inn or '
+            'should quit while you are still alive and open an inn or '
             'something.\n')
             return 'end_game'
         else:
             print('As you step out in to the light and to safety, you '
-            'might not have the treasure you entered looking for, but '
-            'you still have your life! You begin to seriously consider '
-            'if adventuring is worth the effort. Maybe you should try '
-            'to get you old job at the stable back. The horses were '
-            'not that bad.\n')
+            'might not have the treasure you were looking for, but you '
+            'still have your life! You begin to seriously consider if '
+            'adventuring is worth the effort. Maybe you should try to '
+            'get you old job back. The stable smelled but the horses '
+            'were not that bad.\n')
             return 'end_game'
 
 
@@ -913,7 +921,7 @@ class Engine(object):
                 print('You attack!\n')
                 hero_stats[0] -= enemy_stats[2]
                 enemy_stats[0] -= hero_stats[2]
-                print(hero_stats, enemy_stats)
+#                print(hero_stats, enemy_stats)
                 
                 if hero_stats[0] <= 0:
                     print('You fall bravely in battle.\n')
@@ -970,11 +978,10 @@ class Engine(object):
         """
         if Engine.cast['hero'][6] == 1: 
             #1 FLAG = IS ALREADY RESTED NO MORE NEEDED
-            print("You already feel as good as you are going to feel. "
-            "Better get a move on!\n")
+            print("You already feel rested. Better get a move on!\n")
         else:
             print("You take a moment to catch your breath. You feel "
-            "like you can soldier on!\n")
+            "ready to soldier on!\n")
             Engine.cast['hero'][6] = 1
                 #SET RESTED FLAG TO RESTED
             Engine.cast['hero'][0] = hero[5]
