@@ -1,62 +1,7 @@
 from random import randint
 from sys import exit
 
-#https://stackoverflow.com/questions/53017026/how-can-i-access-list-values-in-a-dictionary
 
-#NOTE(BCL): #NEED TO ADD \n ALL OVER THE PLACE TO MAKE THINGS MUCH MORE
-#READABLE
-
-
-
-#NEED TO DO STORY CLEAN UP 
-
-#DUNGEON PLAN FOR LATER
-#ANTICHAMBER ROOM
-#      |
-#      |
-#CHEST ROOM  or   SLIME ROOM   or  (LOCKED) ORC ROOM
-#+1 armor       1 Sword and KEY        /  
-#                                    /  
-#                           BUGBEAR HALLWAY    or    ALTER IN ORC ROOM 
-#                              /                           +5 HP                 
-#                            /     
-#           CRYPT IN BUGBEAR ROOM ----> IGNORE CRYPT ----> EXIT DUNGEON
-#                      |
-#                      |
-#           FIND JEWLES IN CRYPT ---> SKELETON ATTACK ---> EXIT DUNGEON
-#                                                           
-
-#NOTE(BCL): NEED TO COMMENT ALL OF THE DIFFERENT PARTS OF THE CODE FOR
-#FUTURE BCL. HE IS AN ANGRY AND FORGETFUL FOOL
-
-#TODO(BCL): CREATE SOME KIND OF GAME BALANCE FOR THE COMBAT BITS
-
-#TODO(BCL): CREATE SOME KIND OF RANDOMIZATION TO COMBAT WITH SOME 
-#FLAVOR TEXT AND INFO AS TO THE STATUS OF THE PLAYER
-
-#NOTE(BCL): CHECK TO SEE IF Engine.cast or new_game.cast IS A BETTER 
-#CALL FOR GETTING THE GAME TO RUN
-
-#NOTE(BCL): CREATE A DYNAMIC PLAYER OPTION SELECTION SYSTEM
-
-#MAYBE RUNNING DURING A FIGHT SHOULD HAVE A CHANCE TO DISENGAGE OR 
-#BLOCK OR TAKE DAMAGE ONCE EXPAND COMBAT
-
-#NEED TO ADD \n ALL OVER THE PLACE TO MAKE THINGS MUCH MORE READABLE
-
-#Rooms: 
-   #enter, exit, go to other rooms you have already gone to/ lockout
-      #entrance, antichamber, chest, slime, orc (alter), hallway, crypt, 
-      #exit (outside), death/end_game
-
-#Actions: fight, rest, move
-
-#Characters: hero, goblin, orc, bugbear, skeleton, 
-
-#Objects: helmet, sword, gems
-
-#list of [choices, the, player, can, make] since several of them are 
-#common in each room, i.e. rest 
 
 
 #_____________ROOM________________________
@@ -671,16 +616,16 @@ class Room_Crypt(Room):
             skeleton = Engine.character(5, 1, 1, 1,'skeleton', 5, 0)
             Engine.cast['skeleton'] = skeleton
 
+        print('You walk in to a mostly empty chamber. You see a well '
+        'preserved crypt. Across the room you see a set of stairs '
+        'leading up to a large stone door.\n1 Inspect the Crypt 2 Go up'
+        ' stairs and through the door 3 Rest a moment 4 Return through '
+        'the hallway to the Alter room\n')
+        ### THE RETURN FROM LEAVING THE GEMS ALONE DOES NOT MAKE 
+        ### SENSE HERE #FIX TEXT FOR LEAVE GEMS ALONE
+
         while True:
         
-            print('You walk in to a mostly empty chamber. You see a '
-            'well preserved crypt. Across the room you also see a set '
-            ' of stairs leading up to a large stone door.\n1 Inspect '
-            'the Crypt 2 Go up stairs and through the door 3 Rest a '
-            'moment 4 Return through the hallway to the Alter room\n')
-            ### THE RETURN FROM LEAVING THE GEMS ALONE DOES NOT MAKE 
-            ### SENSE HERE
-            
             action = input("> ")
             
             try:
@@ -692,14 +637,12 @@ class Room_Crypt(Room):
             if action == '1': 
                 print('You move closer and inspect the crypt. It is '
                 'masterfully crafted in granite and onyx. Laid in the '
-                'stone are dozens of dazzlingly cut gems.\n 1 Take gems'
+                'stone are dozens of dazzlingly cut gems.\n1 Take gems'
                 ' 2 Leave them alone and back away from the crypt\n')
 
-                i = 0 
-                #I AM NOT SURE ABOUT THIS LOOP
-                #MAYBE HAVE A STALLING PUNISHMENT TO FORCE SKELLY FIGHT?
-                
-                while i != 1:
+                i = 0
+ 
+                while True:
                     choice = input("> ")
                     
                     if choice == '1':
@@ -719,8 +662,12 @@ class Room_Crypt(Room):
                                 Engine.cast['skeleton'],
                                 'outside',
                                 )
-                            print("Dead skelly, go up stairs\n")
-                            #THIS NEEDS A REWRITE
+                            print('Your only option now is to climb the'
+                            ' stairs. As you get to the door, you begin'
+                            ' to push open the heavy door. You look up ' 
+                            'and see another set of stairs and begin to'
+                            ' climb.\nYou see a bright light above you '
+                            'as you climb toward it.\n')
                             return next_room
                         elif false_choice == '2' or false_choice == '3':
                             print("You start to run, but you feel a "
@@ -731,20 +678,42 @@ class Room_Crypt(Room):
                                 Engine.cast['skeleton'],
                                 'outside',
                                 )
-                            print("Dead skelly, go up stairs\n")
-                            #THIS NEEDS A REWRITE
+                            print('Your only option now is to climb the'
+                            ' stairs. As you get to the door, you begin'
+                            ' to push open the heavy door. You look up ' 
+                            'and see another set of stairs and begin to'
+                            ' climb.\nYou see a bright light above you '
+                            'as you climb toward it.\n')
                             return next_room
                         else:
                             print("Your indecision costs you your life "
                             "and treasure!\n")
                     elif choice == '2':
                         print("You leave the treasure in its place and "
-                        "go back up to the middle of the room.\n1 "
-                        "Inspect Crypt 2 Go up the stairs 3 Rest a "
-                        "moment\n")
-                        i = 1
-                    elif choice == '3':
-                        Engine.rest(Engine.cast['hero'])
+                        "go return to the middle of the room.\n1 "
+                        "Inspect Crypt 2 Go up the stairs and through "
+                        "the door 3 Rest a moment\n")
+                        break
+                    elif i == 3:
+                        print('You hear a loud crack and turn to see '
+                        'the evil Lich Paul looming behind you. As you '
+                        'freeze in terror his hateful stare glows as a '
+                        'a pair of skeletal arms reach around you from '
+                        'the crypt behind you. You understand now what '
+                        'this dungeon is now and how terrible a mistake'
+                        ' it was to come here. Your last though is that'
+                        ' maybe your unlife as an undead minion will '
+                        'not be as bad as your life working in the '
+                        'stables of the old inn.\n')
+                        return 'end_game'
+                    else:
+                        print('You feel that standing here thinking '
+                        'about what to do is probably not the most '
+                        'intelligent thing that you could be doing with'
+                        ' your time right now. Do something.\n1 Take '
+                        'gems 2 Leave them alone and back away from the'
+                        ' crypt\n')
+                        i += 1
             elif action == '2': 
                 print("You ignore the crypt and move up the stairs. "
                 "After a moment pushing, you manage to open the heavy "
