@@ -1160,3 +1160,134 @@ NOTE: MAYBE GO BACK AT A LATER DATE AND CODE OUT HIS VERSION OF THE GAME
 	TO SEE WHAT HE COMES UP WITH
 	
 Just the challange to get the game loop up and running. 
+
+44 Inheritance versus Composition
+Preface note: Most uses of inheritance can be simplified or replaced 
+	with composition
+Note: Multiple inheritance should be avoided at all costs
+Inheritance is used to indecate that one class will get some or all of 
+	its features from a parent class. 
+This happens implicitly when >>> class Foo(Bar), make a class Foo that
+	inherits from Bar
+This means that any instance of Foo will also behave as if they were 
+	also an instance of Bar
+Three ways that Parent/Classes interacting
+1 Actions on the child imply an action on the parent.
+2 Actions on the child override the action on the parent. 
+3 Actions on the child alter the action on the parent. 
+Implicit inheritance is when the function or attribute called on a child
+	class is not defined and Python then looks up to the Parent class to	
+	call that funcion or attribute.
+>>> son.implicit()
+PARENT implicit()
+pass keyword can be used to tell Python that you yes in fact want an 
+	empty block. Just let it go already!
+Here even though we call son.implicit() it is not currently defined 
+	and Python looks to the Parent class. 
+Override Explicitly - sometimes it can be a problem to have an implicit
+	inheritance. By this I think I can see how his point works here, and
+	that is in looking for bugs or things like that. 
+In order to have the child behave differently you will have to 
+	effectivly replace the functionality if the child. 
+>>> dad = Parent()
+>>> son = Child()
+
+>>> dad.override()
+>>> son.override()
+
+PARENT override()
+CHILD override()
+
+There is a third special case of inheritance and it is altering the 
+	behavior either before the Parent function or after the Parent 
+	function runs. 
+To do this you override the Parent and then call the built-in function 
+	super() (Note: or call super then 'override')
+>>> class Child(Parent)
+>>>     def altered(self):
+>>> 	print("DO THINGS IN CHILD, BEFORE PARENT altered()")
+>>> 	super(Child, self).altered()
+>>> 	print("DO THINGS IN CHILD, AFTER PARENT altered()")
+
+You know what, I think I actually understand what he is saying here. 
+	Hooray!
+
+super() tells Python to use "method resolution order" (MRO) and an 
+	algorithm called C3 to make sure the the order of multiple 
+	inheritance classes is consistant. 
+Note: It also uses this when just working with a Parent/Child 
+	relationship
+
+To define a class with multiple inheritance
+
+>>> class SuperFun(Child, BadStuff)
+>>> 	pass
+
+It is very common to use super().__init__()
+This pulls in init from the Parent and can either before or after, 
+	add additional features to the Child __init__ function. 
+NOTE: I wonder if it is best practice to "alter before", or after? 
+Inheritance is useful, however Composition can be used to do the exact
+	same thing without having to rely on implicit inheritance. 
+Using inheritance two of the three methods require writing new code to 
+	replace or alter functionality. 
+This is basically saying instead of a 'is-a' relationship, we are using
+	a 'has-a' relationship
+	
+>>> class Other(object):
+>>> 	def Exact_Same_as_Parent_In_Example
+>>> 
+>>> class Child(object): #No inheritance
+>>> 	def__init__(self):
+>>> 		self.other = Other() #Pulls in all of Others usefullness
+>>> 	def implicit(self):
+>>> 		self.other.implicit() #We are explicitly brining in implicit
+>>> 	def all_else_is_the_same(self):
+>>> 		pass
+
+The cause of the war here of Inheritance v Composition is one that is 
+	trying to minimize the repitition of code. That is not clean and it
+	is inefficient
+Three guideline on when to use which:
+1 DO NOT use multiple inheritance no matter what. It tends to be too 
+	complex to be reliable. It can take a long time understanding where
+	everything is coming from. 
+2 Use composition when building things out of pieces. Wheel, engine, 
+	seat belt, to build a Car class.
+3 Use inheritance when there are clearly related and reusable pieces 
+	that will fit within a single common concept. Or if you have to due
+	to something that you are useing. 
+As always do not be a slave to rules but need to have the expertise to 
+	know when to break them. 
+Know PEP8
+
+
+
+
+
+
+
+
+
+45 You Make A Game
+
+46 A Project Skeleton
+
+47 Automated Testing
+
+48 Advanced User Input
+
+49 Making Sentences
+
+50 Your First Website
+
+51
+
+52
+
+Next Steps
+
+Advice from an Old Programmer
+
+Appendix Command Line Crash Course
+
