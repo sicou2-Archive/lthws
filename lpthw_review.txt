@@ -1165,7 +1165,7 @@ Just the challange to get the game loop up and running.
 Preface note: Most uses of inheritance can be simplified or replaced 
 	with composition
 Note: Multiple inheritance should be avoided at all costs
-Inheritance is used to indecate that one class will get some or all of 
+Inheritance is used to indicate that one class will get some or all of 
 	its features from a parent class. 
 This happens implicitly when >>> class Foo(Bar), make a class Foo that
 	inherits from Bar
@@ -1182,8 +1182,8 @@ Implicit inheritance is when the function or attribute called on a child
 PARENT implicit()
 pass keyword can be used to tell Python that you yes in fact want an 
 	empty block. Just let it go already!
-Here even though we call son.implicit() it is not currently defined 
-	and Python looks to the Parent class. 
+Here even though we call son.implicit() it is not currently defined in
+	the Child class and Python looks to the Parent class. 
 Override Explicitly - sometimes it can be a problem to have an implicit
 	inheritance. By this I think I can see how his point works here, and
 	that is in looking for bugs or things like that. 
@@ -1246,7 +1246,7 @@ This is basically saying instead of a 'is-a' relationship, we are using
 >>> 		pass
 
 The cause of the war here of Inheritance v Composition is one that is 
-	trying to minimize the repitition of code. That is not clean and it
+	trying to minimize the repetition of code. That is not clean and it
 	is inefficient
 Three guideline on when to use which:
 1 DO NOT use multiple inheritance no matter what. It tends to be too 
@@ -1273,6 +1273,8 @@ Know PEP8
 
 46 A Project Skeleton
 
+#NOSETESTS DOES NOT WORK
+
 47 Automated Testing
 
 48 Advanced User Input
@@ -1281,9 +1283,9 @@ Know PEP8
 
 50 Your First Website
 
-51
+51 Getting Input from a Browser
 
-52
+52 The Start of Your Web Game
 
 Next Steps
 
