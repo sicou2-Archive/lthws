@@ -1273,7 +1273,12 @@ Know PEP8
 
 46 A Project Skeleton
 
-#NOSETESTS DOES NOT WORK
+### NEED TO LEARN ABOUT 
+# PIP
+# VIRTUALENV
+# SETUP.PY
+
+# TRYING TO GET test_script.py TO RUN TEST_PROJECT/howdy_dammit.py
 
 47 Automated Testing
 
