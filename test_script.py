@@ -1,4 +1,4 @@
-from test_project import howdy_dammit
+from TEST_PROJECT import howdy_dammit
 
 g = howdy_dammit.print_greeting()
 

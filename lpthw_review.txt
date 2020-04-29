@@ -1261,16 +1261,53 @@ As always do not be a slave to rules but need to have the expertise to
 	know when to break them. 
 Know PEP8
 
-
-
-
-
-
-
-
-
 45 You Make A Game
+Requirements for game:
+1 Different than the one he made
+2 Use more than one file. import the other files. 
+3 One class per room. 
+4 Make sure the game loop works. 
 
+Programming is problem solving. 
+
+Go over your code with a red pen. 
+	Function style
+Functions that are apart of classes are called "methods"
+Working with classes means most of your time you will be making your 
+	instances of them "do things". Consider no naming methods after what
+	they do. Instead consider naming them the "command verb" to go do 
+	that thing. .pop instead of remove_from_end_of_list
+Keep methods and functions short and simple. 
+	Class Style
+Class names should be CamelCase
+Try to not do too much in __init__. It can make them hard to use.
+Functions use _ format for naming. 
+Be consistant with parameter naming order. Do not keep mixing the 
+	order around otherwise it can make using them difficult and 
+	debugging even harder. 
+Try to not use module wide or global variables. Variables should be 
+	as self contained as possible. 
+A foolish consistancy is the hobgoblin of a small mind. 
+"Always, always have 'class Name(object) format or else..."
+	With the sunsetting of Python2, this seems to be less useful now. 
+	Code Style
+Give you code vertical space. It is how the human eye sees things. 
+You should be able to read your code outloud, if it is difficult to do 
+	this then it might be hard to read at all. 
+Imitate other peoples style until you develop your own. 
+Do not be evil about your style when looking at other peoples style. 
+	You style probably sucks too. 
+
+	Good Comments
+People might say your code should be clear enough to not need comments. 
+	Forget that, that is just a silly thing to say. 
+Use comments to describe why you are doing something not what you are
+	doing. This what you are doing is right there in the code. 
+DOCSTRING about what someone can do with that class or function can be
+	really helpful for other people (or you) in the future. 
+Too many comments means you have to maintain those comments. No comments 
+	are better than bad comments. 
+	
 46 A Project Skeleton
 
 ### NEED TO LEARN ABOUT 
