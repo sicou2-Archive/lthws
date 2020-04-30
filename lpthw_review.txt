@@ -1312,12 +1312,21 @@ Too many comments means you have to maintain those comments. No comments
 
 ### NEED TO LEARN ABOUT 
 # PIP
+https://www.youtube.com/watch?v=U2ZN104hIcc
+
 # VIRTUALENV
+https://www.youtube.com/watch?v=N5vscPTWKOk
+https://www.youtube.com/watch?v=APOPm01BVrk
 # SETUP.PY
 
 # TRYING TO GET test_script.py TO RUN TEST_PROJECT/howdy_dammit.py
+'python -m pip install .'
+https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#installing-from-source
 
 47 Automated Testing
+
+## Stopped time to add tests to ex43 now ex47 game. 
+## How to save variables and retrive variables from json
 
 48 Advanced User Input
 
