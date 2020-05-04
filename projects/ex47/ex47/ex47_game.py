@@ -1,5 +1,8 @@
 from random import randint
 from sys import exit
+from textwrap import dedent
+
+from game_text import Text
 
 
 
