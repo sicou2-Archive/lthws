@@ -21,7 +21,8 @@ class Room(object):
         This function states that there is a problem with the room that
         was called.
         """
-        print("ENTER THE ROOM THAT IS NOT A ROOM, THINGS ARE BROKEN")
+        #print("ENTER THE ROOM THAT IS NOT A ROOM, THINGS ARE BROKEN")
+        print(dedent(Text.room_room_text['enter']))
         exit(1)        
     
   
@@ -54,7 +55,8 @@ class Room_Entrance(Room):
                 # 1 IS OPEN, 0 IS LOCKED OUT 
                 
                 
-        print("THIS NEEDS THE OPENING STORY\n")
+        #print("THIS NEEDS THE OPENING STORY\n")
+        print(dedent(Text.room_entrance_text['enter']))
         ## GIVE PLAYER "CHOICE" TO GO IN OR COMEBACK ANOTHER DAY
         return 'antichamber' 
 
@@ -81,9 +83,9 @@ class Room_Antichamber(Room):
             
             
 
-            print("THIS NEEDS BETTER STORY A goblin is here and "
-                "attacks.\n1 Engage in combat 2 Run\n")
-
+            # print("THIS NEEDS BETTER STORY A goblin is here and "
+                # "attacks.\n1 Engage in combat 2 Run\n")
+            print(dedent(Text.room_antichamber_text['enter']))
             i = 0
             while True:    
                 
@@ -98,20 +100,25 @@ class Room_Antichamber(Room):
 
                     return next_room
                 elif action == '2':
-                    print("You run from the room and go looking for "
-                        "help to continue the fight.\n")
+                    # print("You run from the room and go looking for "
+                        # "help to continue the fight.\n")
+                    print(dedent(Text.room_antichamber_text['run']))
                     return 'end_game'
                         # DOUBLE CHECK THIS IS CORRECT RETURN
                 elif i > 3:
-                    print('The Goblin attacks while you stare at '
-                    'him.\n')
+                    # print('The Goblin attacks while you stare at '
+                    # 'him.\n')
+                    print(dedent(Text.room_antichamber_text[
+                            'stall_death']))
                     return 'end_game'
                 else:
-                    print("He looks mean, do something! Quick!\n")
+                    #print("He looks mean, do something! Quick!\n")
+                    print(dedent(Text.room_antichamber_text['stall']))
                     i += 1            
         
-        print("You see three doors. \nChoose a door or rest: \n1 " 
-            "Left, 2 Center, 3 Right, 4 Rest a moment\n") 
+        # print("You see three doors. \nChoose a door or rest: \n1 " 
+            # "Left, 2 Center, 3 Right, 4 Rest a moment\n") 
+        print(dedent(Text.room_antichamber_text['three_doors']))
         
         while True:
 
@@ -120,9 +127,12 @@ class Room_Antichamber(Room):
             if choice == '1': 
                 if Engine.cast['lockout']['chest_room'] == 0:
                     # THIS NEEDS TO BE VERIFIED THAT IT WORKS
-                    print("There is no reason to go back in there. "
-                        "\nChoose a different room: \n2 Center, 3 "
-                        "Right, 4 Rest a moment\n")
+                    # print("There is no reason to go back in there. "
+                        # "\nChoose a different room: \n2 Center, 3 "
+                        # "Right, 4 Rest a moment\n")
+                    print(dedent(Text.room_antichamber_text[
+                        'no_left_door']))    
+                    
                             # THESE CHOICES NEED TO BE VERIFIED THEY 
                             # MAKE SENSE
                     continue
@@ -130,9 +140,11 @@ class Room_Antichamber(Room):
                     # DOUBLE CHECK THIS RETURN IS CORRECT
             elif choice == '2': 
                 if Engine.cast['lockout']['slime_room'] == 0:
-                    print("There is no reason to go back in there." 
-                        "\nChoose a different room: \n1 Left, 3 Right, "
-                        "4 Rest a moment\n")
+                    # print("There is no reason to go back in there." 
+                        # "\nChoose a different room: \n1 Left, 3 Right, "
+                        # "4 Rest a moment\n")
+                    print(dedent(Text.room_antichamber_text[
+                        'no_center_door']))
                             # THESE CHOICES NEED TO BE VERIFIED THEY 
                             # MAKE SENSE
                     continue
@@ -142,9 +154,10 @@ class Room_Antichamber(Room):
             elif choice == '4':
                 Engine.rest(Engine.cast['hero'])
             else: 
-                print("Moving on is the only hope for you now. Choose a"
-                    'room:\n1 Left, 2 Center, 3 Right, 4 Rest a '
-                    'moment\n')
+                # print("Moving on is the only hope for you now. Choose a"
+                    # 'room:\n1 Left, 2 Center, 3 Right, 4 Rest a '
+                    # 'moment\n')
+                print(dedent(Text.room_antichamber_text['door_stall']))
 
 
 class Room_Chest(Room):
@@ -157,19 +170,22 @@ class Room_Chest(Room):
         """
         while True: 
         
-            print('You see a locked chest. 1 Pick lock, 2 Leave alone '
-            'and return to Antichamber, 3 Rest a moment\n')
+            # print('You see a locked chest. 1 Pick lock, 2 Leave alone '
+            # 'and return to Antichamber, 3 Rest a moment\n')
+            print(dedent(Text.room_chest_text['enter']))
                 # THIS NEEDS A STYLE REWRITE TO MATCH ANTICHAMBER
         
             action = input('> ')
             
             if action == '1':
-                print('You attempt to pick the lock...\n')
+                #print('You attempt to pick the lock...\n')
+                print(dedent(Text.room_chest_text['pick']))
                 
                 lock_test = randint(1,10)
                 
                 if lock_test == 1:
-                    print('It explodes in your face hurting you!\n') 
+                    #print('It explodes in your face hurting you!\n') 
+                    print(dedent(Text.room_chest_text['explode']))
                     cast['hero'][0] -= randint(1,5) 
                     # RANDOM 1-5 DAMAGE TO HERO
                     cast['hero'][6] = 0 
@@ -179,43 +195,50 @@ class Room_Chest(Room):
                         return 'end_game'
                     
                     Engine.cast['lockout']['chest_room'] = 0 
-                    print('You return to the Antichamber empty '
-                    'handed\n')
+                    # print('You return to the Antichamber empty '
+                    # 'handed\n')
+                    print(dedent(Text.room_chest_text['return_empty']))
                     return 'antichamber'
                 elif 2 <= lock_test and lock_test <= 5:
-                    print('Despite your best efforts, you cannot quite '
-                    'get the lock to open. It seems like it is '
-                    'broken.\n')
-                    print('You return to the Antichamber empty '
-                    'handed.\n')
+                    # print('Despite your best efforts, you cannot quite '
+                    # 'get the lock to open. It seems like it is '
+                    # 'broken.\n')
+                    print(dedent(Text.room_chest_text['lock_break']))
+                    # print('You return to the Antichamber empty '
+                    # 'handed.\n')
+                    print(dedent(Text.room_chest_text['return_empty']))
                     Engine.cast['lockout']['chest_room'] = 0
                     return 'antichamber'
                 else:
-                    print('You find a gleaming steel helmet, useful!\n') 
-                    print('You put it on and return to the '
-                    'Antichamber\n')
+                    # print('You find a gleaming steel helmet, useful!\n')
+                    print(dedent(Text.room_chest_text['helmet']))
+                    # print('You put it on and return to the '
+                    # 'Antichamber\n')
                     Engine.cast['hero'][1] += 1 # +1 TO defence
                     Engine.cast['lockout']['chest_room'] = 0
                     return 'antichamber'
             elif action == '2':
-                print('After looking around and seeing no danger, you '
-                'return to the Antichamber.\n')
+                # print('After looking around and seeing no danger, you '
+                # 'return to the Antichamber.\n')
+                print(dedent(Text.room_chest_text['look']))
                 return 'antichamber'
             elif action == '3': 
                 Engine.rest(Engine.cast['hero'])
                 return 'chest'
             else:
-                print('You should get a move on. What would you like to'
-                ' do?\n')        
+                # print('You should get a move on. What would you like to'
+                # ' do?\n')     
+                print(dedent(Text.room_chest_text['stall']))
 
 
 class Room_Slime(Room):
     """This is the Slime room class."""
     def enter(self):
         
-        print('Enter and a Slime is quietly digesting a large body. 1 '
-            'Attack the Slime, 2 Taunt the Slime, 3 Quietly back out of'
-            ' room.\n')
+        # print('Enter and a Slime is quietly digesting a large body. 1 '
+            # 'Attack the Slime, 2 Taunt the Slime, 3 Quietly back out of'
+            # ' room.\n')
+        print(dedent(Text.room_slime_text['enter']))
         # THIS NEEDS A STYLE REWRITE TO MATCH ANTICHAMBER
         
         i = 0
@@ -223,7 +246,8 @@ class Room_Slime(Room):
             action = input('> ')
             
             if action == '1':
-                print('You roar and ferociously attack the Slime.\n')
+                # print('You roar and ferociously attack the Slime.\n')
+                print(dedent(Text.room_slime_text['attack']))
                 Engine.cast['slime'] = Engine.character(
                     1, 1, 1, 1, 'slime', 3, 0)
                         #REBALANCE SLIME AFTER TESTING
@@ -232,50 +256,58 @@ class Room_Slime(Room):
                     Engine.cast['slime'],
                     'antichamber'
                     )
-                print('As the dead Slime oozes out across the floor, '
-                'you look at and under the fresh body it had just '
-                'started to eat. You find a sharp sword. You put your '
-                'dagger in to your pack and return to the '
-                'Antichamber.\n') 
+                # print('As the dead Slime oozes out across the floor, '
+                # 'you look at and under the fresh body it had just '
+                # 'started to eat. You find a sharp sword. You put your '
+                # 'dagger in to your pack and return to the '
+                # 'Antichamber.\n') 
+                print(dedent(Text.room_slime_text['search']))
                 Engine.cast['hero'][2] += 1 # ATTACK +1
                 Engine.cast['lockout']['slime_room'] = 0 
                     #NO NEED TO COME BACK
                 Engine.cast['lockout']['alter_room'] = 1 
-                print('As you step out in to the Antichamber you notice'
-                ' a key tied to the hilt of the sword.\n')
+                # print('As you step out in to the Antichamber you notice'
+                # ' a key tied to the hilt of the sword.\n')
+                print(dedent(Text.room_slime_text['key']))
                 return next_room
             elif action == '2':
-                print('You taunt the slime and it starts to follow you '
-                'around the room. Much faster than it, you quickly flip'
-                ' over the fresh body and find a sharp sword.\n')
-                print('You quickly grab the sword while stowing your '
-                'dagger and return to the Antichamber before the slime '
-                'can catch you.\n') 
+                # print('You taunt the slime and it starts to follow you '
+                # 'around the room. Much faster than it, you quickly flip'
+                # ' over the fresh body and find a sharp sword.\n')
+                print(dedent(Text.room_slime_text['taunt']))
+                # print('You quickly grab the sword while stowing your '
+                # 'dagger and return to the Antichamber before the slime '
+                # 'can catch you.\n') 
+                print(dedent(Text.room_slime_text['sword']))
                 Engine.cast['hero'][2] += 1 # ATTACK +1
                 Engine.cast['lockout']['slime_room'] = 0 
                     #NO NEED TO COME BACK
                 Engine.cast['lockout']['alter_room'] = 1 
-                print('As you step out in to the Antichamber you notice'
-                ' a key tied to the hilt of the sword.\n')
+                # print('As you step out in to the Antichamber you notice'
+                # ' a key tied to the hilt of the sword.\n')
+                print(dedent(Text.room_slime_text['key']))
                 return 'antichamber'
             elif action == '3':
-                print('Seemingly content with its current meal, the '
-                'Slime ignores you as you silently back out of the room'
-                ' back into the Antichamber.\n')
+                # print('Seemingly content with its current meal, the '
+                # 'Slime ignores you as you silently back out of the room'
+                # ' back into the Antichamber.\n')
+                print(dedent(Text.room_slime_text['retreat']))
                 return 'antichamber'
             elif i > 3:
-                print('Suddenly, from the ceiling above, an unseen '
-                'Slime plops down crushing you to the floor.\n')
-                print('In its belly, you find a new definition of pain '
-                'and suffering, as you are slowly digested over a '
-                'thousand years.\n')
+                # print('Suddenly, from the ceiling above, an unseen '
+                # 'Slime plops down crushing you to the floor.\n')
+                # print('In its belly, you find a new definition of pain '
+                # 'and suffering, as you are slowly digested over a '
+                # 'thousand years.\n')
+                print(dedent(Text.room_slime_text['stall_death']))
                 return 'end_game'
             else:
-                print('That slime looks like it might almost be done '
-                'digesting that body, you should make a decision before'
-                ' it does. What would you like to do?\n1 Attack the '
-                'Slime, 2 Taunt the Slime, 3 Quietly back out of the '
-                'room.\n')
+                # print('That slime looks like it might almost be done '
+                # 'digesting that body, you should make a decision before'
+                # ' it does. What would you like to do?\n1 Attack the '
+                # 'Slime, 2 Taunt the Slime, 3 Quietly back out of the '
+                # 'room.\n')
+                print(dedent(Text.room_slime_text['stall']))
                 i += 1
 
 
@@ -285,8 +317,9 @@ class Room_Alter(Room):
     def enter(self):
         
         if Engine.cast['lockout']['alter_room'] == 0:
-            print('You attempt to open the door, but the handle only '
-            'rattles in your hand. This door is locked.\n')
+            # print('You attempt to open the door, but the handle only '
+            # 'rattles in your hand. This door is locked.\n')
+            print(dedent(Text.room_alter_text['locked']))
             return 'antichamber'
 
         try:
@@ -300,18 +333,20 @@ class Room_Alter(Room):
             'bugbear',False): 
             #CHECK TO SEE IF ORC IS ALIVE WHEN COMING FROM ANOTHER ROOM
             #AND IF BUGBEAR EXISTS
-            print('You see the fierce orc still worshiping at the '
-            'alter. Further in to the room you see the door back to the'
-            ' Antichamber. \n1 Attack the Orc, 2 Attempt to sneak to '
-            'the Antichamber.\n')
-
+            # print('You see the fierce orc still worshiping at the '
+            # 'alter. Further in to the room you see the door back to the'
+            # ' Antichamber. \n1 Attack the Orc, 2 Attempt to sneak to '
+            # 'the Antichamber.\n')
+            print(dedent(Text.room_alter_text['back_enter']))
+            
             i = 0
             while True:            
                 action = input('> ')
                 
                 if action == '1': 
-                    print('You move in to attack the orc as he stands '
-                    'to fight!\n')
+                    # print('You move in to attack the orc as he stands '
+                    # 'to fight!\n')
+                    print(dedent(Text.room_alter_text['attack']))
                     next_room = Engine.fight(
                     Engine.cast['hero'], 
                     Engine.cast['orc'],
@@ -319,14 +354,15 @@ class Room_Alter(Room):
                     ) 
                     return next_room
                 elif action == '2': 
-                    print('You sneak towards the Antichamber.\n')
-                    
+                    # print('You sneak towards the Antichamber.\n')
+                    print(dedent(Text.room_alter_text['back_sneak']))
                     sneak_roll = randint(1,4) 
                     
                     if sneak_roll == 4: 
-                        print('You hear the Orc\'s prayers trail off. '
-                        'As you look back, you both make eye contact. '
-                        'He roars and raises his sword to attack!\n')
+                        # print('You hear the Orc\'s prayers trail off. '
+                        # 'As you look back, you both make eye contact. '
+                        # 'He roars and raises his sword to attack!\n')
+                        print(dedent(Text.room_alter_text['caught']))
                         next_room = Engine.fight(
                             Engine.cast['hero'], 
                             Engine.cast['orc'],
@@ -334,15 +370,18 @@ class Room_Alter(Room):
                             )
                         return next_room
                     else:
-                        print('You silently pad across the room and '
-                        'slip through the still cracked door in to the '
-                        'Antichamber.\n')
+                        # print('You silently pad across the room and '
+                        # 'slip through the still cracked door in to the '
+                        # 'Antichamber.\n')
+                        print(dedent(Text.room_alter_text[
+                            'sneak_anti']))
                         return 'antichamber'
                     return 'antichamber' 
                 elif i == 3:
-                    print('The Orc glances in your direction. As you '
-                    'make eye contact, the Orc roars and raises his '
-                    'sword to attack!\n')
+                    # print('The Orc glances in your direction. As you '
+                    # 'make eye contact, the Orc roars and raises his '
+                    # 'sword to attack!\n')
+                    print(dedent(Text.room_alter_text['caught']))
                     next_room = Engine.fight(
                         Engine.cast['hero'],
                         Engine.cast['orc'],
@@ -350,23 +389,26 @@ class Room_Alter(Room):
                         )
                     return next_room
                 else: 
-                    print('Hurry! Do something! He might notice you!\n')
+                    # print('Hurry! Do something! He might notice you!\n')
+                    print(dedent(Text.room_alter_text['stall']))
                     i += 1
 
         if Engine.cast['orc'][3] == 1: 
             # CHECK TO SEE IF ORC IS ALIVE WHEN COMING FROM ANOTHER ROOM
-            print('You unlock and open the door and see a fierce orc '
-            'worshiping at an alter. Further in to the room you see a '
-            'dark hallway. \n1 Attack the Orc, 2 Attempt to sneak to '
-            'the hallway, 3 Gently close the door and return to the '
-            'Antichamber.\n')
+            # print('You unlock and open the door and see a fierce orc '
+            # 'worshiping at an alter. Further in to the room you see a '
+            # 'dark hallway. \n1 Attack the Orc, 2 Attempt to sneak to '
+            # 'the hallway, 3 Gently close the door and return to the '
+            # 'Antichamber.\n')
+            print(dedent(Text.room_alter_text['enter']))
             i = 0
             while True:            
                 action = input('> ')
                 
                 if action == '1': 
-                    print('You move in to attack the orc as he stands '
-                    'to fight!\n')
+                    # print('You move in to attack the orc as he stands '
+                    # 'to fight!\n')
+                    print(dedent(Text.room_alter_text['attack']))
                     next_room = Engine.fight(
                     Engine.cast['hero'], 
                     Engine.cast['orc'],
@@ -374,14 +416,16 @@ class Room_Alter(Room):
                     ) 
                     return next_room
                 elif action == '2': 
-                    print('You sneak towards the hallway.\n')
+                    # print('You sneak towards the hallway.\n')
+                    print(dedent(Text.room_alter_text['sneak']))
                     
                     sneak_roll = randint(1,4) 
                     
                     if sneak_roll == 4: 
-                        print('You hear the Orc\'s prayers trail off. '
-                        'As you look back, you both make eye contact. '
-                        'He roars and raises his sword to attack!\n')
+                        # print('You hear the Orc\'s prayers trail off. '
+                        # 'As you look back, you both make eye contact. '
+                        # 'He roars and raises his sword to attack!\n')
+                        print(dedent(Text.room_alter_text['caught']))
                         next_room = Engine.fight(
                             Engine.cast['hero'], 
                             Engine.cast['orc'],
@@ -389,8 +433,9 @@ class Room_Alter(Room):
                             )
                         return next_room
                     else:
-                        print('You silently enter the hallway and make '
-                        'your way into the damp and dark.\n')
+                        # print('You silently enter the hallway and make '
+                        # 'your way into the damp and dark.\n')
+                        print(dedent(Text.room_alter_text['hall']))
                         return 'hallway'
                 elif action == '3': 
                     print('You back in to the Antichamber and slowly '
