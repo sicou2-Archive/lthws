@@ -8,21 +8,21 @@ class Text():
 			}				
   
 	room_entrance_text = {
-			'intro': """ADD TO STORY LOOKING FOR JEWELS""",
-			'enter': """
+        'intro': """ADD TO STORY LOOKING FOR JEWELS""",
+        'enter': """
         THIS NEEDS THE OPENING STORYTHIS NEEDS THE OPENING STORY THIS 
         NEEDS THE OPENING STORY THIS NEEDS THE OPENING STORY THIS NEEDS 
         THE OPENING STORY THIS NEEDS THE OPENING STORY THIS NEEDS THE 
         OPENING STORY THIS NEEDS THE OPENING STORY THIS NEEDS THE 
         OPENING STORY\n
-            """,
+        """,
 			}
 
 	room_antichamber_text = {
 			'enter': """
-		THIS NEEDS BETTER STORY A goblin is here and attacks.\n1 Engage 
-		in combat 2 Run\n
-		""",
+            THIS NEEDS BETTER STORY A goblin is here and attacks.
+            1 Engage in combat 2 Run\n
+            """,
 			'run': """
 		You run from the room and go looking for help to continue the 
 		fight.\n
@@ -215,7 +215,8 @@ class Text():
         """,
 			'attack': """You lunge forward to attack!\n""",
 			'victory': """
-        after combat move forward in to the crypt\n
+        You walk down the dark hallway, squeezing past the dark lump of 
+        your fallen foe.\n
         """, #THIS NEEDS A REWRITE
 			'sneak_fail': """
         It seems he cannot see very well in the dark as you disappear 
@@ -231,7 +232,7 @@ class Text():
         """,
 			'retreat_choice': """
         Frozen in the darkness you realize you cannot go back without 
-        going back to fight the Orc. You could also rest here a moment 
+        returning to face the Orc. You could also rest here a moment 
         and hope the Bugbear does not see you before you are ready. 1 
         Return to fight the Orc 2 Rest\n
         """,
@@ -256,13 +257,10 @@ class Text():
         eyes and he ruthlessly detatches your head from the rest of 
         your body.\n
         """,
-			'advance_victory': """
-        You walk down the dark hallway, squeezing past the dark lump of 
-        your fallen foe.\n
-        """,
 			'room_error': """
         You should not be here, something is broken.\nPlease contact 
-        the developer that you somehow managed to get here.
+        the developer and tell them that you somehow managed to get 
+        here. Good job!
         """,
 			}
 
@@ -299,9 +297,9 @@ class Text():
         You start to run, but you feel a spell freeze your feet in 
         place. You turn to fight for your life and treasure!\n
         """,
-			'stall_run_death': """
-        Your indecision costs you your life and treasure!\n
-        """,
+#			'stall_run_death': """
+#        Your indecision costs you your life and treasure!\n
+#        """,
 			'gem_leave': """
         You leave the treasure in its place and go return to the middle 
         of the room.\n1 Inspect Crypt 2 Go up the stairs and through 
@@ -357,7 +355,7 @@ class Text():
 			'fight': """You engage in combat! 1 Fight or 2 Run\n""",
 			'attack': """You attack!\n""",
 			'die': """You fall bravely in battle.\n""",
-			#'victory': f"You slay the enemy {enemy_stats[4]}",
+			'victory_1': """You slay the enemy """,
 			'look': """
         Above the body of your foe, you look around.\n
         """,
