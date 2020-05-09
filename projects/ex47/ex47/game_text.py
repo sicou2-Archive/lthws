@@ -1,14 +1,14 @@
 class Text():
 
 
-    room_text = {
+    room = {
         'enter': 
         """
         ENTER THE ROOM THAT IS NOT A ROOM, THINGS ARE BROKEN.
         """,
         }               
   
-    entrance_text = {
+    entrance = {
         'intro': 
         """
         ADD TO STORY LOOKING FOR JEWELS AND THEN YOU WILL NEED TO GO TO THE
@@ -27,10 +27,10 @@ class Text():
         """,
         }
  
-    antichamber_text = {
+    antichamber = {
         'enter':
         """
-        THIS NEEDS BETTER STORY A goblin is here and attacks.
+        THIS NEEDS BETTER STORY A goblin is here and attacks.\n
         1 Engage in combat 2 Run
         """,
         'run':
@@ -44,33 +44,33 @@ class Text():
         'stall': """He looks mean, do something! Quick!""",
         'three_doors':
         """
-        You see three doors.
-        Choose a door or rest:
+        You see three doors.\n
+        Choose a door or rest:\n
         1 Left, 2 Center, 3 Right, 4 Rest a moment
         """,
         'no_left_door': 
         """
-        There is no reason to go back in there.
-        Choose a different room:
+        There is no reason to go back in there.\n
+        Choose a different room:\n
         2 Center, 3 Right, 4 Rest a moment
         """,
         'no_center_door':
         """
-        There is no reason to go back in there.
-        Choose a different room:
+        There is no reason to go back in there.\n
+        Choose a different room:\n
         1 Left, 3 Right, 4 Rest a moment
         """,
         'door_stall': 
         """
-        Moving on is the only hope for you now. Choose a room:
+        Moving on is the only hope for you now. Choose a room:\n
         1 Left, 2 Center, 3 Right, 4 Rest a moment
         """,
         }
 
-    chest_text = {
+    chest = {
         'enter':
         """
-        You see a locked chest.
+        You see a locked chest.\n
         1 Pick lock, 2 Leave alone and return to Antichamber, 3 Rest a
         moment
         """,
@@ -87,7 +87,7 @@ class Text():
         """,
         'helmet':
         """
-        You find a gleaming steel helmet, useful!
+        You find a gleaming steel helmet, useful!\n
         You put it on and return to the Antichamber
         """,
         'look':
@@ -101,10 +101,10 @@ class Text():
         """,
         }
 
-    slime_text = {
+    slime = {
         'enter': 
         """
-        Enter and a Slime is quietly digesting a large body.
+        Enter and a Slime is quietly digesting a large body.\n
         1 Attack the Slime, 2 Taunt the Slime, 3 Quietly back out of room.
         """,
         'attack':
@@ -141,21 +141,21 @@ class Text():
         'stall_death':
         """
         Suddenly, from the ceiling above, an unseen Slime plops down crushing
-        you to the floor.
+        you to the floor.\n
         In its belly, you find a new definition of pain and suffering, as you
         are slowly digested over a thousand years.
         """,
         'stall':
         """
         That slime looks like it might almost be done digesting that body, you
-        should make a decision before it does.
-        What would you like to do?
+        should make a decision before it does.\n
+        What would you like to do?\n
         1 Attack the Slime, 2 Taunt the Slime, 3 Quietly back out of the
         room.
         """,
         }
 
-    alter_text = {
+    alter = {
         'locked':
         """
         You attempt to open the door, but the handle only rattles in your hand.
@@ -164,7 +164,7 @@ class Text():
         'back_enter':
         """
         You see the fierce orc still worshiping at the alter. Further in to the
-        room you see the door back to the Antichamber.
+        room you see the door back to the Antichamber.\n
         1 Attack the Orc, 2 Attempt to sneak to the Antichamber.
         """,
         'attack':
@@ -189,7 +189,7 @@ class Text():
         'enter':
         """
         You unlock and open the door and see a fierce orc worshiping at an
-        alter. Further in to the room you see a dark hallway.
+        alter. Further in to the room you see a dark hallway.\n
         1 Attack the Orc, 2 Attempt to sneak to the hallway, 3 Gently close the
         door and return to the Antichamber.
         """,
@@ -207,7 +207,7 @@ class Text():
         'victory':
         """
         You look around the room above the stench of the dead orc. You see an
-        alter and a dark hallway.
+        alter and a dark hallway.\n
         1 Inspect the Alter 2 Enter the hallway 3 Rest a moment 4 Return to the
         Antichamber.
         """,
@@ -217,7 +217,7 @@ class Text():
         """,
         'alter':
         """
-        You approach the alter. Amazing! It is an alter of strength.
+        You approach the alter. Amazing! It is an alter of strength.\n
         1 Pray a prayer of strength and offer a ceremonial Red Mushroom 2 Leave
         the alter in peace.
         """,
@@ -254,11 +254,11 @@ class Text():
         """,
         }
 
-    hallway_text = {
+    hallway = {
         'enter':
         """
         As you walk down the hallway, suddenly out of the darkness a giant
-        lumbering Bugbear appears out of the darkness.
+        lumbering Bugbear appears out of the darkness.\n
         1 Attack 2 Retreat in to the shadows.
         """,
         'attack': """You lunge forward to attack!""",
@@ -272,7 +272,7 @@ class Text():
         It seems he cannot see very well in the dark as you disappear back in
         to the shadows. However, as you hold your breath hoping it turns around
         and walks away, he begins to sniff the air. He creeps ever closer. You
-        can't move!
+        can't move!\n
         He bumps in to you and jumps back with a shout. Drawing your weapon,
         you realize it is a fight!
         """,
@@ -285,7 +285,7 @@ class Text():
         """
         Frozen in the darkness you realize you cannot go back without returning
         to face the Orc. You could also rest here a moment and hope the Bugbear
-        does not see you before you are ready.
+        does not see you before you are ready.\n
         1 Return to fight the Orc 2 Rest
         """,
         'rest_fail':
@@ -314,19 +314,19 @@ class Text():
         """,
         'room_error':
         """
-        You should not be here, something is broken.
+        You should not be here, something is broken.\n
         Please contact the developer and tell them that you somehow managed to
         get here.
         Good job!
         """,
         }
 
-    crypt_text = {
+    crypt = {
         'enter':
         """
         You walk in to a mostly empty chamber. You see a well preserved crypt.
         Across the room you see a set of stairs leading up to a large stone
-        door.
+        door.\n
         1 Inspect the Crypt 2 Go up stairs and through the door 3 Rest a moment
         4 Return through the hallway to the Alter room
         """,
@@ -334,12 +334,12 @@ class Text():
         """
         You move closer and inspect the crypt. It is masterfully crafted in
         granite and onyx. Laid in the stone are dozens of dazzlingly cut gems.
-        1 Take gems 2 Leave them alone and back away from the crypt
+        \n1 Take gems 2 Leave them alone and back away from the crypt
         """,
         'gem_get':
         """
         You take the flawless gems and put them in to your pack. As you close
-        the bag you look up and see a skeleton rising out of the crypt.
+        the bag you look up and see a skeleton rising out of the crypt.\n
         1 Attack 2 Run toward the stairs 3 Run toward the hallway
         """,
         'defend':
@@ -350,7 +350,7 @@ class Text():
         """
         Your only option now is to climb the stairs. As you get to the door,
         you begin to push open the heavy door. You look up and see another set
-        of stairs and begin to climb.
+        of stairs and begin to climb.\n
         You see a bright light above you as you climb toward it.
         """,
         'run':
@@ -361,7 +361,7 @@ class Text():
         'gem_leave':
         """
         You leave the treasure in its place and go return to the middle of the
-        room.
+        room.\n
         1 Inspect Crypt 2 Go up the stairs and through the door 3 Rest a moment
         """,
         'gem_stall_death':
@@ -378,7 +378,7 @@ class Text():
         """
         You feel that standing here thinking about what to do is probably not
         the most intelligent thing that you could be doing with your time right
-        now. Do something.
+        now. Do something.\n
         1 Take gems 2 Leave them alone and back away from the crypt
         """,
         'no_gem_leave':
@@ -392,7 +392,7 @@ class Text():
         'stall': """It is time to move on, make a choice.""",
         }
 
-    outside_text = {
+    outside = {
         'enter':
         """
         As you step out in to the light and to safety with your hard fought
@@ -410,24 +410,21 @@ class Text():
         """,
         }
 
-    end_game_text = {
+    end_game = {
         'end': """Game over man. Game over! Play again? "y/n\"""",
         'except_end': """Would you like to play again? "y/n\"""",
         }
         
-    fight_text = {
+    fight = {
         'fight':
         """
-        You engage in combat!
+        You engage in combat!\n
         1 Fight or 2 Run
         """,
         'attack': """You attack!""",
         'die': """You fall bravely in battle.""",
         'victory_1': """You slay the enemy """,
-        'look':
-        """
-        Above the body of your foe, you look around.
-        """,
+        'look': """Above the body of your foe, you look around.""",
         'continue': """The combat continues!""",
         'retreat': """You retreat from the battle!""",
         'stall_death':
@@ -438,11 +435,8 @@ class Text():
         'stall': """Do not hesitate! Do something, anything!""",
         }
         
-    rest_text = {
-        'rested':
-        """
-        You already feel rested. Better get a move on!
-        """,
+    rest = {
+        'rested': """You already feel rested. Better get a move on!""",
         'rest':
         """
         You take a moment to catch your breath. You feel ready to soldier on!

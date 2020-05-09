@@ -30,7 +30,7 @@ variables starting with numbers is no go in Python
 round() is an option when working with floating points
 6 Strings and Text
 Strings are text you want to display or export out of the program
-f"strings" can also be done with .format() suntax
+f"strings" can also be done with .format() syntax
 	ex: 'string {} needed {}'.format(thing_to change_in_{}_of_variable)
 		Not super strong with this
 
