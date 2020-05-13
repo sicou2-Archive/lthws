@@ -11,14 +11,14 @@ $ python programName.py
 Debug trick read lines of code backwards (bottom up)
 
 3 Numbers and Math
-+, -, /, * , % (Modulus), <, >, <=, >= 
++, -, /, * , % (Modulus), <, >, <=, >=
 Normal Order of Operations
 
 4 Variables and Names
 variable_names with _ (underscore)
-variable assigned with = 
+variable assigned with =
 can do things after = like math
-print("There are ", variable, " here sep by ','.") 
+print("There are ", variable, " here sep by ','.")
 4 = integer
 3.0 = floating point number
 
@@ -35,19 +35,19 @@ f"strings" can also be done with .format() syntax
 		Not super strong with this
 
 7 More Printing
-print(can + concatinate + strings + of + variables + together + to 
+print(can + concatinate + strings + of + variables + together + to
       + print)
 print('thing print', end=' ') can change the behavior of print from \n
-    at the end of the line to a ' ' or whatever you please, there is 
-	also a sep=' ' command which also must be a string that separates 
+    at the end of the line to a ' ' or whatever you please, there is
+	also a sep=' ' command which also must be a string that separates
 	the different objects bring printed
 
 8 Printing, Printing
 This ex hits .format() pretty well
 formatter = '{} {} {} {}'
 print(formatter.format(1, 2, 3, 4)
-TODO: Still need to see how to do the string escaped that I know are a 
-	thing with %d{} or whatever. 
+TODO: Still need to see how to do the string escaped that I know are a
+	thing with %d{} or whatever.
 
 
 9 Printing, Printing, Printing
@@ -71,7 +71,7 @@ print('thing',end='\n') <- New line by default
 input('<> Phrase or symbol string you want to precede the cursor')
 variable = input('> ')
 Getting help out of Python Help in Windows has been hard.
-One example that works is "python -m pydoc input" where input is the 
+One example that works is "python -m pydoc input" where input is the
     term we are looking to learn about.
 Cannot assign to a variable within print()
 
@@ -84,96 +84,96 @@ import sys -> needs sys.argv for call to work
 'python program.py variable_1.txt variable_2'
 within program.py -> 'script_name, text_doc, username = argv'
 the three variables are now three variables you can work with that came
-    from outside the program. 
-You import 'modules' (other files), they are called modules, though in 
+    from outside the program.
+You import 'modules' (other files), they are called modules, though in
     reality, they are just other files. In other languages, they are
-	also called libraries. They contain variables, code, and functions, 
-	that you can use without having to write it yourself. So we can be 
+	also called libraries. They contain variables, code, and functions,
+	that you can use without having to write it yourself. So we can be
 	lazy. You an also think about them as black boxes. You do not really
-	need to know what is going on inside as long as they work. 
+	need to know what is going on inside as long as they work.
 Be careful of ValueErrors, too many or not enough arguments
 For optional arguments look for *args or **kwargs
 Command Line Arguments are strings, though they can be changed; int()
 
 14 Prompting and Passing
-The input(prompt) can be assigned variable prompt of some kind and 
+The input(prompt) can be assigned variable prompt of some kind and
     change it as needed.
 
 15 Reading Files
 open(text_file_name.txt, or_variable_with_file_name)
    this opens the file and returns a 'file object', there are optional
    modes for opening these files, read, write, etc.;
-txt.read() which reads some quantity of data and returns it as a string 
-	(in text mode) or bytes object (in binary mode); byte mode is 
+txt.read() which reads some quantity of data and returns it as a string
+	(in text mode) or bytes object (in binary mode); byte mode is
 	selected with the open function. EOF returns an empty string ('')
-Was trying to play within the Shell and it was not working, not sure 
-	what I was doing wrong, but I got the open and read to work in the 
+Was trying to play within the Shell and it was not working, not sure
+	what I was doing wrong, but I got the open and read to work in the
 	Python Shell
 txt.close(); do not forget to close files after done with them to
-	prevent strange things from happening. 
-open(file_variable) does not return the contents of the file, instead, 
-    it returns a "file object" 
+	prevent strange things from happening.
+open(file_variable) does not return the contents of the file, instead,
+    it returns a "file object"
 		Kind of like a Class object
-	
+
 16 Reading and Writing Files
 Some methods and functions:
 	open(text_file,[other parameters that can be used, look them up
-		 if needed]) this opens and returns a file object of the called 
-		file, 
+		 if needed]) this opens and returns a file object of the called
+		file,
 	.close() this closes the opened file
 	.read() this reads the whole contents of the file, can be assigned
 		to a variable
-	.readline() this reads a line, it also seems to keep an internal 
+	.readline() this reads a line, it also seems to keep an internal
 		buffer of where it is in the file, it separates lines by the
-		*gasp* \n 
+		*gasp* \n
 	.truncate() this empties the file. *THIS EMPTIES THE FILE*
 	.write('things to be written') this writes strings to the current
-		file object position, it will return the number of characters 
-		written, I am sure that is useful somehow. 
+		file object position, it will return the number of characters
+		written, I am sure that is useful somehow.
 	.seek(0,[0,1,2])  first position is the offset from the whence
 		(second argument). Whence == 0 = beginning , == 1 = current
 		position, == 2 = EOF, can be omitted and defaults to 0.
 		.tell() this might be useful when dealing with seek. It seems to
 			return an integer giving the file objects current position
-			in the file represented by the number of bytes from the 
+			in the file represented by the number of bytes from the
 			beginning of the file in binary mode, or some other number
 			when in text mode (the documentation is not super clear)
-			
+
 17 More Files
 from os.path import exists
 	os.path.exists() (or in this case just exists() since we used
-		from to import; 
+		from to import;
 	This seems to be used to see if the file it checking for exists
 		(no kidding huh?), you might be able to use this to prevent
-		over-writing other files or the like. 
-I am a little murky about this ex and the .close(). Not super sure 
-	why and when to use it. 
+		over-writing other files or the like.
+I am a little murky about this ex and the .close(). Not super sure
+	why and when to use it.
 
 18 Names, Variables, Code, Functions
 Functions do 3 things
-	1 Name pieces of code in the way variables name strings and numbers 
+	1 Name pieces of code in the way variables name strings and numbers
 	2 They take arguments the way scripts take 'argv'
 	3 With 1 and 2 you can make 'mini-scripts' or 'tiny commands'
 def creates a function in Python
 def name_o_function(args): <- DO NOT FORGET THE COLON : : : : : :
 	can do args a few different ways
 	(*args)
-		arg1, arg2 = args <- This was seems like it lets you get away 
-			with not having to always have the same number of args if 
-			that changes from time to time. 
+		arg1, arg2 = args <- This was seems like it lets you get away
+			with not having to always have the same number of args if
+			that changes from time to time.
 				This also works with **kwargs
 	(arg1, arg2)
-		this requires two args, can have as many or as few as needed 
+		this requires two args, can have as many or as few as needed
 		(zero is included)
 The arguments defined in a function, DO NOT need to match name wise what
-is actually passed to the def, however they must remain internally 
+is actually passed to the def, however they must remain internally
 consistant with in the function
 Function Checklist
 1 Did you start your function definition with def?
 2 Does your function name have only characters and _?
 3 Did you put an open paren right after the function name?
 4 Did you put your args after the paren separated by ,?
-5 Did you make each arg unique? 
+5 Did you make each arg unique?
 6 Did you put a close paren after the args?
 7 Did you indent all lined of code in the function with FOUR spaces?
 8 Did you close the function by dedenting the next line?
@@ -183,161 +183,161 @@ Running a Function Checklist
 2 Did you put an open paren?
 3 Did you add all of the args it would call?
 4 Did you close the paren?
-	
+
 19 Functions and Variables
-Global variables are not immediately available in a function, nor are 
+Global variables are not immediately available in a function, nor are
 	local variables available outside of a function unless returned from
-	it. 
-You can put numbers, Boolian, variables, strings, and you can use 
-	equations that, calculate down to a single function as argument 
-	calls when calling a function. 
-Remember that input() returns a *string* of whatever the input is. In 
-	order to use it as a number you must int('string') 
-Typically try to limit the number of arguments that a function calls to 
+	it.
+You can put numbers, Boolian, variables, strings, and you can use
+	equations that, calculate down to a single function as argument
+	calls when calling a function.
+Remember that input() returns a *string* of whatever the input is. In
+	order to use it as a number you must int('string')
+Typically try to limit the number of arguments that a function calls to
 	less than 5
 
 20 Functions and Files
 There is not a whole lot that is new in this ex. Look through it and it
-is pretty straight forward. 
-It does use .readline() and .seek() incase a worked example is needed. 
+is pretty straight forward.
+It does use .readline() and .seek() incase a worked example is needed.
 Introduces += to increment
-readline() is code that scans each byte of the file until if finds a 
-	'\n' character, then stops reading the file to return what it found 
-	so far. The file object is responsible for maintaining the current 
-	position in the file after each readline() call, so that it will 
-	keep reading each line. 
-	readline() also returns the '\n' it finds on the end of each line. 
+readline() is code that scans each byte of the file until if finds a
+	'\n' character, then stops reading the file to return what it found
+	so far. The file object is responsible for maintaining the current
+	position in the file after each readline() call, so that it will
+	keep reading each line.
+	readline() also returns the '\n' it finds on the end of each line.
 	readline() has a (,end='') optional parameter
 
 21 Functions Can Return Something
 return can set variables to be a value from a function
 variables can be assigned to functions
 	i.e. def thing_to_do(arg1, arg2):
-		     return 0	
+		     return 0
 	variable = thing_to_do(blue, red)
-You can return anything that you can put to the right of an = 
-You *can* chain functions within other functions as in the example 
+You can return anything that you can put to the right of an =
+You *can* chain functions within other functions as in the example
 def add(a, b):
-	return 0 
+	return 0
 do_this = add(subtract(1,2), divide(3,8))
 Even though it might look like programs are run "backwards", e.g. x = 3
-	where 3 is assigned to 'x'. It is better to think of it as inside 
+	where 3 is assigned to 'x'. It is better to think of it as inside
 	out, or even better as 'order of operations'
-Note: int('342') but not int('343.35'), you need to float('343.35') 
+Note: int('342') but not int('343.35'), you need to float('343.35')
 	first, then int(343.35)
 
 22 What Do you Know So Far?
-Copy all Python code and symbols from previous ex. 
+Copy all Python code and symbols from previous ex.
 
 23 Strings, Bytes, and Character Encodings
 When reading new code you have never seen before, write down everything
-	you have never seen before and save it to look up later. Then go 
-	back and re-read the code with new info. 
-.strip() kills the white space to the left and right of a string. 
+	you have never seen before and save it to look up later. Then go
+	back and re-read the code with new info.
+.strip() kills the white space to the left and right of a string.
 .lstrip() and
-.rstrip() do the same thing except exclusively to the left or right. 
-variable.encode(encoding, errors=errors) in this example encoding and 
-errors come from the argv and is 'utf-8' and 'strict' (apparently 
+.rstrip() do the same thing except exclusively to the left or right.
+variable.encode(encoding, errors=errors) in this example encoding and
+errors come from the argv and is 'utf-8' and 'strict' (apparently
 	another option for errors is replace)
-variable.decode(encoding, errors= errors) is the same thing. 
+variable.decode(encoding, errors= errors) is the same thing.
 open("file.txt", encoding="utf-8")
 I had a lot of problems getting the command line getting this to print
-	any of the UTF-8 encoding. I basically understood everything that 
-	was	happening, though I was making no progress on getting things to 
-	display	correctly and to be able to really break down some of the 
+	any of the UTF-8 encoding. I basically understood everything that
+	was	happening, though I was making no progress on getting things to
+	display	correctly and to be able to really break down some of the
 	Study Drills; Especially some of the byte conversions that seemed
 	to come from the standard via Wikipedia
-The code here took me a moment to parse out following some of the 
-	arguments thorough to their conclusion. 
+The code here took me a moment to parse out following some of the
+	arguments thorough to their conclusion.
 It is kind of crummy that the advice he gives here is fix it yourself,
 	when the solution is so varied, from typesets to what terminal you
-	are using. 
-There are many kinds of encoding standards. 
+	are using.
+There are many kinds of encoding standards.
 Switches, Conventions, and Encodings
-American Standard Code for Information Interchange (ASCII) became the 
+American Standard Code for Information Interchange (ASCII) became the
 	standard for a long time until we realized there are non-English
-	speakers hidden around the world that like computers also. 	
-ASCII maps a number to a letter '90' = 'Z' (capital) = 1011010 which is 
-	mapped via a lookup table of sorts. 
+	speakers hidden around the world that like computers also.
+ASCII maps a number to a letter '90' = 'Z' (capital) = 1011010 which is
+	mapped via a lookup table of sorts.
 In Python Shell
->>> 0b1011010 <- 0b seems to tell Python that this is binary 
+>>> 0b1011010 <- 0b seems to tell Python that this is binary
 90
->>> ord('Z') <- Given a string of length one, return an integer 
+>>> ord('Z') <- Given a string of length one, return an integer
 					representing the Unicode code point of the character
-					when the argument is a unicode object, or the value 
+					when the argument is a unicode object, or the value
 					of the byte when the argument is an 8-bit string.
 90
 >>> chr(90) <- returns the string representing a character whose Unicode
 				    is an integer
 'Z'
 >>>
-ASCII coded characters using one byte at a time. One byte can only hold 
-	256 numbers. 
-This is where Unicode comes in. 32 bits in encode a Unicode character. 
-	8 bytes (4,294,967,295); This is great since it is not limited in 
-	the slightest, however there is a lot of wasted space, even with 
-	using 2 bytes. Thus, the solution was to use the most common 
-	characters using 8 bits, and escape in to the larger numbers when 
-	needed to encode other characters. Python convention is UTF-8; 
-	Unicode Transformation Format 8 Bits. 
-If you have raw bytes, you need to .decode() to get the string, and if 
-	you have a string you need to .encode(). The mnemonic for this is 
-	DBES "deebess", Decode Bytes, Encode Strings. 
-Text goes thorugh how the code works, it is pretty simple once you 
-	actually follow it through. 
-In the command line when running this code, he trys to use 'big5' 
+ASCII coded characters using one byte at a time. One byte can only hold
+	256 numbers.
+This is where Unicode comes in. 32 bits in encode a Unicode character.
+	8 bytes (4,294,967,295); This is great since it is not limited in
+	the slightest, however there is a lot of wasted space, even with
+	using 2 bytes. Thus, the solution was to use the most common
+	characters using 8 bits, and escape in to the larger numbers when
+	needed to encode other characters. Python convention is UTF-8;
+	Unicode Transformation Format 8 Bits.
+If you have raw bytes, you need to .decode() to get the string, and if
+	you have a string you need to .encode(). The mnemonic for this is
+	DBES "deebess", Decode Bytes, Encode Strings.
+Text goes thorugh how the code works, it is pretty simple once you
+	actually follow it through.
+In the command line when running this code, he trys to use 'big5'
 	encoding. Python does not like this
     $ python ex23.py big5 strict
 	When Python hits the internal encoding that does not work for it, it
-	gets really mad due to the 'strict' error call. However you can use 
-	'replace' for the error, and Python will replace it with a '?'. 
-	You lose the data, however, the program runs to completion. 
+	gets really mad due to the 'strict' error call. However you can use
+	'replace' for the error, and Python will replace it with a '?'.
+	You lose the data, however, the program runs to completion.
 
 24 More Practice
 This is another test exercise, nothing new is presented
 
 25 Even More Practice
-Here we solidified calling user defined functions. Created a file 
+Here we solidified calling user defined functions. Created a file
 	library and imported it in to the Python Shell and played with the
-	lib in there. 
+	lib in there.
 def thing()
-	'''Triple quotes in a def will cause Python to see it as 
-	documentation for that function. Accessible through 
-	'python help thing()' in this case. The triple quotes seem to be 
-	called 'documentation comments'. 
+	'''Triple quotes in a def will cause Python to see it as
+	documentation for that function. Accessible through
+	'python help thing()' in this case. The triple quotes seem to be
+	called 'documentation comments'.
 		This looks like it can be done for import Modules, Classes, and
 			functions. IT SHOULD BE DONE FOR ALL OF THEM
 .split(' ') <- splits a string up in to a list, in this cast the split
-	delineator it the ' ', but anything can be used here. 
+	delineator it the ' ', but anything can be used here.
 sorted(variable) <- temp sorts the words alphabetically
-.pop(0); .pop(-1); <- pops off the first (then last) item in a list and 
-	if there is a variable assignment, assigns that popped word to that 
-	variable. The popped word is also removed from the list. I am not 
+.pop(0); .pop(-1); <- pops off the first (then last) item in a list and
+	if there is a variable assignment, assigns that popped word to that
+	variable. The popped word is also removed from the list. I am not
 	super sure the the '-1' is required since I think .pop pops the last
 	item off by default
 He gives an example of calling a user defined function on a sentence
-	given in the Python Console, that takes that sentence and calls 
+	given in the Python Console, that takes that sentence and calls
 	another user defined function using that sentence as the argument
-	which returns the sentence, now .split(' '), and then takes that 
-	returned value and runs the user function to run a third user 
-	function to sort that list of words. 
-		This is pretty important because it shows the ability of 
-			functions to be passed around if they are well organized, 
-			and how they can build on each other. I think I really, 
-			need to pay attention to this when it comes to classes. 
-Since we ran the Python console within the folder that the file needed	
-	to be imported lived we can just import ex25 without needing to 
-	call the full file address. 
-Triple quotes (documentation comments) can be super valuable for def in 
-	different libraries, be cool and document well. 
-Instead of import ex25 give from ex25 import * (wildcard) to prevent 
+	which returns the sentence, now .split(' '), and then takes that
+	returned value and runs the user function to run a third user
+	function to sort that list of words.
+		This is pretty important because it shows the ability of
+			functions to be passed around if they are well organized,
+			and how they can build on each other. I think I really,
+			need to pay attention to this when it comes to classes.
+Since we ran the Python console within the folder that the file needed
+	to be imported lived we can just import ex25 without needing to
+	call the full file address.
+Triple quotes (documentation comments) can be super valuable for def in
+	different libraries, be cool and document well.
+Instead of import ex25 give from ex25 import * (wildcard) to prevent
 	having to type the ex25 in ex25.function_in_ex25() all of the time.
-	I do know that this is not technically considered best practice 
-	since it is not technically explicit. 
-	NOTE: It is *NOT* best practice and should be avoided. 
+	I do know that this is not technically considered best practice
+	since it is not technically explicit.
+	NOTE: It is *NOT* best practice and should be avoided.
 
 26 Congratulations, Take a Test!
-Nothing to add here, it is just a test. 
+Nothing to add here, it is just a test.
 
 27 Memorizing Logic
 Everything boils down to True or False
@@ -401,7 +401,7 @@ Process to solve Boolean logic
 4 Find and remaining and/or and solve it.
 5 When you are done you should have True/False
 Python sees True == 1 and False == 0
-Side note: != and <> both mean not. Though <> is deprecated and no 
+Side note: != and <> both mean not. Though <> is deprecated and no
 	longer used.
 
 29 What If
@@ -409,33 +409,33 @@ Control Flow if-statements
 if a < b:
 	do_the_thing()
 With the if-statement if the equality after the if evaluates to True, it
-will run the indented block below, otherwise it will skip the block. 
-+= 1 is the "increment by" operator. There are many like this that are 
+will run the indented block below, otherwise it will skip the block.
++= 1 is the "increment by" operator. There are many like this that are
 	all awesome -= 1 and *= 2 etc.
 
 30 Else and If
 The colon : at the end of control-flow statements (if, elif, else, etc)
 	is your way of telling Python that a block indention is coming and
-	to treat it that way. Do not forget the :. 
+	to treat it that way. Do not forget the :.
 If you do not indent properly you end up with errors and Logical Errors
-elif is a way to follow an initial if statement with additional 
-	conditionals, you can have as many as you need/want. 
+elif is a way to follow an initial if statement with additional
+	conditionals, you can have as many as you need/want.
 else: is a catch all that will run if everything above it is False
-	This can be useful, but also dangerous, since it will run when you 
-	have a Logical Error in the above statements and can be hard to 
+	This can be useful, but also dangerous, since it will run when you
+	have a Logical Error in the above statements and can be hard to
 	catch.
-		There can also be security issues. 
-For all of these control statements, only one of them will ever run 
-	until a new block of if statements are run. 
-	
+		There can also be security issues.
+For all of these control statements, only one of them will ever run
+	until a new block of if statements are run.
+
 31 Making Decisions
 In this ex we play with asking the user for input decisions via choosing
 	a number. Then we use that string as a guide for the control flow
 	statements that come after. Also nesting of control flow.
-	ifs within ifs. 
+	ifs within ifs.
 Be careful not to nest too deeply. If you have to go more than 2 or 3
 	deep you probably can do it another way that is better, for example
-	calling a different function. 
+	calling a different function.
 To evaluate if a number is between two numbers there are a few ways:
 	Here be a number between 1 through 9
 	0 < x < 10
@@ -443,56 +443,56 @@ To evaluate if a number is between two numbers there are a few ways:
 	x in range(1,10)
 
 32 Loops and Lists
-A for-loop needs a way to store the results of a loop somewhere, and 
-	usually this is with a list. 
-list = [1, 2, 3, 4,] or ['dog', 'cat', 1, True'] 
+A for-loop needs a way to store the results of a loop somewhere, and
+	usually this is with a list.
+list = [1, 2, 3, 4,] or ['dog', 'cat', 1, True']
 	lists require square brackets
 for a_temp_variable in an_iterable_thing:
 	do_something()
-range([int], int, [int]) 
+range([int], int, [int])
 	([starting index], index to stop before, [int to interate by])
 Range is an immutable sequence type
-variable.append(i) takes i and pushed it on to the end of the variable 
+variable.append(i) takes i and pushed it on to the end of the variable
 	list
 
 33 While Loops
-A while-loop will keep looping until the Boolean Expression it is 
+A while-loop will keep looping until the Boolean Expression it is
 	evaluating becomes false.
-This can be dangerous or fun. Depends how you look at things. 
-While loops basically repeat the if-statement for the following block of 
+This can be dangerous or fun. Depends how you look at things.
+While loops basically repeat the if-statement for the following block of
 	code
 Some while-loop rules
-1 Make sure that you use while-loops sparingly. Usually a for-loop is 
+1 Make sure that you use while-loops sparingly. Usually a for-loop is
 	better
-2 Review your while statments and make sure that the Boolean test will 
+2 Review your while statments and make sure that the Boolean test will
 	become False at some point
-3 When in doubt, print out your test variable at the top and bottom of 
+3 When in doubt, print out your test variable at the top and bottom of
 	the while-loop to see what it is doing.
 NOTE: A for-loop can only loop over collections of things. A while-loop
 	loops as long as the conditional is True
 
 34 Accessing Elements of Lists
 To access an element of a list call list[0] the list square bracketed
-	by the index of the element you want. 
+	by the index of the element you want.
 Emphasis: lists start indexing at 0
 Ordinal number = order of objects; like finishers in a race
 Cardinal = location of object; like cards in a deck
 
 35 Branches and Functions
 
-sys.exit([int]) is used in this ex 
+sys.exit([int]) is used in this ex
 Since you can pass diferent things to .exit() which exit with a non-zero
-	return raises an exception, you can ultimately use the exceptions 
+	return raises an exception, you can ultimately use the exceptions
 	to try: except: differnt situations you run in to. It seems that it
 	uses signed ints here. Though I am not 100% positive with that
-Okay, so apparently exit codes are for the system and are generally 
+Okay, so apparently exit codes are for the system and are generally
 	rather undeveloped. This seems to be something needed further down
-	the line. 	
-He also uses a couple of flag variables in this example. 
+	the line.
+He also uses a couple of flag variables in this example.
 I do know that I do need to do a better job of the def fun(args):
-	and that the things being passed to them not needing to match and 
-	have them translate in my head to what they actually are. i.e. True 
-	or a 'string'. 
+	and that the things being passed to them not needing to match and
+	have them translate in my head to what they actually are. i.e. True
+	or a 'string'.
 
 36 Designing and Debugging
 Rules for if-statements
@@ -503,25 +503,25 @@ Rules for if-statements
 	and dies, just like we did in the last exercise. This will find many
 	errors.
 	NOT (BCL): WE UM... NEVER USED DIE IN THE PREVIOUS EXERCISE
-3 Never nest if-statements more than two deep and always try to do them 
+3 Never nest if-statements more than two deep and always try to do them
 	one deep.
-4 Treat if-statements like paragraphs, where each if-elif-else grouping 
+4 Treat if-statements like paragraphs, where each if-elif-else grouping
 	is like a set of sentences. Put blank lines before and after.
 5 Your Boolean tests should be simple. If they are complex, move their
-	calculations to variables earlier in your function and use a good 
-	name for the variable. 
-	
-Rules for loops 
-1 Use while-loops only to loop forever, this means rarely. 
+	calculations to variables earlier in your function and use a good
+	name for the variable.
+
+Rules for loops
+1 Use while-loops only to loop forever, this means rarely.
 	(PYTHON ONLY: other languages may be different.)
-2 for-loops for most other looping, especially of it has a fixed or 
+2 for-loops for most other looping, especially of it has a fixed or
 	limited number of things to loop over
 
 Tips for Debugging
-1 Do not use a debugger. No specific useful info, lots of extra stuff 
+1 Do not use a debugger. No specific useful info, lots of extra stuff
 	that does not matter
-2 Best way to debug and is to use print() to print out values of 
-	variables at different points 
+2 Best way to debug and is to use print() to print out values of
+	variables at different points
 3 Code a little, run a little, fix a little
 
 Best way to work on software is in small chunks
@@ -541,13 +541,13 @@ Keywords
 Keyword - Description - Example
 
 and - Logical and - True and False == False
-*** as - Part of the with-as statement. - with X as Y: pass            
+*** as - Part of the with-as statement. - with X as Y: pass
 	*** I wonder where "with" is on this list
-*** assert - Assert (ensure) that something is true - assert False, 
+*** assert - Assert (ensure) that something is true - assert False,
 	"Error!"
 break - Stop this loop right now. - while True: break
 *** class - Define a class. - class Person(object)
-continue - Do not procass more of the loop, do it again. - while True: 
+continue - Do not procass more of the loop, do it again. - while True:
 	continue
 def - Define a function. - def X(): pass
 del - Delete fron dictionary. - del X[Y]
@@ -556,30 +556,30 @@ else - Else condition. - if: X; elif: Y; else: J
 *** except - If an exception happens, do this. - except ValueError as e:
 	print(e)   ###This is kind of cool, can use in conjunction with try
 *** exec - Run a string as Python. - exec 'print("howdy")'
-*** finally - Exceptions or not, finally do this no matter what. - 
+*** finally - Exceptions or not, finally do this no matter what. -
 	finally: pass
 for - Loop over a collection of things. - for X in Y: pass
 from - Import specific parts of a module. - from x import Y
 *** global - Declare that you want a global variable global X
 if - If condition. - if:X; elif:Y; else:J
 import - Import a module into this one to use. - import os
-*** in - Part of for-loops. Also a test of X in Y. - for X in Y: pass 
+*** in - Part of for-loops. Also a test of X in Y. - for X in Y: pass
 	also 1 in [1] == True
-*** is - Like == to test equality. - 1 is 1 == True             
-*** lambda - Creata a short anonymous function - s = lambda y:y ** y; 
+*** is - Like == to test equality. - 1 is 1 == True
+*** lambda - Creata a short anonymous function - s = lambda y:y ** y;
 	s(3)
 not - Logical not. - not True == False
 or - Logical or. - True or False == True
 *** pass - This block is empty. - def empty(): pass
 print - Print this string. - print('this string')
-*** raise - Raise an exception when things go wrong. - raise 
+*** raise - Raise an exception when things go wrong. - raise
 	ValueError("No")
 return - Exit the function with a return value. - def X(): return Y
 *** try - Try this block, and if exception, go to except. - try: pass
-	###This is also kind of cool, good for looking to see if something 
-		already exists. 
+	###This is also kind of cool, good for looking to see if something
+		already exists.
 while - While loop. - while X: pass
-*** yield - Pause here and return to caller - def X(): yield Y, 
+*** yield - Pause here and return to caller - def X(): yield Y,
 	X().next()
 
 Data Types
@@ -639,7 +639,7 @@ Operator - Description - Example
 * - Multiplication - 2 * 4 == 8
 ** - Power of - 2 ** 4 == 16
 / - Division - 2 / 4 == 0.5
-// - Floor division - 2 // 4 == 0 
+// - Floor division - 2 // 4 == 0
 % - String interpolate or modulus - 2 % 4 == 2
 < - Less than - 4 < 4 == False
 > - Greater than - 4 > 4 == False
@@ -666,19 +666,19 @@ Operator - Description - Example
 
 38 Doing Things to Lists
 The opening "explanation" is how the variable you are using when calling
-	a function is technically the first argument of that function, I 
+	a function is technically the first argument of that function, I
 	can only think that this is refering to "self" in the __init__
-	
+
 >>> class Thing(object):
-		def test(self, message): <--- gotta have the self here else 
+		def test(self, message): <--- gotta have the self here else
 									  gonna have a bad time
 			message = "Howdy dammit!" #This line not actually needed
 			print(message)
 a = thing()
 a.test("Howdy!")
 
-variable.split(' ') to split a 'string' in to a [list] 
-using .pop() to pop off of one list and assign that element to a 
+variable.split(' ') to split a 'string' in to a [list]
+using .pop() to pop off of one list and assign that element to a
 	variable
 then appending that variable to the .split(' ') variable
 stuff[1] calling the element at index 1
@@ -686,39 +686,39 @@ stuff[-1] calling the element at the last index
 ' '.join(variable_list)
 '#'.join(variable_list[3:5])
 	str.join(iterable)
-		Return a string which is the concatenation of the strings in 
-			iterable. A TypeError will be raised if there are any 
-			non-string values in iterable, including bytes objects. The 
-			separator between elements is the string providing this 
+		Return a string which is the concatenation of the strings in
+			iterable. A TypeError will be raised if there are any
+			non-string values in iterable, including bytes objects. The
+			separator between elements is the string providing this
 			method.
 				In these cases we are concatenating the list of string
 					in variable_list and element 3 and 4 in the slice
-					of variable_list with ' ' and '#' separating the 
+					of variable_list with ' ' and '#' separating the
 					words respectively
 You can do all kinds of fun things with lists. ex, a deck of cards for a
-	game. 
-This example would be called a data structure. A data structure ia a 
-	formal way to structure (or organize) data (or facts). These can 
-	quickly become very complex. 
+	game.
+This example would be called a data structure. A data structure ia a
+	formal way to structure (or organize) data (or facts). These can
+	quickly become very complex.
 Lists are one of the most common Data Structures that are used
-List is an ordered list of things you want to store and access either 
-	randomly or linearly by index. 
+List is an ordered list of things you want to store and access either
+	randomly or linearly by index.
 When to Use lists
 1 Need to maintain order. Note: this is listed order, not sorted order.
 	Lists do not inherently sort
-2 Access contents randomly by a number. Note: this is using cardinal 
+2 Access contents randomly by a number. Note: this is using cardinal
 	numbers starting at 0
 3 Need to go through the contents of a list linearly (first to last)
 	Note: this is a really good application of for-loops
-variable.pop(another_variable) means call on pop "variable" with the 
+variable.pop(another_variable) means call on pop "variable" with the
 	argument "another_variable"
 
 39 Dictionaries, Oh Lovely Dictionaries
-Dictionary (dict) is another data structure. 
-It is another way to store data like a list, though instead of only	
+Dictionary (dict) is another data structure.
+It is another way to store data like a list, though instead of only
 	numbers to get the data you can use almost anything. 'keys'
-Apparently this lets you use dicts like a database for storing and 
-	organizing data. 
+Apparently this lets you use dicts like a database for storing and
+	organizing data.
 >>> a_dict = {'dog': 'gypsy', 'monkey': 'bubba',}
 >>> a_dict['dog']
 gypsy
@@ -730,7 +730,7 @@ To delete entries from a dict:
 >>> del a_dict['monkey']
 >>> a_dict
 {'dog': 'gypsy', 1: 'much'}
-Mapping (associating) is *the* key concept in a dictionary. 
+Mapping (associating) is *the* key concept in a dictionary.
 .get('key') is how to safely check to see and return the 'value' if that
 	key if present in the dict. Otherwise it will return None
 >>> a_dict.get('pupper')
@@ -742,31 +742,31 @@ if assigning variable = a_dict.get('pupper') and it returns None
 	You can use an if statement to do something with that fact
 	if variable == False:
 		do_a_thing
-.get('key'[,default]) can use default in place of an if statement like 
+.get('key'[,default]) can use default in place of an if statement like
 	above. When defaulting to None, it will never raise a KeyError
 		 The [,default] is an else statement, get 'key' if not key do
-			a thing. 
+			a thing.
 dicts are another super common Data Structure.
 
 40 Modules, Classes, and Objects
 Python is an Object-Oriented Programming Language
-This means there is a construct in Python called Class. 
-Classes let you structure software that can add consistancy to programs	
+This means there is a construct in Python called Class.
+Classes let you structure software that can add consistancy to programs
 	so that they can be cleaner. In Theory
-Zed does not like OOP. 
+Zed does not like OOP.
 The idea of 'get X from Y' is important
-Modules, they are a 
-	1 A Python file with some classes, functions or variables in it. 
+Modules, they are a
+	1 A Python file with some classes, functions or variables in it.
 	2 That can be imported
 	3 And access the functions or variables of with the . operator
 import module_to_use_things_from
-*** REMEMBER TO USE module_to_use_things_from.function_you_need() 
-	Otherwise you will need to use the 
+*** REMEMBER TO USE module_to_use_things_from.function_you_need()
+	Otherwise you will need to use the
 		from module_to_use_things_from import function_you_need
-			so you do not have to use 'module_to_use_things_from.' all 
-			of the time. 
+			so you do not have to use 'module_to_use_things_from.' all
+			of the time.
 With modules you can import functions *AND* variables
-You can almost think of Modules and dicts as similar things (though 
+You can almost think of Modules and dicts as similar things (though
 	different)
 Very common pattern in Python
 	1 Take key=value style container
@@ -775,33 +775,33 @@ With a dict the syntax is [key]
 With a module the syntax is the .key
 	Classes are like modules
 Classes can be thought of as similar to Modules
-It *might* be helpful to think of a module as a specilized dict that 
+It *might* be helpful to think of a module as a specilized dict that
 	stores code that can be accessed with the . operator
-"Here's why classes are used instead of modules: You can take this 
-	MyStuff class and use it to craft many of them, millions at a time 
-	if you want, and each one won't interfere with each other. When you 
-	import a module there is only one for the entire program unless you 
+"Here's why classes are used instead of modules: You can take this
+	MyStuff class and use it to craft many of them, millions at a time
+	if you want, and each one won't interfere with each other. When you
+	import a module there is only one for the entire program unless you
 	do some monster hacks."
-^^^ I think that this statement is probably more important than I am 
-	giving it credit for at this moment. 
+^^^ I think that this statement is probably more important than I am
+	giving it credit for at this moment.
 Classes might be though of as "mini-modules"
 Classes are similar in a way to modules though they are actually very
 	different
-	Classes are like blueprints or definitions for creating new 
+	Classes are like blueprints or definitions for creating new
 		mini-modules
 	Instantiation is how you make a new mini-modules *AND* import it at
-		the same time. 
-		Basically, instantiate just means to create an object from the 
+		the same time.
+		Basically, instantiate just means to create an object from the
 			class
-		The resulting new mini-module is an object and then you assign 
-			it to a variable to work with. 
+		The resulting new mini-module is an object and then you assign
+			it to a variable to work with.
 Here we showed three ways to get things from things
 #The dict
 >>> mystuff['apples']
 'value from apples'
 
 #The module
->>> mystuff.apples() # Remember this was with an import so mystuff is 
+>>> mystuff.apples() # Remember this was with an import so mystuff is
 					 # the module or file and apples() is the function
 					 # within mystuff
 'Prints string from apples()
@@ -815,75 +815,75 @@ Here we showed three ways to get things from things
 >>> thing.tangerine()
 'Prints from thing the variable tangerine'
 
-In my own words, it classes are kind of like pulling mystuff in but 
+In my own words, it classes are kind of like pulling mystuff in but
 you are not just pulling mystuff in. You are making a copy of mystuff
-that you can make changes to without changing mystuff. Meaning that you 
-can start a second or third or whatever version of mystuff and change 
-those as needed. thing1 thing2 thing3 each with their own properties. 
+that you can make changes to without changing mystuff. Meaning that you
+can start a second or third or whatever version of mystuff and change
+those as needed. thing1 thing2 thing3 each with their own properties.
 I am still having trouble seeing how this applies to his game in 43 but
-I am sure it will come. 
+I am sure it will come.
 
 class ClsName(object): #CapCase names
-				# (object) is optional and not in the Python 
+				# (object) is optional and not in the Python
 				# documentation
-				
-	def __init__(self, arg1, arg2) #__init__ seems to construct the 
-		#object the class is building. 
+
+	def __init__(self, arg1, arg2) #__init__ seems to construct the
+		#object the class is building.
 		#    NOTE: __init__ is getting the passed parameters ready to be
 		#	     used *inside* the class.
-		#The self part is what you call in the class when you want to 
-		#use the object itself (thing in thing.apple()). The args seem 
-		#to follow the standard arg rules from functions except they 
-		#need to be defined in the class blueprint so they can be 
-		#assigned internally from the args that were passed from the 
-		#initial call. 
+		#The self part is what you call in the class when you want to
+		#use the object itself (thing in thing.apple()). The args seem
+		#to follow the standard arg rules from functions except they
+		#need to be defined in the class blueprint so they can be
+		#assigned internally from the args that were passed from the
+		#initial call.
 		self.arg1 = arg1
 		self.arg2 = arg2
-		
+
 	def function(self):
 		doing = thing + arg1
 		print(doing)
-		
+
 In this example to creat a new object for ClsName:
 >>> thing = ClsName(arg1, arg2)
 
-I think at this point I have a good handle on how to build a class, but 
-	not any clue at all on how to properly use them. This returns back 
-	to the problems I am having with ex43. 
+I think at this point I have a good handle on how to build a class, but
+	not any clue at all on how to properly use them. This returns back
+	to the problems I am having with ex43.
 In the example in ex40 note that the 'for line in self.lyrics:' and how
-	it reads through the loop. line is each string and not specific 
+	it reads through the loop. line is each string and not specific
 	words or the whole file. In this example the passed variables are
-	lists of objects where each index contains a line of lyrics. 
-This is more of both a hey look out what is happening here and a 
-	as to how for loops work and a way to use them. 
+	lists of objects where each index contains a line of lyrics.
+This is more of both a hey look out what is happening here and a
+	as to how for loops work and a way to use them.
 The self in __init__ is pythons way of you telling Python that you mean
-	the instance attribute (for example self.tangerine) and not some 
-	other instance of the variable tangerine. 
-Just to hammer it home you will use self.tangerine in the class 
-	constructor but thing.tangerine in the body of the code. 
+	the instance attribute (for example self.tangerine) and not some
+	other instance of the variable tangerine.
+Just to hammer it home you will use self.tangerine in the class
+	constructor but thing.tangerine in the body of the code.
 
 41 Learning to Speak Object-Oriented
 Learning to Speak Object-Oriented
 
-Word Drills 
-class - Tell Python to make a new type of thing. 
-object - Two meanings: the most basic type of thing, and any instance of 
-	some thing. 
+Word Drills
+class - Tell Python to make a new type of thing.
+object - Two meanings: the most basic type of thing, and any instance of
+	some thing.
 Instance - What you get when you tell Python to create from a class
 def - How you define a function inside a class
-self - Inside the functions in a class, self is a 
+self - Inside the functions in a class, self is a
 	variable for the instance/object being accessed
-inheritance - The concept that one class can inherit traits from another 
+inheritance - The concept that one class can inherit traits from another
 	class, much like you and your parents
-Composition - The concept that a class can be composed of other classes 
+Composition - The concept that a class can be composed of other classes
 	as parts, much like how a car has wheels
-attribute - A property classes have that are from composition and are 
+attribute - A property classes have that are from composition and are
 	usually variables
-is-a - A phrase to say that something inherits from another, as in a 
+is-a - A phrase to say that something inherits from another, as in a
 	"salmon" is-a "fish"
-has-a - A phrase to say that something is composed of other things or 
+has-a - A phrase to say that something is composed of other things or
 	has a trait, as in "a salmon has-a mouth"
-	
+
 Phrase Drills
 class X(Y) - "Make a class named X that is-a Y"
 class X(object): def __init__(self,J) -
@@ -891,42 +891,42 @@ class X(object): def __init__(self,J) -
 class X(object): def M(self,J) -
 	"class X has-a function named M that takes self and J parameters"
 foo = X() - "Set foo to an instance of class X"
-foo.M(J) - 
+foo.M(J) -
 	"From foo, get the M function, and call it with parameters self, J"
 foo.K = Q - "From foo, get the K attribute, and set it to Q"
 
 In addition to the flash cards for each of these sections do Combined
 	Drills:
 	1 Take a phrase card and drill it
-	2 Flip it over and read the sentence, and for each work in the 
+	2 Flip it over and read the sentence, and for each work in the
 		sentence that is in your words drills, get that card.
 	3 Drill those words for that sentence
 	4 Keep going until you are bored, then take a break and do it agian.
-	
+
 Ex41 code:
-There is actually some pretty neat stuff happeneing in this code. 
+There is actually some pretty neat stuff happeneing in this code.
 >>> from urllib.request import urlopen
-	urllib - is a package that collects several modules for working with 
+	urllib - is a package that collects several modules for working with
 		URLs
 	.request - is for opening and reading URLs
-	.urlopen - open the URL 'url', which can be either a string or a 
-		'Request' object. 
-		NOTE: because .urlopen was called as a from/import, do not need	
+	.urlopen - open the URL 'url', which can be either a string or a
+		'Request' object.
+		NOTE: because .urlopen was called as a from/import, do not need
 			to urllib.request.urlopen; only need to call urlopen to get
-			in to the goodies inside this function. 
+			in to the goodies inside this function.
 There is a *lot* happening in this code that is new.
->>> for word in urlopen(WORD_URL).readlines(): 
-#here we are looping through WORD_URL via 'urlopen' with the site 
+>>> for word in urlopen(WORD_URL).readlines():
+#here we are looping through WORD_URL via 'urlopen' with the site
 #given to WORD_URL by each line via .readlines()
 >>>    WORDS.append(str(word.strip(), encoding="utf-8"))
 # with this we are taking each 'word line' stripping the white space
-# ensuring that the encoding is utf-8 and then turning it in to a 
-# string, from there that str 'word' is being appended to the (for now) 
+# ensuring that the encoding is utf-8 and then turning it in to a
+# string, from there that str 'word' is being appended to the (for now)
 # empty list of WORDS (a global variable)
-	
-def convert(snippet, phrase): 
-    # convert takes two arguments 
-    class_names = [w.capitalize() for w in 
+
+def convert(snippet, phrase):
+    # convert takes two arguments
+    class_names = [w.capitalize() for w in
                    random.sample(WORDS, snippet.count("%%%"))]
 # *THIS* is a List Comprehension something he says nothing of. w will be
 # capitalized for w in a random sample of words from the population from
@@ -938,10 +938,10 @@ def convert(snippet, phrase):
 # is looking for "***"
     results = []
     param_names = []
-    
+
     for i in range(0, snippet.count("@@@")):
 # Looking up count, I think I understand what the purpose of the method
-# is, however, I *DO NOT* understand exactly what non-overlapping mean 
+# is, however, I *DO NOT* understand exactly what non-overlapping mean
 # and and utterly failing with my Google search. Here we are itterating
 # over i in the range of 0 to the number of times that "@@@" appears in
 # the snippet
@@ -950,97 +950,97 @@ def convert(snippet, phrase):
 # so .join is a thing that was used in ex38 to stick things together
 # seperated by the first arg in the method. In this cast it is ', '
             random.sample(WORDS, param_count)))
-# this is setting up a random number of parameters that will be in the 
+# this is setting up a random number of parameters that will be in the
 # lists later, from 1 to 3
-        
-    for sentence in snippet, phrase: 
+
+    for sentence in snippet, phrase:
 # So here, it seems that sentence is looping over snippet, then phrase
-# based on the testing I have done since snippet is a key containing a 
+# based on the testing I have done since snippet is a key containing a
 # single 'string' and phrase is also a value containing a single
 # 'string' both from the same dict
         result = sentence[:] #result is slice copy of sentence
-        
+
         # Fake class names
-        for word in class_names: 
-# this takes the list of words created above in class_names (there the 
+        for word in class_names:
+# this takes the list of words created above in class_names (there the
 # number of items in the list is = to the number of '@@@' in the snippet
-# or phrase and replaces the '@@@' with the correct number of proper 
+# or phrase and replaces the '@@@' with the correct number of proper
 # words
             result = result.replace("%%%", word, 1)
-        
+
         results.append(result) #this appends to the empty list above
-        
-    return results 
-# this also seems to return results *to* snippet, then to phrase from 
-# the above loop. It should be a list of two items 
+
+    return results
+# this also seems to return results *to* snippet, then to phrase from
+# the above loop. It should be a list of two items
 
 try:
     while True:
-        snippets = list(PHRASES.keys()) 
+        snippets = list(PHRASES.keys())
             #snippets becomes a list of the keys from PHRASES
-			#NOTE: .keys() is redundant here since a dict defaults to 
+			#NOTE: .keys() is redundant here since a dict defaults to
 				#iterating over the keys
         random.shuffle(snippets)
             # this just shuffles snippets
-        
-        for snippet in snippets: # snippets is the list of keys from 
-                            # PHRASES 
-            phrase = PHRASES[snippet] # Here we are taking PHRASES and 
-                # calling the shuffled list of keys to return the dict 
+
+        for snippet in snippets: # snippets is the list of keys from
+                            # PHRASES
+            phrase = PHRASES[snippet] # Here we are taking PHRASES and
+                # calling the shuffled list of keys to return the dict
                 #value 'phrase'
-            question, answer = convert(snippet, phrase) 
-# this sets the returned 'results' list of two object to question, 
+            question, answer = convert(snippet, phrase)
+# this sets the returned 'results' list of two object to question,
 # answer
 
 The code introduces one method for optional args from the command line
 	with an if statement
 Important part of understanding coding is placing less meaning on the
-	words for variables and what they actually do. 
+	words for variables and what they actually do.
 
 NEED TO GO THROUGH AND PRACTICE oop_test.py
 
 42 Is-A, Has-A, Objects, and Classes
-Need to understand the difference between a Class and an object. 
-Technically, they are the same thing at different points in time. 
+Need to understand the difference between a Class and an object.
+Technically, they are the same thing at different points in time.
 A salmon (class) is-a kind of fish (class).
 Fish (class) has-a salmon (class)
-Mary, Joe, and Frank (objectes) are (is-a) salmon. 
-The class fish is not a real thing. It is just a classification of a 
-	thing. Mary is that class that is an actual thing. 
+Mary, Joe, and Frank (objectes) are (is-a) salmon.
+The class fish is not a real thing. It is just a classification of a
+	thing. Mary is that class that is an actual thing.
 Mary the object is an instance of the class Salmon (and Fish)
-The "trick" about how to tell the difference is 'is-a' and 'has-a'. 
-'is-a' is used when talking about objects and classes being related to 
+The "trick" about how to tell the difference is 'is-a' and 'has-a'.
+'is-a' is used when talking about objects and classes being related to
 	each other by a class relationship.
 'has-a' is used when talking about objects and classes that are related
-	only because they reference each other. 
+	only because they reference each other.
 def __init__(self, arg_1, arg_2):
 	super(Employee, self).__init__(name)
-	# I think what this does is that it pulls the name from the Person 
-		class and gives it to the Employee object. 
+	# I think what this does is that it pulls the name from the Person
+		class and gives it to the Employee object.
 	# I wonder if you update the Person object then the Employee name is
 		#updated. I think that Corey Schafer talks about this indicating
-		#that yes it does update since you are simply interacting with 
+		#that yes it does update since you are simply interacting with
 		#that specific object with *all* of the properties.
 class Cls(object):
-	the object is not required in Python 3, where Python 2 required 
-		something different for the two different types of classes. 
-	However, if you wish to maintain backwards compatability for some 
+	the object is not required in Python 3, where Python 2 required
+		something different for the two different types of classes.
+	However, if you wish to maintain backwards compatability for some
 		reason, then you should keep (object)
 Also valid:
 class Cls:
-However, apparently it is better to be explicit rather than implicit. 
-There is such a thing as 'is-many' and they are 'multiple inheritance'. 
-	Apprently these are bad and should be avoided. 
-The self.pet = None in the __init__ of Person specifically sets "that 
-	person" to having None pets by default. 
-super(Employee, self).__init__(name) is how you can run the __init__ 
+However, apparently it is better to be explicit rather than implicit.
+There is such a thing as 'is-many' and they are 'multiple inheritance'.
+	Apprently these are bad and should be avoided.
+The self.pet = None in the __init__ of Person specifically sets "that
+	person" to having None pets by default.
+super(Employee, self).__init__(name) is how you can run the __init__
 	method of the parent class reliably. People tend to say that it is
-	both good and evil. 
+	both good and evil.
 
 ##### STOPPED HERE #####
 
 43 Basic Object-Oriented Analysis and Designing
-See OneNote for the game loop flow chart. It helps. 
+See OneNote for the game loop flow chart. It helps.
 	The notes for the ex43_classes.py code are very limited.
 One Problem Solving Process - "Top Down"
 1 Write or draw about the problem
@@ -1048,29 +1048,29 @@ One Problem Solving Process - "Top Down"
 3 Create a class hierarchy and object map for the concepts
 4 Code the classes and and a test to run them
 5 Repeat and refine
-Top-down starts with a loose and abstract idea of the program and 
-	continually refines until you have what you want. 
+Top-down starts with a loose and abstract idea of the program and
+	continually refines until you have what you want.
 Helps with identifying key concepts that bottom-up might get lost in the
-	weeds with. 
-Lots of code testing. Always be testing code. 
+	weeds with.
+Lots of code testing. Always be testing code.
 
 
 1 Write or draw about the problem
 "Gorthons from Planet Percal #25"
 
-Description of each scene in the game. 
+Description of each scene in the game.
 Death - This is when the player died and should be something funny
-Central Corridor - This is the starting point and has a Gorthon already 
-	standing there that the player must defeat with a joke before 
-	continuing. 
+Central Corridor - This is the starting point and has a Gorthon already
+	standing there that the player must defeat with a joke before
+	continuing.
 Laser Weapon Armory - This is where the hero gets a neutron bomb to blow
-    up the ship before getting to the escape pod. It has a keypad the 
-	hero has to guess the number for. 
-The Bridge - This is another battle scene with a Gorthon where the hero 
+    up the ship before getting to the escape pod. It has a keypad the
+	hero has to guess the number for.
+The Bridge - This is another battle scene with a Gorthon where the hero
 	places the bomb
 Escape Pod - This is where the hero escapes but only after guessing the
 	right escape sequence
-	
+
 2 Extract Key Concepts and Research Them
 
 List of Nouns
@@ -1093,7 +1093,7 @@ The Bridge
 Make List of Verbs
 Skipping for now.
 
-Research different things about the nouns and verbs above. 
+Research different things about the nouns and verbs above.
 Ex. About ships, or how bombs work, or storing game state in datebase.
 Possibly at this point, after research redo two steps above
 
@@ -1105,7 +1105,7 @@ Possibly at this point, after research redo two steps above
 	-next_scene
 	-opening_scene
 *Engine
-	-play 
+	-play
 *Scene
 	-enter
 	*Death
@@ -1113,82 +1113,82 @@ Possibly at this point, after research redo two steps above
 	*Laser Weapon Armory
 	*The Bridge
 	*Escape Pod
-	
+
 4 Code the classes and a test to run them
-With the tree of classes, maybe plop it in to the source file and 
-	code it out from there. Building up the framework. Test that 
-	everything works. 
-	
+With the tree of classes, maybe plop it in to the source file and
+	code it out from there. Building up the framework. Test that
+	everything works.
+
 5 Repeat and refine
-This is less a step and more a while loop. 
+This is less a step and more a while loop.
 Jumping around in the code is ok, just make sure you keep the notes good
-	so that you can remember where you were and what you were doing when 
-	you jumped out of that process. 
-This process can be done, not just at the 'top' level, but at every 
-	level of the code layers to make things work. e.g. making the 
-	Engine.play() function work. 	
-	
+	so that you can remember where you were and what you were doing when
+	you jumped out of that process.
+This process can be done, not just at the 'top' level, but at every
+	level of the code layers to make things work. e.g. making the
+	Engine.play() function work.
+
 Top Down vs Bottom Up
-Bottom up "tends to be" better once you have a better foundation with 
-	programming. Is good when you know all of the pieces to the puzzle. 
+Bottom up "tends to be" better once you have a better foundation with
+	programming. Is good when you know all of the pieces to the puzzle.
 	This can help be more focused on single problems and making things
 	work. It can also paint you in to a corner or waste time on things
-	that end up not being important. 
+	that end up not being important.
 
 "Bottom Up" Steps
-1 Take a small piece of the problem; hack on some code and get it to 
+1 Take a small piece of the problem; hack on some code and get it to
 	barely run.
-2 Refine the code into something more formal with classes and automated 
+2 Refine the code into something more formal with classes and automated
 	tests.
-3 Extract the key concepts you are using and research them. 
-4 Write a description of what is really going on. 
-5 Go back and refine the code, possibly throwing it out and starting 
-	over. 
-6 Repeat, moving on to some other piece of the problem. 
+3 Extract the key concepts you are using and research them.
+4 Write a description of what is really going on.
+5 Go back and refine the code, possibly throwing it out and starting
+	over.
+6 Repeat, moving on to some other piece of the problem.
 ***BIG THING*** to remember here is that in the game loop, you really
 	only need two things, the current room, that *assigns* the next room
-	to "the next room". Then the next room sets everything up and gives 
-	that back to the current room. This seems to prevent the stack 
-	growth that I had in ex36. 
-from textwrap import detent #Remove any common leading whitespace from 
+	to "the next room". Then the next room sets everything up and gives
+	that back to the current room. This seems to prevent the stack
+	growth that I had in ex36.
+from textwrap import detent #Remove any common leading whitespace from
                             #every line in text. Allows for allign left
                             #when dealing with ''' '''
-	NOTE: I NEVER GOT THIS TO WORK AND GAVE UP ON IT FOR NOW. 
-There really is not a whole lot more new stuff for this chapter. 
+	NOTE: I NEVER GOT THIS TO WORK AND GAVE UP ON IT FOR NOW.
+There really is not a whole lot more new stuff for this chapter.
 
 NOTE: MAYBE GO BACK AT A LATER DATE AND CODE OUT HIS VERSION OF THE GAME
 	TO SEE WHAT HE COMES UP WITH
-	
-Just the challange to get the game loop up and running. 
+
+Just the challange to get the game loop up and running.
 
 44 Inheritance versus Composition
-Preface note: Most uses of inheritance can be simplified or replaced 
+Preface note: Most uses of inheritance can be simplified or replaced
 	with composition
 Note: Multiple inheritance should be avoided at all costs
-Inheritance is used to indicate that one class will get some or all of 
-	its features from a parent class. 
+Inheritance is used to indicate that one class will get some or all of
+	its features from a parent class.
 This happens implicitly when >>> class Foo(Bar), make a class Foo that
 	inherits from Bar
-This means that any instance of Foo will also behave as if they were 
+This means that any instance of Foo will also behave as if they were
 	also an instance of Bar
 Three ways that Parent/Classes interacting
 1 Actions on the child imply an action on the parent.
-2 Actions on the child override the action on the parent. 
-3 Actions on the child alter the action on the parent. 
+2 Actions on the child override the action on the parent.
+3 Actions on the child alter the action on the parent.
 Implicit inheritance is when the function or attribute called on a child
-	class is not defined and Python then looks up to the Parent class to	
+	class is not defined and Python then looks up to the Parent class to
 	call that funcion or attribute.
 >>> son.implicit()
 PARENT implicit()
-pass keyword can be used to tell Python that you yes in fact want an 
+pass keyword can be used to tell Python that you yes in fact want an
 	empty block. Just let it go already!
 Here even though we call son.implicit() it is not currently defined in
-	the Child class and Python looks to the Parent class. 
+	the Child class and Python looks to the Parent class.
 Override Explicitly - sometimes it can be a problem to have an implicit
 	inheritance. By this I think I can see how his point works here, and
-	that is in looking for bugs or things like that. 
-In order to have the child behave differently you will have to 
-	effectivly replace the functionality if the child. 
+	that is in looking for bugs or things like that.
+In order to have the child behave differently you will have to
+	effectivly replace the functionality if the child.
 >>> dad = Parent()
 >>> son = Child()
 
@@ -1198,10 +1198,10 @@ In order to have the child behave differently you will have to
 PARENT override()
 CHILD override()
 
-There is a third special case of inheritance and it is altering the 
-	behavior either before the Parent function or after the Parent 
-	function runs. 
-To do this you override the Parent and then call the built-in function 
+There is a third special case of inheritance and it is altering the
+	behavior either before the Parent function or after the Parent
+	function runs.
+To do this you override the Parent and then call the built-in function
 	super() (Note: or call super then 'override')
 >>> class Child(Parent)
 >>>     def altered(self):
@@ -1209,13 +1209,13 @@ To do this you override the Parent and then call the built-in function
 >>> 	super(Child, self).altered()
 >>> 	print("DO THINGS IN CHILD, AFTER PARENT altered()")
 
-You know what, I think I actually understand what he is saying here. 
+You know what, I think I actually understand what he is saying here.
 	Hooray!
 
-super() tells Python to use "method resolution order" (MRO) and an 
-	algorithm called C3 to make sure the the order of multiple 
-	inheritance classes is consistant. 
-Note: It also uses this when just working with a Parent/Child 
+super() tells Python to use "method resolution order" (MRO) and an
+	algorithm called C3 to make sure the the order of multiple
+	inheritance classes is consistant.
+Note: It also uses this when just working with a Parent/Child
 	relationship
 
 To define a class with multiple inheritance
@@ -1224,19 +1224,19 @@ To define a class with multiple inheritance
 >>> 	pass
 
 It is very common to use super().__init__()
-This pulls in init from the Parent and can either before or after, 
-	add additional features to the Child __init__ function. 
-NOTE: I wonder if it is best practice to "alter before", or after? 
+This pulls in init from the Parent and can either before or after,
+	add additional features to the Child __init__ function.
+NOTE: I wonder if it is best practice to "alter before", or after?
 Inheritance is useful, however Composition can be used to do the exact
-	same thing without having to rely on implicit inheritance. 
-Using inheritance two of the three methods require writing new code to 
-	replace or alter functionality. 
+	same thing without having to rely on implicit inheritance.
+Using inheritance two of the three methods require writing new code to
+	replace or alter functionality.
 This is basically saying instead of a 'is-a' relationship, we are using
 	a 'has-a' relationship
-	
+
 >>> class Other(object):
 >>> 	def Exact_Same_as_Parent_In_Example
->>> 
+>>>
 >>> class Child(object): #No inheritance
 >>> 	def__init__(self):
 >>> 		self.other = Other() #Pulls in all of Others usefullness
@@ -1245,72 +1245,129 @@ This is basically saying instead of a 'is-a' relationship, we are using
 >>> 	def all_else_is_the_same(self):
 >>> 		pass
 
-The cause of the war here of Inheritance v Composition is one that is 
+The cause of the war here of Inheritance v Composition is one that is
 	trying to minimize the repetition of code. That is not clean and it
 	is inefficient
 Three guideline on when to use which:
-1 DO NOT use multiple inheritance no matter what. It tends to be too 
+1 DO NOT use multiple inheritance no matter what. It tends to be too
 	complex to be reliable. It can take a long time understanding where
-	everything is coming from. 
-2 Use composition when building things out of pieces. Wheel, engine, 
+	everything is coming from.
+2 Use composition when building things out of pieces. Wheel, engine,
 	seat belt, to build a Car class.
-3 Use inheritance when there are clearly related and reusable pieces 
+3 Use inheritance when there are clearly related and reusable pieces
 	that will fit within a single common concept. Or if you have to due
-	to something that you are useing. 
-As always do not be a slave to rules but need to have the expertise to 
-	know when to break them. 
+	to something that you are useing.
+As always do not be a slave to rules but need to have the expertise to
+	know when to break them.
 Know PEP8
 
 45 You Make A Game
 Requirements for game:
 1 Different than the one he made
-2 Use more than one file. import the other files. 
-3 One class per room. 
-4 Make sure the game loop works. 
+2 Use more than one file. import the other files.
+3 One class per room.
+4 Make sure the game loop works.
 
-Programming is problem solving. 
+Programming is problem solving.
 
-Go over your code with a red pen. 
+Go over your code with a red pen.
 	Function style
 Functions that are apart of classes are called "methods"
-Working with classes means most of your time you will be making your 
+Working with classes means most of your time you will be making your
 	instances of them "do things". Consider no naming methods after what
-	they do. Instead consider naming them the "command verb" to go do 
+	they do. Instead consider naming them the "command verb" to go do
 	that thing. .pop instead of remove_from_end_of_list
-Keep methods and functions short and simple. 
+Keep methods and functions short and simple.
 	Class Style
 Class names should be CamelCase
 Try to not do too much in __init__. It can make them hard to use.
-Functions use _ format for naming. 
-Be consistant with parameter naming order. Do not keep mixing the 
-	order around otherwise it can make using them difficult and 
-	debugging even harder. 
-Try to not use module wide or global variables. Variables should be 
-	as self contained as possible. 
-A foolish consistancy is the hobgoblin of a small mind. 
+Functions use _ format for naming.
+Be consistant with parameter naming order. Do not keep mixing the
+	order around otherwise it can make using them difficult and
+	debugging even harder.
+Try to not use module wide or global variables. Variables should be
+	as self contained as possible.
+A foolish consistancy is the hobgoblin of a small mind.
 "Always, always have 'class Name(object) format or else..."
-	With the sunsetting of Python2, this seems to be less useful now. 
+	With the sunsetting of Python2, this seems to be less useful now.
 	Code Style
-Give you code vertical space. It is how the human eye sees things. 
-You should be able to read your code outloud, if it is difficult to do 
-	this then it might be hard to read at all. 
-Imitate other peoples style until you develop your own. 
-Do not be evil about your style when looking at other peoples style. 
-	You style probably sucks too. 
+Give you code vertical space. It is how the human eye sees things.
+You should be able to read your code outloud, if it is difficult to do
+	this then it might be hard to read at all.
+Imitate other peoples style until you develop your own.
+Do not be evil about your style when looking at other peoples style.
+	You style probably sucks too.
 
 	Good Comments
-People might say your code should be clear enough to not need comments. 
-	Forget that, that is just a silly thing to say. 
+People might say your code should be clear enough to not need comments.
+	Forget that, that is just a silly thing to say.
 Use comments to describe why you are doing something not what you are
-	doing. This what you are doing is right there in the code. 
+	doing. This what you are doing is right there in the code.
 DOCSTRING about what someone can do with that class or function can be
-	really helpful for other people (or you) in the future. 
-Too many comments means you have to maintain those comments. No comments 
-	are better than bad comments. 
-	
-46 A Project Skeleton
+	really helpful for other people (or you) in the future.
+Too many comments means you have to maintain those comments. No comments
+	are better than bad comments.
 
-### NEED TO LEARN ABOUT 
+46 A Project Skeleton
+Will use pip to install new modules to use with Python
+Verify pip installation with:
+
+>>> python -m pip list
+pip (version number)
+setuptools (version number)
+
+Once pip is verified, need to install virtualenv
+This is similar to venv which comes in PSL
+>>> python -m pip install virtualenv
+
+Next mkdir .venvs
+This will be where you install your different development environments.
+Then
+>>> python -m virtualenv .venvs/lpthw
+or to have your system modules included
+>>> python -m virtualenv --system-site-packages .venvs/lpthw
+
+For git bash in order to activate your venv
+>>> source file\path\to\venv\Scripts\activate
+
+	Creating the Skeleton Project Directory
+*IN YOUR PROJECTS FOLDER NOT THE .VENVS*
+>>> mkdir projects
+>>> cd projects/
+>>> mkdir skeleton
+>>> cd skeleton
+>>> mkdir bin NAME tests docs
+
+Have a dir 'projects' within it everything that is being worked on.
+'skeleton' is the basis of new projects in to.
+The directory NAME will be renamed to whatever the projects main module is
+	called when using skeleton
+>>> touch NAME/__init__.py
+>>> touch tests/__init__.py
+
+Next create setup.py file.
+https://packaging.python.org/tutorials/packaging-projects/#setup-py
+
+Change Zed's information to your information within setup.py
+Last make a simple tests/NAME_tests.py file.
+
+Folder organization
+projects
+	skeleton
+		bin
+		docs
+		NAME
+			__init__.py
+		setup.py
+		tests
+			__init__.py
+			NAME_tests.py
+
+####### STOPPED HERE P197
+
+
+
+### NEED TO LEARN ABOUT
 # PIP
 https://www.youtube.com/watch?v=U2ZN104hIcc
 
@@ -1325,8 +1382,8 @@ https://packaging.python.org/guides/installing-using-pip-and-virtual-environment
 
 47 Automated Testing
 
-## Stopped time to add tests to ex43 now ex47 game. 
-## How to save variables and retrive variables from json
+## Stopped time to add tests to ex43 now ex47 game.
+
 
 48 Advanced User Input
 

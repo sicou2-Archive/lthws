@@ -1,15 +1,14 @@
 class Text():
 
-
     room = {
-        'enter': 
+        'enter':
         """
         ENTER THE ROOM THAT IS NOT A ROOM, THINGS ARE BROKEN.
         """,
-        }               
-  
+        }
+
     entrance = {
-        'intro': 
+        'intro':
         """
         ADD TO STORY LOOKING FOR JEWELS AND THEN YOU WILL NEED TO GO TO THE
         STORE FOR SOME FOOD BEFORE UNDERSTANDING THAT SOMETIMES YOU DO LIKE
@@ -26,7 +25,7 @@ class Text():
         THE OPENING STORY THIS NEEDS THE OPENING STORY
         """,
         }
- 
+
     antichamber = {
         'enter':
         """
@@ -48,7 +47,7 @@ class Text():
         Choose a door or rest:\n
         1 Left, 2 Center, 3 Right, 4 Rest a moment
         """,
-        'no_left_door': 
+        'no_left_door':
         """
         There is no reason to go back in there.\n
         Choose a different room:\n
@@ -60,7 +59,7 @@ class Text():
         Choose a different room:\n
         1 Left, 3 Right, 4 Rest a moment
         """,
-        'door_stall': 
+        'door_stall':
         """
         Moving on is the only hope for you now. Choose a room:\n
         1 Left, 2 Center, 3 Right, 4 Rest a moment
@@ -95,14 +94,14 @@ class Text():
         After looking around and seeing no danger, you return to the
         Antichamber.
         """,
-        'stall': 
+        'stall':
         """
         You should get a move on. What would you like to do?
         """,
         }
 
     slime = {
-        'enter': 
+        'enter':
         """
         Enter and a Slime is quietly digesting a large body.\n
         1 Attack the Slime, 2 Taunt the Slime, 3 Quietly back out of room.
@@ -414,7 +413,7 @@ class Text():
         'end': """Game over man. Game over! Play again? "y/n\"""",
         'except_end': """Would you like to play again? "y/n\"""",
         }
-        
+
     fight = {
         'fight':
         """
@@ -434,7 +433,7 @@ class Text():
         """,
         'stall': """Do not hesitate! Do something, anything!""",
         }
-        
+
     rest = {
         'rested': """You already feel rested. Better get a move on!""",
         'rest':
@@ -442,6 +441,6 @@ class Text():
         You take a moment to catch your breath. You feel ready to soldier on!
         """,
         }
-        
+
 if __name__ == '__main__':
-    main()
+    pass
