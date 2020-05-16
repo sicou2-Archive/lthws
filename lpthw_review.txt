@@ -1351,7 +1351,7 @@ https://packaging.python.org/tutorials/packaging-projects/#setup-py
 Change Zed's information to your information within setup.py
 Last make a simple tests/NAME_tests.py file.
 
-Folder organization
+Final Folder organization
 projects
 	skeleton
 		bin
@@ -1363,18 +1363,46 @@ projects
 			__init__.py
 			NAME_tests.py
 
-####### STOPPED HERE P197
+Do not try to run tests from the test folder, you must run tests from the
+	parent directory.
 
+To run your tests make sure you are in the corrct directory and:
+>>> pytest
 
+	Using the Skeleton
+1 Make a copy of skeleton directory and call it your new project
+2 Rename (move) the NAME directory to the name of your project, or whatever the
+	root module is to be named
+3 Edit your setup.py to have all of the information for your project
+4 Rename tests/NAME_tests.py to also have module name
+5 Double check everything is working by running pytest again
+6 Start coding
 
-### NEED TO LEARN ABOUT
+	"QUIZ"
+1 Read about PIP, VIRTUALENV, PYTEST
+2 Read about setup.py. Zed thinks it is not a well written piece of software
+	 and will be strange to use
+3 Make a project and put code in to the module. Get module working
+4 Put a script in to bin directory that you can run. Read about how you can
+	make a Python script that is runnable for your system
+5 Mention the bin script you created in setup.py so that it gets installed
+6 Use your setup.py to install your own module and make sure it works, then
+	use pip to uninstall it.
+
+Okay team, seriously, forget everything about this. This whole series of
+	"lessons" is awful.
+
 # PIP
 https://www.youtube.com/watch?v=U2ZN104hIcc
 
 # VIRTUALENV
 https://www.youtube.com/watch?v=N5vscPTWKOk
 https://www.youtube.com/watch?v=APOPm01BVrk
+
 # SETUP.PY
+
+setup.py and distutils
+http://docs.python.org/distutils/setupscript.html
 
 # TRYING TO GET test_script.py TO RUN TEST_PROJECT/howdy_dammit.py
 'python -m pip install .'
@@ -1382,7 +1410,20 @@ https://packaging.python.org/guides/installing-using-pip-and-virtual-environment
 
 47 Automated Testing
 
-## Stopped time to add tests to ex43 now ex47 game.
+Testing is an efficient method to determine that a program still works after
+	changes have been made
+
+##### STOPPED PG201
+
+
+
+
+
+
+
+
+
+
 
 
 48 Advanced User Input

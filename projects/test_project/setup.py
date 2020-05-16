@@ -2,7 +2,7 @@ try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
-    
+
 config = {
     'description': 'Test Project Ex46',
     'author': 'BCL',
@@ -12,8 +12,8 @@ config = {
     'version': '0.1',
     'install_requires': ['pytest'],
     'packages': ['TEST_PROJECT'],
-    'scripts': [],
+    'scripts': ['bin/test_script'],
     'name': 'testproject',
     }
-    
+
 setup(**config)
