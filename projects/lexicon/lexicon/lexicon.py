@@ -8,9 +8,6 @@ lexicon = {
     'error': [],
 }
 
-# When word not in lexicon return then the (TOKEN, WORD) token should be set
-# to an error token and tell the user that they did not enter a good word.
-
 
 def split_input():
     stuff = input('> ')
@@ -18,11 +15,13 @@ def split_input():
     words = stuff.split()
 
 
-def convert_number(convert):
+def _convert_number(convert):
     for index, i in enumerate(convert):
         try:
             number = convert[index] = int(i)
+            present = 1
             lexicon['number'].append(number)
+            # print(lexicon)
         except ValueError:
             return None
 
@@ -30,22 +29,26 @@ def convert_number(convert):
 def scan(command):
     """Scan should take a single argument and decide that it is verb of
     direction and return a list of tuples of the (verb, argument)"""
-    words = command.lower().split(' ')
+    words = command.split(' ')
+    # print(words)
+    words_lower = command.lower().split(' ')
+    # print(words_lower)
     commands = []
-    convert_number(words)
-    for word in words:
+    _convert_number(words)
+    for word, lower in zip(words, words_lower):
+        present = 0
         for k, v in lexicon.items():
-            if word in v:
+            if lower in v or word in v:
+                present = 1
                 tup = (k, word)
                 commands.append(tup)
-            # else: # This else is catching all of the keys that
-            # # the word is not in, need to figure a better way for this.
-            #     tup = ('error', word)
-            #     lexicon['error'].append(word)
+                # print(lexicon)
+        if not present:
+            tup = ('error', word)
+            commands.append(tup)
     return commands
 
 
-# test = ('1234 6543')
-# accept = scan(test)
-# print(accept)
-# print(lexicon)
+# command = '15 54 98'
+# r = scan(command)
+# print(r)
