@@ -1412,23 +1412,166 @@ https://packaging.python.org/guides/installing-using-pip-and-virtual-environment
 
 Testing is an efficient method to determine that a program still works after
 	changes have been made
+NOTE: Everything from this chapter on will have "What You Should Test" instead
+	of "What You Should See"
+Will write tests for all code now.
+In trying to be a programmer, know that programmers tend to automate boring and
+	tedious tasks.
+To make a new project out of skeleton
+1 Copy skeleton to ex47 (new project name)
+2 Rename everything with NAME to ex47 (new project name)
+3 Change the word NAME in all files to ex47 (new project name)
+4 Remove all *.pyc files
 
-##### STOPPED PG201
+In this ex create ex47/game.py to keep code that you will be testing (not the
+	tests themselves)
+The example code shows:
+a class with an init and two methods
+go method users .get in a dict to great effect. Probably should have used that
+in ex48.
 
+In the example tests
+we from ex47.game import Room
+To me it looks like the dot operator lets you dig deeper in to a directory in
+the same way that / or \ does, except that Python might not like the slashes.
+The tests example does not all a whole lot does it.
+def test_room():
+	It *does* seem like he goes though and checks every function and
+		instantiation that is available in the whole bit of code that is being
+		tested.
+Also, looking at the ex47 example code does actually make sense.
+Create a Room with a name and a description
+add_paths will add the paths out of that room to other rooms with the key as
+	the direction to go and the value being that actual room to go to.
+in go when given the 'string' direction from the available paths, you will be
+	returned the class object for that direction from the room you are
+	currently in.
+This actually seems legit for a game loop type thing.
+The tests here for the final round of tests seems to not need a loop in that
+	they "abuse" the return from go to chain go commands together to get to
+	the different rooms on a single line of code.
+Testing Guidelines:
+1 Test files go in to /tests and need to be named NAME_test. This also helps
+	to keep these files from accidentally clashing with your code elsewhere.
+	I also thing that pytest prefers test_name in the same way that the actual
+	tests should be test_fun()
+2 Write one test file for each module you make.
+3 Keep the test cases (functions) short. Do not worry if they are too messy.
+	This is normal with unit tests.
+4 Although tests are messy, DRY code is still best. This helps when you make
+	changes. You will only need to change it in one place.
+5 Do not get too attached to tests. Sometimes the best thing to do is to kill
+	it and start over.
 
-
-
-
-
-
-
-
-
-
+In the study drills looked up DOCTESTS. This is intriguing. I kind of like it.
 
 48 Advanced User Input
+So far, unless the user input matched what you were looking for exactly, it
+	would bounce back and give an error.
+Close simply would not cut it.
+This module should help fix that problem a little bit.
+open door, and open the door should both work.
+Simplified version of English consists of elements:
+	words sep by spaces
+	sentences made up of these words
+	grammar that structures the sentences in to meaning
+Game Lexicon
+In our game we will create a list of allowed words. This is called a 'lexicon'.
+	Direction words: north south east west down up left right back
+	Verbs: go stop kill eat
+	Stop words: the in of from at it
+	Nouns: door bear princess cabinet
+	Numbers: Any string of 0-9 characters
+
+For now even though the lexicon is not complete it is a good start.
+To break up a sentence
+To do this in order to check against the lexicon:
+stuff = input('> ')
+words = stuff.split()
+This apparently will be good enough for now, but it can get 'fick' quickly.
+This example will use Tuples for the lexicon words.
+We can determine the type of word it is and then work from there
+	(TYPE, WORD)
+Tuples are created in a similar manner to lists, however they use () and a
+	tuple of one must have a trailing , (tuple,)
+Tuple is a list you cannot modify.
+Now to write the scanner. Take a string of raw input from user and return a
+	sentence that is composed of a list of tuples with (TOKEN, WORD) parings.
+If the word is not apart of the Lexicon, is should still return the WORD but
+	the TOKEN should be 'error'.
+An 'error' token should tell the user that there is a problem with their world.
+Write your own scanner and test against his given unit tests.
+You handle exceptions with try-except statements.
+In order to do this you put the code to attempt inside a try block.
+And the code to execute if there is a problem in the except block.
+The except block requires the error type that is excpected in order to fire off
+	the except code.
+>>> def some_fun_thing():
+>>> 	try:
+>>> 		return int(s)
+>>> 	except ValueError:
+>>> 		return None
+
+Test First (aka Test Driven Development)
+Is where you pretend you have 100% good code and you write the tests for that
+	code. You then write actual code that will pass your tests.
+This is good for when you are not totally sure the structure the code should
+	take but you know where you want to be in the end.
+Example: you know how you need to use a new class in another module, but you
+	do not quite know how to implement that class you, then write the test
+	first
+To do the exercise:
+1 Create one small part of the test given
+2 Make sure it runs and *fails* so you know that the test is checking the
+	correct thing.
+3 Go to source code and write code to pass the test
+4 Repeat until everything passes.
+
+To expand for step 3:
+1 Make a 'skeleton' of the function or class def thing(): pass
+2 Write psudo-code comments that this feature needs
+3 Write the code that does this
+4 Remove comments that repeat the code
+
+All together a simple process for programming:
+1 Write a bit of test that fails
+2 Write the 'skeleton' of the feature
+3 Fill skeleton with comments
+4 Replace comments with code
+5 Repeat
+
+Working this way will cause a mountian to become a simple journey of small
+	steps.
+"The best way to eat the elephant standing in your path is to cut it up into
+	little pieces."
 
 49 Making Sentences
+From the scanner we will get a list of (TYPE, WORD) tuples that works with
+sentences of short or long types 'go to the bear and give a hug'.
+The list will just be longer.
+Turn this in to something useful like a Sentence class with a simple structure
+	like subject, verb, object.
+Goal: turn the list of tuples in to a Sentence object that has a subject, verb,
+	and object.
+Tools needed:
+1 A way to loop through the list of scanned words
+2 A way to "match" different types of tuples that we expect in our "Subject,
+	Verb, Object" setup.
+3 A way to "peek" at a potential tuple to make some decisions
+4 A way to "skip" things that are not needed
+5 An object (Sentence) to put the results in to.
+
+The parser will want to produce a Sentence object that has three attributes:
+Sentence.subject
+Sentence.verb
+Sentence.object
+
+#### STOPPED REVIEW HERE P211
+
+
+
+
+
 
 50 Your First Website
 

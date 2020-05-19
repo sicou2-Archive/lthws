@@ -1,5 +1,5 @@
 from pytest import *
-from lexicon import lexicon
+from ex48 import lexicon
 
 
 def test_directions():
