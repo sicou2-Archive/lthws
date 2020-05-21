@@ -74,7 +74,3 @@ def parse_sentence(word_list):
     obj = parse_object(word_list)
 
     return Sentence(subj, verb, obj)
-
-
-class Parser:
-    pass

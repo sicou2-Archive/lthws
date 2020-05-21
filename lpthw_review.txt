@@ -1562,11 +1562,108 @@ Tools needed:
 5 An object (Sentence) to put the results in to.
 
 The parser will want to produce a Sentence object that has three attributes:
-Sentence.subject
-Sentence.verb
-Sentence.object
+Sentence.subject - subject of any sentence but can default to "player" since
+	"run north" implies player most of the time.
+Sentence.verb - The action of the sentence.
+Sentence.object - Another noun that refers what the verb is done on
 
-#### STOPPED REVIEW HERE P211
+The parser has to use the tools described above given a scanned sentence,
+	convert it to a List of Sentence object to match the input.
+
+Exceptions
+Code shows how to raise exceptions.
+It uses a class to give it the type of "Exception"
+	is-a relationship
+In the functions raise keyword is used to raise the exception.
+In tests, will want to work with these exceptions.
+
+Parser Code in parser.py
+
+The ParserError is super simple
+>>> class ParserError(Exception)
+>>> 	pass
+
+Still need to grind out exactly what is happening with this.
+
+class Sentence:
+Has only an init with the needed attributes. They are passed the second value
+of the tuple since the first is they type of word.
+
+def peek(word_list):
+Take an if word_list exists it returns the first word of the tuple, otherwise
+	it returns None
+This function sets up you being able to make decisions about the types of
+	sentences you are dealing with based on what is next. Can then call another
+	function and carry on.
+This is probably a helper function.
+
+def match(word_list, expecting):
+	The created match function will "consume" a word. This confirms that the
+	expected word is the correct type, then takes if off the list and returns
+	the word.
+	if the wordlist has something in it it will pop the first word off then
+	see if that word is what it was expecting. If it is the word is returned.
+	Otherwise it returns None. The same thing if the list is empty.
+
+Zed's explanation is that we need to peek at the words in the list to decide
+	what kind of sentence we are dealing with. We then need to match those
+	words to create the Sentence object.
+
+Last thing needed is to skip the "stop" words. This is a total _helper_function
+def skip(word_list, word_type):
+	uses a while loop peek(word_list) == the word_type
+		in the block it just uses match and the word type to skip in most cases
+		the "stop" words, however I am sure there are other cases it can use.
+		The words don't really have anything done to them other than being
+		"consumed". Note how skip does not return match() to anything.
+
+def parse_verb(word_list):
+	uses skip() with "stop"
+	then uses an if at peek to see if the word is a verb. If it is, then will
+	return match(word_list and 'verb')
+	The else: is
+	>>> raise ParserError("Expected a verb next.")
+
+To reiterate we skip any stop words peek to ensure the word is a verb if it is
+	not then we raise a ParserError.
+
+def parse_object(word_list):
+	uses skip and then assien peek to next_word at and to see whether the next
+	word is a "noun" or a "direction"
+
+	Based on that if next word is noun or elif direction then return the match
+	of noun or direction
+	If else: then another >>> raise ParserError("Expected a noun or direction
+		next.")
+Another reiteration, skip stop words peek ahead then control flow to either
+noun, direction, or ParserError.
+
+Since we need to handle an implied "player" noun then we have to use peek even
+	though noun and direction are similar.
+	So for:
+def parse_subject(word_list):
+	we skip the stop words and assign next_word to the peek()
+	If peek is a noun match noun and return it
+	elif peek is a verb return *('noun', 'player')*
+	the else will >>> raise ParserError("Expected a verb next.")
+
+Finally
+def parse_sentence(word_list):
+	assign subj verb and obj to each of their functions and return their
+		results to the Sentence(subj, verb, obj)
+
+Thats it, done. This seems like it totally should be a class.
+
+To do:
+Test everything
+Make this a class
+Handle ParserError to give another chance to the user
+Handle numbers
+
+
+
+
+
 
 
 
