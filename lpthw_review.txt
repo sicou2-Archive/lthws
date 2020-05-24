@@ -1660,19 +1660,117 @@ Make this a class
 Handle ParserError to give another chance to the user
 Handle numbers
 
-
-
-
-
-
-
-
-
-
-
 50 Your First Website
+Last three ex will be hard. Not like everything else that has been easy so far.
+Ex46 should be done, dusted, and completely understood.
+pip has *got* to work, otherwise you are going to have a bad time.
+
+Installing Flask
+Flask is a web framework.
+Frameworks typically are packages that make it easier to do something.
+They solve problems people have had to compensate for in the past for you, so
+	you do not need to.
+Flask is not the only web framework. Apparently it is not the best, but it is
+	good for now, and probably will be good enough for most of what I am going
+	to be using it for. However, there are others to try just for fun.
+>>> python -m pip install flask
+Now for another simple "Howdy dammit!" project.
+Zed does not seem to want to cp skeleton here so we make /gothonweb/ from
+	scratch
+gothonweb/
+	/bin/
+	/gothonweb/
+		__init__.py
+	/tests/
+		__init__.py
+	/docs/
+	/templates/
+
+Game from ex 43 will now be on the web.
+
+>>> from flask import Flask
+>>> app = Flask(__name__)
+>>> @app.route('/')
+>>> def howdy_dammit():
+>>> 	greeting = "dammit"
+>>> 	return f"Howdy {greeting}!"
+>>> if __name__ = "__main__":
+>>> 	app.run()
+
+Now to run this simple thing:
+$ python app.py
+CL will tell you where the appllication can be "found" in your browser
+	http://127.0.0.1:5000/ < Go there or where ever the CL tells you to go.
+While running it will give information about the site as a server. 404's 200's
+	etc.
+What is actually happening when the browser hits the application:
+1 Browser network connects to the computer (called localhost, aka the standard
+	way of saying "whatever my own computer is called on the network."), it
+	will also use port 5000
+2 Once connected, the browser will make a HTTP request to the app.py app and
+	ask for the "/" URL, which it the typical first URL on any website.
+3 Inside of app.py you have a list of URL's and the functions that they match.
+	For now '/' or '/index' is the only one present. This means when someone
+	goes to '/' or '/index' the index function will handle and run it to handle
+	the request
+4 Once flask has found def index, it calls it to actually handle the request.
+	The function runs and returns a string of what flask will send to the
+	browser
+5 Last, flask has handled the request and sends the response to the browser
+	which is what is actually seen.
+
+When there is an error in the code, the server terminal will display the error,
+	however while "good enough" flask can be run in "debug mode"
+In "debug mode" you will get better Tracebacks, an error page, and more useful
+	information in general.
+NOTE: DO NOT HACK OUT NEEDING TO ACTIVATE DEBUG MODE. NO MATTER WHAT! WHEN YOU
+	MAKE A MISTAKE, IT WILL WORK ITSELF IN TO PRODUCTION AND YOU WILL HAVE JUST
+	GIVEN FREE REIGN TO ANYONE THAT NOTICES WHAT HAPPENED.
+Create Basic Templates
+in /templates/ we create /index.html with basic <html> tags
+<html>, <head>, <body>, <em>, style="color: green; font-size: 2em;">
+There are also {% if variable %} and {% else %} and {% end if %}
+This is super basic HTML.
+However, this .html is a template, which means that Flask will fill in the
+	"holes" depending on what variables it is passed.
+Every {{ variable }} is a hole for something to be passed that will alter the
+	templates contents.
+Next some changes to app.py
+
+>>> ++ from flask import render_template
+>>> !! def index():
+>>> !! greeting = "Howdy dammit!"
+>>> !! return render_template("index.html", greeting=greeting)
+
+5 Things are different and happen here:
+1 app.py now has a new imported function render_template
+2 render_template knows how to load .html files out of templates/ dir
+	This is a default setting for a flask appliction.
+3 Once browser hits def index() instead of just the string, it returns
+	index.html with the variable greeting to render with render_template
+4 render_template now loads index.html even though template is not explicit,
+	it is implied.
+5 In index.html is normal html however there is "code" placed between two kinds
+	of markers {% %}. This marks pieces of "executable code" if-statements,
+	for-loops.
+	The other is {{ }} which marks variables to be converted in to text and
+		placed in to the html outpyt.
+	The {% %} does not show up in the HTML.
+	If you would like to know more:
+	https://jinja.palletsprojects.com/en/2.11.x/intro/#installation
+
+	To do: read the flask docs
+	https://flask.palletsprojects.com/en/1.1.x/
+
+Hey just read all the docs. It will totally make sense.
 
 51 Getting Input from a Browser
+
+
+
+
+
+### STOPPED READING PG 230 Near the end of layout.html
 
 52 The Start of Your Web Game
 

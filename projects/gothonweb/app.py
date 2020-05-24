@@ -1,11 +1,21 @@
 from flask import Flask
+from flask import render_template
+from flask import request
+
 app = Flask(__name__)
 
 
-@app.route('/')
-def howdy_dammit():
-    greeting = "dammit!"
-    return f"Howdy {greeting}!"
+@app.route("/hello", methods=['POST', 'GET'])
+def index():
+    greeting = "Howdy dammit!"
+
+    if request.method == "POST":
+        name = request.form['name']
+        greet = request.form['greet']
+        greeting = f"{greet} {name}!"
+        return render_template("index.html", greeting=greeting)
+    else:
+        return render_template("hello_form.html", greeting=greeting)
 
 
 if __name__ == "__main__":
