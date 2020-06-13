@@ -1765,12 +1765,10 @@ Next some changes to app.py
 Hey just read all the docs. It will totally make sense.
 
 51 Getting Input from a Browser
+### STOPPED START OF CHAPTER> PUTTING LPTHW ON STASIS FOR UNDETERMINED TIME>
+TOO MANY PEOPLE ARE SAYING THAT IT IS NOT WORTH IT> WILL SET REMINDER TO TAKE
+ANOTHER LOOK AT IT IN 3 MONTHS
 
-
-
-
-
-### STOPPED READING PG 230 Near the end of layout.html
 
 52 The Start of Your Web Game
 

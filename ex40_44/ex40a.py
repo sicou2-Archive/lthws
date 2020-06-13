@@ -1,6 +1,8 @@
 # import mystuff
 
-
+"""
+Test post pleast ignore
+"""
 # # mystuff.apple()
 
 # # mything = {'apple': "I AM APPLES!"}
@@ -17,7 +19,7 @@
 # thing.apple()
 # print(thing.tangerine)
 
-# #Not totally sure what is going on here. Something is not right. 
+# #Not totally sure what is going on here. Something is not right.
 
 from mystuff import *
 
@@ -28,17 +30,13 @@ func_apple()
 print(tangerine)
 
 # class Horse_Apple(object):
-    
-    # def __init__(self):
-        # self.pear = "And now a thousand years between"
-        
-    # def classy_apple(self):
-        # print("I AM CLASSY APPLES")
-        
+
+# def __init__(self):
+# self.pear = "And now a thousand years between"
+
+# def classy_apple(self):
+# print("I AM CLASSY APPLES")
+
 thing = Horse_Apple()
 thing.classy_apple()
 print(thing.pear)
-
-
-
-
